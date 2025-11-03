@@ -31,13 +31,13 @@
                     <!-- Kolom tengah -->
                     <div class="col-span-1 lg:col-span-1 h-full">
                         <div class="grid grid-cols-2 lg:grid-cols-1 gap-6 h-full">
-                            <div class="rounded-lg bg-gray-50 p-8 flex flex-col justify-center text-center h-full">
-                                <h5 class="mb-2 text-2xl font-semibold tracking-tight text-ink">100+</h5>
-                                <p class="font-medium text-gray-500">Pelanggan</p>
+                            <div class="rounded-lg bg-green-500 p-8 flex flex-col justify-center text-center h-full">
+                                <h5 class="mb-2 text-2xl font-semibold tracking-tight text-white">100+</h5>
+                                <p class="font-medium text-gray-50">Pelanggan</p>
                             </div>
-                            <div class="rounded-lg bg-gray-50 p-8 flex flex-col justify-center text-center h-full">
-                                <h5 class="mb-2 text-2xl font-semibold tracking-tight text-ink">50+</h5>
-                                <p class="font-medium text-gray-500">Rute</p>
+                            <div class="rounded-lg bg-blue-500 p-8 flex flex-col justify-center text-center h-full">
+                                <h5 class="mb-2 text-2xl font-semibold tracking-tight text-white">50+</h5>
+                                <p class="font-medium text-gray-50">Rute</p>
                             </div>
                         </div>
                     </div>
