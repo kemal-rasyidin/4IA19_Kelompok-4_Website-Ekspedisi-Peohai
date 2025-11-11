@@ -7,8 +7,9 @@
         </div>
 
         <div class="bg-white overflow-hidden shadow-md rounded-lg">
-            <form action="{{ route('admin_entry_dates.update', $admin_entry_dates->id) }}" method="POST" enctype="multipart/form-data"
-                class="p-5">
+            <form
+                action="{{ route('admin_entry_dates.admin_entry_datas.update', [$admin_entry_date->id, $admin_entry_data->id]) }}"
+                method="POST" enctype="multipart/form-data" class="p-5">
 
                 @csrf
                 @method('PUT')
@@ -20,7 +21,8 @@
                                 <label for="periode" class="block text-sm/6 font-medium text-gray-900">Bulan &
                                     Tahun</label>
                                 <div class="mt-2">
-                                    <input type="month" name="periode" value="{{ old('periode', $admin_entry_dates->periode) }}" required
+                                    <input type="month" name="periode"
+                                        value="{{ old('periode', $admin_entry_dates->periode) }}" required
                                         class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                                 </div>
                             </div>

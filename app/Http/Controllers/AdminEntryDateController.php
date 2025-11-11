@@ -104,10 +104,18 @@ class AdminEntryDateController extends Controller
      */
     public function destroy($id): RedirectResponse
     {
-        $admin_entry_dates = AdminEntryDate::findOrFail($id);
+        $admin_entry_date = AdminEntryDate::findOrFail($id);
 
-        $admin_entry_dates->delete();
+        // Cek apakah masih ada data anak
+        if ($admin_entry_date->adminEntryDatas()->exists()) {
+            return redirect()->route('admin_entry_dates.index')
+                ->with('error', 'Tidak dapat menghapus periode ini karena masih terdapat data di dalamnya.');
+        }
 
-        return redirect()->route('admin_entry_dates.index')->with(['success' => 'Data Berhasil Dihapus!']);
+        // Jika kosong, boleh dihapus
+        $admin_entry_date->delete();
+
+        return redirect()->route('admin_entry_dates.index')
+            ->with('success', 'Data Berhasil Dihapus!');
     }
 }

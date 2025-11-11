@@ -45,13 +45,40 @@
                             <th class="py-4 px-6 text-left text-gray-600">No Inv</th>
                             <th class="py-4 px-6 text-left text-gray-600">Alamat Penerima Barang</th>
                             <th class="py-4 px-6 text-left text-gray-600">Nama Penerima</th>
+                            <th class="py-4 px-6 text-left text-gray-600">Aksi</th>
                         </tr>
                     </thead>
                     <tbody class="bg-white">
                         @forelse ($datas as $data)
                             <tr>
                                 <td class="py-4 px-6 border-b border-gray-200">{{ $data->id }}</td>
-                                <td class="py-4 px-6 border-b border-gray-200">{{ $data->periode }}</td>
+                                <td class="py-4 px-6 border-b border-gray-200">{{ $data->qty }}</td>
+                                <td class="py-4 px-6 border-b border-gray-200">{{ $data->tgl_stuffing }}</td>
+                                <td class="py-4 px-6 border-b border-gray-200">{{ $data->sl_sd }}</td>
+                                <td class="py-4 px-6 border-b border-gray-200">{{ $data->customer }}</td>
+                                <td class="py-4 px-6 border-b border-gray-200">{{ $data->pengirim }}</td>
+                                <td class="py-4 px-6 border-b border-gray-200">{{ $data->penerima }}</td>
+                                <td class="py-4 px-6 border-b border-gray-200">{{ $data->jenis_barang }}</td>
+                                <td class="py-4 px-6 border-b border-gray-200">{{ $data->pelayaran }}</td>
+                                <td class="py-4 px-6 border-b border-gray-200">{{ $data->nama_kapal }}</td>
+                                <td class="py-4 px-6 border-b border-gray-200">{{ $data->voy }}</td>
+                                <td class="py-4 px-6 border-b border-gray-200">{{ $data->tujuan }}</td>
+                                <td class="py-4 px-6 border-b border-gray-200">{{ $data->etd }}</td>
+                                <td class="py-4 px-6 border-b border-gray-200">{{ $data->eta }}</td>
+                                <td class="py-4 px-6 border-b border-gray-200">{{ $data->no_count }}</td>
+                                <td class="py-4 px-6 border-b border-gray-200">{{ $data->seal }}</td>
+                                <td class="py-4 px-6 border-b border-gray-200">{{ $data->agen }}</td>
+                                <td class="py-4 px-6 border-b border-gray-200">{{ $data->dooring }}</td>
+                                <td class="py-4 px-6 border-b border-gray-200">{{ $data->nopol }}</td>
+                                <td class="py-4 px-6 border-b border-gray-200">{{ $data->supir }}</td>
+                                <td class="py-4 px-6 border-b border-gray-200">{{ $data->no_telp }}</td>
+                                <td class="py-4 px-6 border-b border-gray-200">{{ $data->harga }}</td>
+                                <td class="py-4 px-6 border-b border-gray-200">{{ $data->si_final }}</td>
+                                <td class="py-4 px-6 border-b border-gray-200">{{ $data->ba }}</td>
+                                <td class="py-4 px-6 border-b border-gray-200">{{ $data->ba_balik }}</td>
+                                <td class="py-4 px-6 border-b border-gray-200">{{ $data->no_inv }}</td>
+                                <td class="py-4 px-6 border-b border-gray-200">{{ $data->alamat_penerima_barang }}</td>
+                                <td class="py-4 px-6 border-b border-gray-200">{{ $data->nama_penerima }}</td>
                                 <td class="py-4 px-6 border-b border-gray-200">
                                     <form onsubmit="return confirm('Apakah Anda Yakin ?');"
                                         action="{{ route('admin_entry_dates.admin_entry_datas.destroy', [$admin_entry_date->id, $data->id]) }}"
