@@ -56,8 +56,8 @@
             <div class="pt-4 mt-4 border-t border-blue-400 border-opacity-30">
                 <p class="px-4 text-xs font-semibold text-blue-200 uppercase tracking-wider">Data</p>
                 <div class="mt-2 space-y-2">
-                    <a href="/admindata"
-                        class="group flex items-center px-4 py-3 text-sm font-medium rounded-lg {{ request()->routeIs('profile.*') ? 'bg-white bg-opacity-20 text-white' : 'text-blue-100 hover:bg-white hover:bg-opacity-10 hover:text-white' }} transition-colors duration-200">
+                    <a href="/admin_entry_dates"
+                        class="group flex items-center px-4 py-3 text-sm font-medium rounded-lg {{ request()->routeIs('admin_entry_dates.*') ? 'bg-white bg-opacity-20 text-white' : 'text-blue-100 hover:bg-white hover:bg-opacity-10 hover:text-white' }} transition-colors duration-200">
                         <svg class="mr-3 h-5 w-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                             viewBox="0 0 24 24">
                             <path fill="currentColor"

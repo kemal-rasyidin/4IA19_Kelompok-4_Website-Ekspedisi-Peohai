@@ -1,11 +1,16 @@
 <x-admin.layout>
     <div class="space-y-8">
         <div class="bg-blue-500 overflow-hidden shadow-md rounded-lg text-lg font-semibold mb-3 text-white">
-            <div class="p-6">
-                <a href="{{ route('admin_entry_dates.create') }}"
-                    class="rounded-md bg-green-50 hover:bg-green-100 p-4 text-gray-600">+ Tambah</a>
+            <div class="p-6 text-gray-100">
+                {{ __('Periode Bulan & Tahun Admin Data Entry') }}
             </div>
         </div>
+
+        <div class="">
+            <a href="{{ route('admin_entry_dates.create') }}"
+                class="shadow-md rounded-md bg-green-500 hover:bg-green-600 p-4 text-white font-semibold">+ Tambah</a>
+        </div>
+
         <div class="bg-white overflow-hidden shadow-lg rounded-lg">
             <div class="overflow-x-auto">
                 <table class="min-w-full table-auto">
@@ -32,15 +37,15 @@
                                         </a> --}}
 
                                         <a href="{{ route('admin_entry_dates.edit', $admin_entry_date->id) }}"
-                                            class="bg-yellow-600 hover:bg-yellow-500 text-white px-3 py-1 rounded-md text-sm">
-                                            EDIT
+                                            class="bg-yellow-600 hover:bg-yellow-500 text-white px-3 py-1 rounded-md text-sm shadow-md">
+                                            Edit
                                         </a>
 
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit"
-                                            class="bg-red-600 hover:bg-red-500 text-white px-3 py-1 rounded-md text-sm">
-                                            HAPUS
+                                            class="bg-red-600 hover:bg-red-500 text-white px-3 py-1 rounded-md text-sm shadow-md">
+                                            Hapus
                                         </button>
                                     </form>
                                 </td>

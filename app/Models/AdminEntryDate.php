@@ -17,4 +17,9 @@ class AdminEntryDate extends Model
     protected $fillable = [
         'periode',
     ];
+
+    public function adminEntryDatas()
+    {
+        return $this->hasMany(AdminEntryData::class, 'admin_entry_date_id');
+    }
 }

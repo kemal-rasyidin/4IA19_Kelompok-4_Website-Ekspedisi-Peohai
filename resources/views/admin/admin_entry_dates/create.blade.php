@@ -1,6 +1,6 @@
 <x-admin.layout>
     <div class="space-y-8">
-        <div class="bg-blue-500 overflow-hidden shadow-md rounded-lg text-xl font-bold mb-3 text-white">
+        <div class="bg-green-500 overflow-hidden shadow-md rounded-lg text-lg font-semibold mb-3 text-white">
             <div class="p-6 text-gray-100">
                 {{ __('Tambah Bulan & Tahun Admin Data Entry') }}
             </div>
