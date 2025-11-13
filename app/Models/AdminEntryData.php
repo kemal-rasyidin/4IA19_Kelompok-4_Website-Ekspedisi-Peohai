@@ -30,7 +30,7 @@ class AdminEntryData extends Model
         'tujuan',
         'etd',
         'eta',
-        'no_count',
+        'no_cont',
         'seal',
         'agen',
         'dooring',

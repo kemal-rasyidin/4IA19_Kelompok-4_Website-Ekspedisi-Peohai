@@ -19,9 +19,8 @@
                             <div class="mt-2 grid grid-cols-1">
                                 <select id="qty" name="qty" autocomplete="qty"
                                     class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                                    <option value="1" {{ old('qty') == 1 ? 'selected' : '' }}>1</option>
-                                    <option value="2" {{ old('qty') == 2 ? 'selected' : '' }}>2</option>
-                                    <option value="3" {{ old('qty') == 3 ? 'selected' : '' }}>3</option>
+                                    <option value="1x20" {{ old('qty') == '1x20' ? 'selected' : '' }}>1x20</option>
+                                    <option value="1x40" {{ old('qty') == '1x40' ? 'selected' : '' }}>1x40</option>
                                 </select>
                             </div>
                         </div>
@@ -114,9 +113,9 @@
                             </div>
                         </div>
                         <div class="sm:col-span-1">
-                            <label for="no_count" class="block text-sm/6 font-medium text-gray-900">No Count</label>
+                            <label for="no_cont" class="block text-sm/6 font-medium text-gray-900">No Count</label>
                             <div class="mt-2">
-                                <input type="text" name="no_count" value="{{ old('no_count') }}" required
+                                <input type="text" name="no_cont" value="{{ old('no_cont') }}" required
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>

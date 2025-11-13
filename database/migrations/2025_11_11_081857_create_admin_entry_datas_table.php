@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string('tujuan');
             $table->date('etd');
             $table->date('eta');
-            $table->string('no_count');
+            $table->string('no_cont');
             $table->string('seal');
             $table->string('agen');
             $table->date('dooring');

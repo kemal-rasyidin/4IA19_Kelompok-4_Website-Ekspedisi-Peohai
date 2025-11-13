@@ -65,7 +65,7 @@
                                 <td class="py-4 px-6 border-b border-gray-200">{{ $data->tujuan }}</td>
                                 <td class="py-4 px-6 border-b border-gray-200">{{ $data->etd }}</td>
                                 <td class="py-4 px-6 border-b border-gray-200">{{ $data->eta }}</td>
-                                <td class="py-4 px-6 border-b border-gray-200">{{ $data->no_count }}</td>
+                                <td class="py-4 px-6 border-b border-gray-200">{{ $data->no_cont }}</td>
                                 <td class="py-4 px-6 border-b border-gray-200">{{ $data->seal }}</td>
                                 <td class="py-4 px-6 border-b border-gray-200">{{ $data->agen }}</td>
                                 <td class="py-4 px-6 border-b border-gray-200">{{ $data->dooring }}</td>
