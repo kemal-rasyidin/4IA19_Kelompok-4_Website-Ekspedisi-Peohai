@@ -29,7 +29,7 @@ Route::resource('entry_periods.finance_entries', FinanceEntryController::class)
     ->parameters(['finance_entries' => 'entry'])
     ->names('finance.entries')
     ->except(['create', 'store', 'show', 'destroy'])
-    ->middleware(['auth', 'verified']); // biasanya finance hanya edit/update
+    ->middleware(['auth', 'verified']);
 
 Route::get('/dashboard', function () {
     return view('admin/home');

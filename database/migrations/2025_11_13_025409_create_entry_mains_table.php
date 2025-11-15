@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('entry_period_id')->constrained('entry_periods')->onDelete('cascade');
 
-            $table->integer('qty')->nullable();
+            $table->string('qty')->nullable();
             $table->date('tgl_stuffing')->nullable();
             $table->string('sl_sd')->nullable();
             $table->string('customer')->nullable();
@@ -31,14 +31,14 @@ return new class extends Migration
             $table->string('no_cont')->nullable();
             $table->string('seal')->nullable();
             $table->string('agen')->nullable();
-            $table->string('dooring')->nullable();
+            $table->date('dooring')->nullable();
             $table->string('nopol')->nullable();
             $table->string('supir')->nullable();
             $table->string('no_telp')->nullable();
-            $table->decimal('harga', 15, 2)->nullable();
+            $table->string('harga', 15, 2)->nullable();
             $table->string('si_final')->nullable();
-            $table->string('ba')->nullable();
-            $table->string('ba_balik')->nullable();
+            $table->date('ba')->nullable();
+            $table->date('ba_balik')->nullable();
             $table->string('no_inv')->nullable();
             $table->string('alamat_penerima_barang')->nullable();
             $table->string('nama_penerima')->nullable();

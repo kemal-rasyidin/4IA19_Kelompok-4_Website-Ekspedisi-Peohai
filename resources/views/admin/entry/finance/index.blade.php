@@ -1,23 +1,10 @@
 <x-admin.layout>
     <div class="space-y-8">
-        <div class="bg-purple-600 text-white shadow-md rounded-lg">
-            <div class="p-6 text-lg font-semibold">
-                {{ __('Data Finance Entry') }}
+        <div class="bg-blue-500 overflow-hidden shadow-md rounded-lg text-lg font-semibold mb-3 text-white">
+            <div class="p-6 text-gray-100">
+                Finance Data Entry Periode {{ $entry_period->periode }}
             </div>
         </div>
-
-        {{-- Filter Periode --}}
-        {{-- <form method="GET" class="mb-4">
-            <label for="periode" class="mr-2 font-medium">Periode:</label>
-            <select name="periode" id="periode" onchange="this.form.submit()" class="border rounded-md px-3 py-2">
-                <option value="">-- Semua Periode --</option>
-                @foreach ($periods as $periode)
-                    <option value="{{ $periode->id }}" {{ $selectedPeriod == $periode->id ? 'selected' : '' }}>
-                        {{ ucfirst($periode->bulan) }} {{ $periode->tahun }}
-                    </option>
-                @endforeach
-            </select>
-        </form> --}}
 
         <div class="bg-white overflow-hidden shadow-lg rounded-lg">
             <div class="overflow-x-auto">

@@ -13,10 +13,7 @@ class AdminEntryController extends Controller
      */
     public function index(EntryPeriod $entry_period)
     {
-        // Ambil semua entry yang sesuai periode ini
         $entries = EntryMain::where('entry_period_id', $entry_period->id)->paginate(10);
-
-        // Kirim ke view
         return view('admin.entry.admin.index', compact('entries', 'entry_period'));
     }
 
@@ -34,7 +31,7 @@ class AdminEntryController extends Controller
     public function store(Request $request, EntryPeriod $entry_period)
     {
         $validated = $request->validate([
-            'qty' => 'nullable|integer',
+            'qty' => 'nullable|string',
             'tgl_stuffing' => 'nullable|date',
             'sl_sd' => 'nullable|string|max:255',
             'customer' => 'nullable|string|max:255',
@@ -50,14 +47,14 @@ class AdminEntryController extends Controller
             'no_cont' => 'nullable|string|max:255',
             'seal' => 'nullable|string|max:255',
             'agen' => 'nullable|string|max:255',
-            'dooring' => 'nullable|string|max:255',
+            'dooring' => 'nullable|date',
             'nopol' => 'nullable|string|max:255',
             'supir' => 'nullable|string|max:255',
             'no_telp' => 'nullable|string|max:50',
-            'harga' => 'nullable|numeric',
+            'harga' => 'nullable|string',
             'si_final' => 'nullable|string|max:255',
-            'ba' => 'nullable|string|max:255',
-            'ba_balik' => 'nullable|string|max:255',
+            'ba' => 'nullable|date',
+            'ba_balik' => 'nullable|date',
             'no_inv' => 'nullable|string|max:255',
             'alamat_penerima_barang' => 'nullable|string|max:255',
             'nama_penerima' => 'nullable|string|max:255',
@@ -74,22 +71,31 @@ class AdminEntryController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
+    }
+
+    /**
      * Form edit data Entry (Admin)
      */
-    public function edit(EntryMain $entry)
+    public function edit(EntryPeriod $entry_period, EntryMain $entry)
     {
-        $periods = EntryPeriod::orderByDesc('tahun')->get();
-        return view('entry.admin.edit', compact('entry', 'periods'));
+        // $periods = EntryPeriod::orderByDesc('tahun')->get();
+        return view('admin/entry.admin.edit', compact('entry', 'entry_period'));
     }
+
 
     /**
      * Update data Entry (Admin)
      */
-    public function update(Request $request, EntryMain $entry)
+    public function update(Request $request, EntryPeriod $entry_period, EntryMain $entry)
     {
         $validated = $request->validate([
-            'entry_period_id' => 'required|exists:entry_periods,id',
-            'qty' => 'nullable|integer',
+            // 'entry_period_id' => 'required|exists:entry_periods,id',
+            'qty' => 'nullable|string',
             'tgl_stuffing' => 'nullable|date',
             'sl_sd' => 'nullable|string|max:255',
             'customer' => 'nullable|string|max:255',
@@ -104,27 +110,37 @@ class AdminEntryController extends Controller
             'eta' => 'nullable|date',
             'no_cont' => 'nullable|string|max:255',
             'seal' => 'nullable|string|max:255',
+            'agen' => 'nullable|string|max:255',
+            'dooring' => 'nullable|date',
             'nopol' => 'nullable|string|max:255',
             'supir' => 'nullable|string|max:255',
             'no_telp' => 'nullable|string|max:50',
+            'harga' => 'nullable|string',
+            'si_final' => 'nullable|string|max:255',
+            'ba' => 'nullable|date',
+            'ba_balik' => 'nullable|date',
+            'no_inv' => 'nullable|string|max:255',
             'alamat_penerima_barang' => 'nullable|string|max:255',
             'nama_penerima' => 'nullable|string|max:255',
         ]);
 
         $entry->update($validated);
-        $entry->update(['status' => 'admin_filled']);
 
-        return redirect()->route('admin.entry.index')
-            ->with('success', 'Data berhasil diperbarui.');
+        return redirect()
+            ->route('admin.entries.index', $entry_period->id)
+            ->with('success', 'Data admin berhasil diperbarui.');
     }
 
     /**
      * Hapus data Entry (Admin)
      */
-    public function destroy(EntryMain $entry)
+    public function destroy(EntryPeriod $entry_period, EntryMain $entry)
     {
+        if ($entry->entry_period_id != $entry_period->id) {
+            abort(404);
+        }
         $entry->delete();
-        return redirect()->route('admin.entry.index')
+        return redirect()->route('admin.entries.index', $entry_period->id)
             ->with('success', 'Data berhasil dihapus.');
     }
 }

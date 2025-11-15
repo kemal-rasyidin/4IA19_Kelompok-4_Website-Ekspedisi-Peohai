@@ -11,20 +11,10 @@ class FinanceEntryController extends Controller
     /**
      * Menampilkan daftar data untuk Finance
      */
-    public function index(Request $request)
+    public function index(EntryPeriod $entry_period)
     {
-        $periods = EntryPeriod::orderByDesc('tahun')->orderByDesc('id')->get();
-        $selectedPeriod = $request->get('periode');
-
-        $entries = EntryMain::when($selectedPeriod, function ($query, $periodeId) {
-            $query->where('entry_period_id', $periodeId);
-        })
-            // ->whereIn('status', ['admin_filled', 'finance_filled'])
-            // ->with('periode')
-            ->orderByDesc('updated_at')
-            ->paginate(10);
-
-        return view('admin/entry.finance.index', compact('entries', 'periods', 'selectedPeriod'));
+        $entries = EntryMain::where('entry_period_id', $entry_period->id)->paginate(10);
+        return view('admin/entry.finance.index', compact('entries', 'entry_period'));
     }
 
     /**
@@ -59,8 +49,6 @@ class FinanceEntryController extends Controller
         return view('admin.entry.finance.edit', compact('entry_period', 'entry'));
     }
 
-
-
     /**
      * Update data oleh Finance
      */
@@ -84,8 +72,6 @@ class FinanceEntryController extends Controller
             ->route('finance.entries.index', $entry_period->id)
             ->with('success', 'Data finance berhasil diperbarui.');
     }
-
-
 
     /**
      * Remove the specified resource from storage.

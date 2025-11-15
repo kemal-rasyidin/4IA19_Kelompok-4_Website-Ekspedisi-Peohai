@@ -1,8 +1,9 @@
 <x-admin.layout>
     <div class="space-y-8">
+        
         <div class="bg-green-500 overflow-hidden shadow-md rounded-lg text-lg font-semibold mb-3 text-white">
             <div class="p-6 text-gray-100">
-                {{ __('Tambah Bulan & Tahun Admin Data Entry') }}
+                {{ __('Tambah Periode Admin Data Entry') }}
             </div>
         </div>
 
@@ -40,5 +41,6 @@
                 </div>
             </form>
         </div>
+
     </div>
 </x-admin.layout>
