@@ -55,15 +55,7 @@ class FinanceEntryController extends Controller
     public function update(Request $request, EntryPeriod $entry_period, EntryMain $entry)
     {
         $validated = $request->validate([
-            'etd' => 'nullable|date',
-            'agen' => 'nullable|string|max:255',
-            'dooring' => 'nullable|string|max:255',
-            'harga' => 'nullable|numeric',
-            'pph_status' => 'nullable|in:pph,non',
-            'si_final' => 'nullable|string|max:255',
-            'ba' => 'nullable|string|max:255',
-            'ba_balik' => 'nullable|string|max:255',
-            'no_inv' => 'nullable|string|max:255',
+            'pph_status' => 'nullable|string|max:255',
         ]);
 
         $entry->update($validated);

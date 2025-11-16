@@ -7,6 +7,32 @@
             </div>
         </div>
 
+        <div class="bg-white p-4 rounded-lg shadow-md mb-4">
+            <form method="GET" action="{{ route('admin.entries.index', $entry_period->id) }}">
+                <div class="flex gap-2">
+                    <input type="text" name="search" placeholder="Cari?"
+                        value="{{ request('search') }}"
+                        class="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    <button type="submit"
+                        class="px-6 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md font-semibold shadow-md">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                d="M9.5 16q-2.725 0-4.612-1.888T3 9.5t1.888-4.612T9.5 3t4.613 1.888T16 9.5q0 1.1-.35 2.075T14.7 13.3l5.6 5.6q.275.275.275.7t-.275.7t-.7.275t-.7-.275l-5.6-5.6q-.75.6-1.725.95T9.5 16m0-2q1.875 0 3.188-1.312T14 9.5t-1.312-3.187T9.5 5T6.313 6.313T5 9.5t1.313 3.188T9.5 14" />
+                        </svg>
+                    </button>
+                    @if (request('search'))
+                        <a href="{{ route('admin.entries.index', $entry_period->id) }}"
+                            class="px-6 py-2 bg-gray-500 hover:bg-gray-600 text-white rounded-md font-semibold shadow-md">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <path fill="currentColor"
+                                    d="M12 20q-3.35 0-5.675-2.325T4 12t2.325-5.675T12 4q1.725 0 3.3.712T18 6.75V4h2v7h-7V9h4.2q-.8-1.4-2.187-2.2T12 6Q9.5 6 7.75 7.75T6 12t1.75 4.25T12 18q1.925 0 3.475-1.1T17.65 14h2.1q-.7 2.65-2.85 4.325T12 20" />
+                            </svg>
+                        </a>
+                    @endif
+                </div>
+            </form>
+        </div>
+
         <div>
             <a href="{{ route('admin.entries.create', $entry_period->id) }}"
                 class="shadow-md rounded-md bg-green-500 hover:bg-green-600 p-4 text-white font-semibold">+ Tambah
@@ -82,7 +108,8 @@
                                 <td class="py-4 px-6 border-b border-gray-200">{{ $entry->ba }}</td>
                                 <td class="py-4 px-6 border-b border-gray-200">{{ $entry->ba_balik }}</td>
                                 <td class="py-4 px-6 border-b border-gray-200">{{ $entry->no_inv }}</td>
-                                <td class="py-4 px-6 border-b border-gray-200">{{ $entry->alamat_penerima_barang }}</td>
+                                <td class="py-4 px-6 border-b border-gray-200">{{ $entry->alamat_penerima_barang }}
+                                </td>
                                 <td class="py-4 px-6 border-b border-gray-200">{{ $entry->nama_penerima }}</td>
                                 <td class="py-4 px-6 border-b border-gray-200">
                                     <form onsubmit="return confirm('Apakah Anda Yakin ?');"
@@ -91,7 +118,11 @@
 
                                         <a href="{{ route('admin.entries.edit', [$entry_period->id, $entry->id]) }}"
                                             class="bg-yellow-600 hover:bg-yellow-500 text-white px-3 py-1 rounded-md text-sm shadow-md">
-                                            Edit
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24">
+                                                <path fill="currentColor"
+                                                    d="M5 19h1.425L16.2 9.225L14.775 7.8L5 17.575zm-1 2q-.425 0-.712-.288T3 20v-2.425q0-.4.15-.763t.425-.637L16.2 3.575q.3-.275.663-.425t.762-.15t.775.15t.65.45L20.425 5q.3.275.437.65T21 6.4q0 .4-.138.763t-.437.662l-12.6 12.6q-.275.275-.638.425t-.762.15zM19 6.4L17.6 5zm-3.525 2.125l-.7-.725L16.2 9.225z" />
+                                            </svg>
                                         </a>
 
                                         @csrf
@@ -116,7 +147,7 @@
                     </tbody>
                 </table>
             </div>
-            {{-- {{ $entrys->links() }} --}}
+            {{ $entries->links() }}
         </div>
 
     </div>

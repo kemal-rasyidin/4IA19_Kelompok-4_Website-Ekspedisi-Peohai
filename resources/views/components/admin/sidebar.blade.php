@@ -29,7 +29,7 @@
             </a>
 
             <!-- User Management -->
-            <a href=""
+            {{-- <a href=""
                 class="group flex items-center px-4 py-3 text-sm font-medium rounded-lg {{ request()->routeIs('users.*') ? 'bg-white bg-opacity-20 text-white' : 'text-blue-100 hover:bg-white hover:bg-opacity-10 hover:text-white' }} transition-colors duration-200">
                 <svg class="mr-3 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -37,12 +37,11 @@
                     </path>
                 </svg>
                 Users
-            </a>
+            </a> --}}
 
 
             <!-- Role Management -->
-
-            <a href=""
+            {{-- <a href=""
                 class="group flex items-center px-4 py-3 text-sm font-medium rounded-lg {{ request()->routeIs('roles.*') ? 'bg-white bg-opacity-20 text-white' : 'text-blue-100 hover:bg-white hover:bg-opacity-10 hover:text-white' }} transition-colors duration-200">
                 <svg class="mr-3 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -50,7 +49,7 @@
                     </path>
                 </svg>
                 Roles & Permissions
-            </a>
+            </a> --}}
 
             <!-- Data -->
             <div class="pt-4 mt-4 border-t border-blue-400 border-opacity-30">

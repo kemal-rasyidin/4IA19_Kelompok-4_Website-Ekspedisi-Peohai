@@ -11,9 +11,26 @@ class AdminEntryController extends Controller
     /**
      * Menampilkan daftar data Entry milik Admin (bisa difilter berdasarkan periode)
      */
-    public function index(EntryPeriod $entry_period)
+    public function index(Request $request, EntryPeriod $entry_period)
     {
-        $entries = EntryMain::where('entry_period_id', $entry_period->id)->paginate(10);
+        $search = $request->input('search');
+
+        $entries = EntryMain::where('entry_period_id', $entry_period->id)
+            ->when($search, function ($query) use ($search) {
+                $query->where(function ($q) use ($search) {
+                    $q->where('customer', 'like', "%{$search}%")
+                        ->orWhere('pengirim', 'like', "%{$search}%")
+                        ->orWhere('penerima', 'like', "%{$search}%")
+                        ->orWhere('no_cont', 'like', "%{$search}%")
+                        ->orWhere('nama_kapal', 'like', "%{$search}%")
+                        ->orWhere('nopol', 'like', "%{$search}%")
+                        ->orWhere('supir', 'like', "%{$search}%")
+                        ->orWhere('no_inv', 'like', "%{$search}%");
+                });
+            })
+            ->paginate(10)
+            ->withQueryString(); // Biar parameter search tetap ada di pagination
+
         return view('admin.entry.admin.index', compact('entries', 'entry_period'));
     }
 

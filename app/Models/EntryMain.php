@@ -51,16 +51,6 @@ class EntryMain extends Model
     ];
 
     /**
-     * Tipe data casting otomatis.
-     */
-    protected $casts = [
-        'tgl_stuffing' => 'date',
-        'etd' => 'date',
-        'eta' => 'date',
-        'harga' => 'decimal:2',
-    ];
-
-    /**
      * Scope untuk filter berdasarkan status (opsional, biar mudah dipakai di controller)
      */
     public function scopeStatus($query, $status)

@@ -17,7 +17,7 @@ return new class extends Migration
 
             $table->string('qty')->nullable();
             $table->date('tgl_stuffing')->nullable();
-            $table->string('sl_sd')->nullable();
+            $table->enum('sl_sd', ['SL', 'SD'])->nullable();
             $table->string('customer')->nullable();
             $table->string('pengirim')->nullable();
             $table->string('penerima')->nullable();
@@ -42,13 +42,8 @@ return new class extends Migration
             $table->string('no_inv')->nullable();
             $table->string('alamat_penerima_barang')->nullable();
             $table->string('nama_penerima')->nullable();
-
-            $table->enum('pph_status', ['pph', 'non'])->nullable();
-            // $table->decimal('pph_amount', 15, 2)->nullable();
-
-            // $table->string('status')->default('draft')->after('no_cont');
-            // $table->dropColumn('status');
-
+            $table->enum('pph_status', ['PPH', 'Non'])->nullable();
+            
             $table->timestamps();
         });
     }

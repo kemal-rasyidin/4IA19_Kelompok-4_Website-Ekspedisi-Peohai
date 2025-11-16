@@ -1,5 +1,6 @@
 <x-admin.layout>
     <div class="space-y-8">
+
         <div class="bg-yellow-600 text-white shadow-md rounded-lg">
             <div class="p-6 text-lg font-semibold">
                 {{ __('Edit Data Admin Entry') }}
@@ -270,5 +271,6 @@
                 </div>
             </form>
         </div>
+
     </div>
 </x-admin.layout>
