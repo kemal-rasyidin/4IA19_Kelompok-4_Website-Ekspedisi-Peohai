@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Peohai</title>
 
     <!-- Fonts -->
@@ -37,7 +37,7 @@
                         class="absolute right-4 top-full mt-1 hidden w-full max-w-[200px] rounded-lg bg-white py-5 shadow-lg lg:static lg:block lg:max-w-full lg:rounded-none lg:bg-transparent lg:shadow-none">
                         <ul class="block py-2 lg:flex lg:py-0">
                             <li class="group">
-                                <a href="#beranda"
+                                <a href="/"
                                     class="group mx-4 flex items-center rounded-md p-3 text-sm text-black hover:bg-gray-200 hover:text-blue-500 lg:mx-8 lg:text-base lg:hover:bg-transparent">
                                     <svg class="flex lg:hidden" xmlns="http://www.w3.org/2000/svg" width="24"
                                         height="24" viewBox="0 0 24 24">
@@ -48,7 +48,7 @@
                                 </a>
                             </li>
                             <li class="group">
-                                <a href="#layanan"
+                                <a href="/simulasi"
                                     class="group mx-4 flex items-center rounded-md p-3 text-sm text-black hover:bg-gray-200 hover:text-blue-500 lg:mx-8 lg:text-base lg:hover:bg-transparent">
                                     <svg class="flex lg:hidden" xmlns="http://www.w3.org/2000/svg" width="24"
                                         height="24" viewBox="0 0 48 48">
@@ -56,7 +56,7 @@
                                             stroke-linejoin="round" stroke-miterlimit="2" stroke-width="4"
                                             d="M44 6H28v8h16zm0 8v22c0 1.11-.89 2-2 2H8c-2.21 0-4-1.79-4-4v-6c0-4.42 3.58-8 8-8h16v-6zM14 26v-6m7 6v-6m-6 22v-4m-7 4v-4m14 4v-4m12 4v-4m7 4v-4M23 20H12" />
                                     </svg>
-                                    <p class="ml-3 lg:ml-0">Layanan</p>
+                                    <p class="ml-3 lg:ml-0">Simulasi</p>
                                 </a>
                             </li>
                         </ul>
@@ -93,10 +93,10 @@
                         </h2>
                         <ul class="font-medium text-gray-400">
                             <li class="mb-4">
-                                <a href="#beranda" class="hover:underline">Beranda</a>
+                                <a href="/" class="hover:underline">Beranda</a>
                             </li>
                             <li class="mb-4">
-                                <a href="#layanan" class="hover:underline">Layanan</a>
+                                <a href="/simulasi" class="hover:underline">Simulasi</a>
                             </li>
                         </ul>
                     </div>
