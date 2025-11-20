@@ -56,7 +56,19 @@
                                             stroke-linejoin="round" stroke-miterlimit="2" stroke-width="4"
                                             d="M44 6H28v8h16zm0 8v22c0 1.11-.89 2-2 2H8c-2.21 0-4-1.79-4-4v-6c0-4.42 3.58-8 8-8h16v-6zM14 26v-6m7 6v-6m-6 22v-4m-7 4v-4m14 4v-4m12 4v-4m7 4v-4M23 20H12" />
                                     </svg>
-                                    <p class="ml-3 lg:ml-0">Simulasi</p>
+                                    <p class="ml-3 lg:ml-0">Simulasi Tarif</p>
+                                </a>
+                            </li>
+                            <li class="group">
+                                <a href="/simulasi"
+                                    class="group mx-4 flex items-center rounded-md p-3 text-sm text-black hover:bg-gray-200 hover:text-blue-500 lg:mx-8 lg:text-base lg:hover:bg-transparent">
+                                    <svg class="flex lg:hidden" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24" viewBox="0 0 48 48">
+                                        <path fill="none" stroke="currentColor" stroke-linecap="round"
+                                            stroke-linejoin="round" stroke-miterlimit="2" stroke-width="4"
+                                            d="M44 6H28v8h16zm0 8v22c0 1.11-.89 2-2 2H8c-2.21 0-4-1.79-4-4v-6c0-4.42 3.58-8 8-8h16v-6zM14 26v-6m7 6v-6m-6 22v-4m-7 4v-4m14 4v-4m12 4v-4m7 4v-4M23 20H12" />
+                                    </svg>
+                                    <p class="ml-3 lg:ml-0">Lacak Pengiriman</p>
                                 </a>
                             </li>
                         </ul>
@@ -109,8 +121,8 @@
                     <div class="mt-4 flex space-x-5 sm:mt-0 sm:justify-center">
                         <!-- Instagram -->
                         <a href="#" class="text-gray-400 hover:text-white">
-                            <svg class="h-4 w-4" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-                                fill="currentColor">
+                            <svg class="h-4 w-4" role="img" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                                 <path d=" M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333
         4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0
         12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126

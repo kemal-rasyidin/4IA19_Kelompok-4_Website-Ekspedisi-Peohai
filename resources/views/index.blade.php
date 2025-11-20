@@ -196,28 +196,28 @@
                         Jenis Layanan Kami
                     </p>
                 </div>
-                <div class="w-full">
-                    <div class="rounded-lg bg-gray-50 p-8 mb-5">
+                <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 w-full">
+                    <div class="col-span-1 rounded-lg bg-gray-50 p-8">
                         <svg class="mb-3 h-10 w-10 text-blue-500" xmlns="http://www.w3.org/2000/svg" width="24"
                             height="24" viewBox="0 0 24 24">
                             <path fill="currentColor"
                                 d="M5 21q-.825 0-1.412-.587T3 19V6.525q0-.35.113-.675t.337-.6L4.7 3.725q.275-.35.687-.538T6.25 3h11.5q.45 0 .863.188t.687.537l1.25 1.525q.225.275.338.6t.112.675V19q0 .825-.587 1.413T19 21zM5.4 6h13.2l-.85-1H6.25z" />
                         </svg>
                         <h5 class="mb-2 text-2xl font-semibold tracking-tight text-ink">
-                            Ukuran 2x2
+                            Ukuran 2x20
                         </h5>
                         <p class="mb-3 font-medium leading-relaxed text-gray-500">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit veniam suscipit error?
                         </p>
                     </div>
-                    <div class="rounded-lg bg-gray-50 p-8 mb-5">
+                    <div class="col-span-1 rounded-lg bg-gray-50 p-8">
                         <svg class="mb-3 h-10 w-10 text-blue-500" xmlns="http://www.w3.org/2000/svg" width="24"
                             height="24" viewBox="0 0 24 24">
                             <path fill="currentColor"
                                 d="M5 21q-.825 0-1.412-.587T3 19V6.525q0-.35.113-.675t.337-.6L4.7 3.725q.275-.35.687-.538T6.25 3h11.5q.45 0 .863.188t.687.537l1.25 1.525q.225.275.338.6t.112.675V19q0 .825-.587 1.413T19 21zM5.4 6h13.2l-.85-1H6.25z" />
                         </svg>
                         <h5 class="mb-2 text-2xl font-semibold tracking-tight text-ink">
-                            Ukuran 2x2
+                            Ukuran 2x40
                         </h5>
                         <p class="mb-3 font-medium leading-relaxed text-gray-500">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit veniam suscipit error?

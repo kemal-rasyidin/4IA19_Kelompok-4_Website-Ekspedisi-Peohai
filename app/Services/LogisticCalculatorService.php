@@ -15,7 +15,7 @@ class LogisticCalculatorService
             ->first();
 
         if (!$rate) {
-            throw new \Exception('Tarif tidak ditemukan untuk rute ini');
+            throw new \Exception('Hubungin kami untuk informasi tarif pengiriman dari ' . $originPort . ' ke ' . $destinationPort . ' dengan kontainer tipe ' . $containerType . '.');
         }
 
         $totalPerContainer = $rate->calculateTotalRate();
