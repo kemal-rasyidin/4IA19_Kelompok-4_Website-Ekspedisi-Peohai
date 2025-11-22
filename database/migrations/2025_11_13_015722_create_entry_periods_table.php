@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('entry_periods', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->integer('bulan');
             $table->integer('tahun');
             $table->timestamps();

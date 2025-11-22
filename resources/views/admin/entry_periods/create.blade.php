@@ -78,11 +78,11 @@
                 <div class="mt-8 flex items-center justify-end gap-x-4">
                     <a href="{{ route('entry_periods.index') }}"
                         class="text-sm font-semibold text-gray-700 hover:text-gray-900 px-4 py-2 rounded-md border border-gray-300 hover:bg-gray-50">
-                        Batal
+                        Kembali
                     </a>
                     <button type="submit"
                         class="rounded-md bg-green-600 px-6 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
-                        Simpan Periode
+                        Simpan
                     </button>
                 </div>
             </form>

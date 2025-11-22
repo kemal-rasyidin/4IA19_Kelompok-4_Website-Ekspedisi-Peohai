@@ -57,9 +57,13 @@
                     </div>
                     <hr class="h-px my-8 bg-gray-300 border-0">
                 </div>
-                <div class="mt-6 flex items-center justify-end gap-x-6">
+                <div class="mt-8 flex items-center justify-end gap-x-4">
+                    <button onclick="history.back()"
+                        class="text-sm font-semibold text-gray-700 hover:text-gray-900 px-4 py-2 rounded-md border border-gray-300 hover:bg-gray-50">
+                        Kembali
+                    </button>
                     <button type="submit"
-                        class="rounded-md bg-yellow-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-yellow-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Edit</button>
+                        class="rounded-md bg-yellow-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-yellow-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Update</button>
                 </div>
             </form>
         </div>

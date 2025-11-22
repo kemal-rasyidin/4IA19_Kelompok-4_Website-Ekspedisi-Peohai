@@ -1,5 +1,5 @@
 <x-admin.layout>
-    <div class="space-y-8">
+    <div class="space-y-6">
 
         <div class="bg-green-500 overflow-hidden shadow-md rounded-lg text-lg font-semibold mb-3 text-white">
             <div class="p-6 text-gray-100">
@@ -8,7 +8,7 @@
         </div>
 
         <div class="bg-white overflow-hidden shadow-md rounded-lg">
-            <form action="{{ route('partners.update') }}" method="POST" enctype="multipart/form-data" class="p-5">
+            <form action="{{ route('partners.store') }}" method="POST" enctype="multipart/form-data" class="p-5">
                 @csrf
 
                 <div class="space-y-12">
@@ -54,10 +54,15 @@
                     </div>
                     <hr class="h-px my-8 bg-gray-300 border-0">
                 </div>
-                <div class="mt-6 flex items-center justify-end gap-x-6">
-                    <button type="reset" class="text-sm/6 font-semibold text-gray-900">Reset</button>
+                <div class="mt-8 flex items-center justify-end gap-x-4">
+                    <a href="{{ route('entry_periods.index') }}"
+                        class="text-sm font-semibold text-gray-700 hover:text-gray-900 px-4 py-2 rounded-md border border-gray-300 hover:bg-gray-50">
+                        Kembali
+                    </a>
                     <button type="submit"
-                        class="rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-green-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Tambah</button>
+                        class="rounded-md bg-green-600 px-6 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
+                        Simpan
+                    </button>
                 </div>
             </form>
         </div>

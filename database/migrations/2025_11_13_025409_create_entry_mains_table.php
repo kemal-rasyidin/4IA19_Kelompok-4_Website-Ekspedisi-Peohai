@@ -12,8 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('entry_mains', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('entry_period_id')->constrained('entry_periods')->onDelete('cascade');
+            $table->uuid('id')->primary();
+            $table->uuid('entry_period_id');
+            $table->foreign('entry_period_id')->references('id')->on('entry_periods')->onDelete('cascade');
 
             $table->string('qty')->nullable();
             $table->date('tgl_stuffing')->nullable();
@@ -43,7 +44,7 @@ return new class extends Migration
             $table->string('alamat_penerima_barang')->nullable();
             $table->string('nama_penerima')->nullable();
             $table->enum('pph_status', ['PPH', 'Non'])->nullable();
-            
+
             $table->timestamps();
         });
     }

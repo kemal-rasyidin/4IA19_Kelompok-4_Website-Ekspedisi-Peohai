@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class AdminEntryController extends Controller
 {
     /**
-     * Menampilkan daftar data Entry milik Admin (bisa difilter berdasarkan periode)
+     *
      */
     public function index(Request $request, EntryPeriod $entry_period)
     {
@@ -29,13 +29,13 @@ class AdminEntryController extends Controller
                 });
             })
             ->paginate(10)
-            ->withQueryString(); // Biar parameter search tetap ada di pagination
+            ->withQueryString();
 
         return view('admin.entry.admin.index', compact('entries', 'entry_period'));
     }
 
     /**
-     * Form tambah data entry untuk Admin.
+     * 
      */
     public function create(EntryPeriod $entry_period)
     {
@@ -43,7 +43,7 @@ class AdminEntryController extends Controller
     }
 
     /**
-     * Simpan data baru hasil input Admin
+     * 
      */
     public function store(Request $request, EntryPeriod $entry_period)
     {

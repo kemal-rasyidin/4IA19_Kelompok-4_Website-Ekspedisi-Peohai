@@ -12,9 +12,21 @@ class PartnerController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): View
+    public function index(Request $request): View
     {
-        $partners = Partner::latest()->paginate(10);
+        $search = $request->input('search');
+
+        $partners = Partner::when($search, function ($query) use ($search) {
+            $query->where('nama_partner', 'like', "%{$search}%")
+                ->orWhere('nama', 'like', "%{$search}%")
+                ->orWhere('alamat', 'like', "%{$search}%")
+                ->orWhere('no_hp', 'like', "%{$search}%")
+                ->orWhere('email', 'like', "%{$search}%");
+        })
+            ->latest()
+            ->paginate(10)
+            ->withQueryString();
+
         return view('admin.partner.index', compact('partners'));
     }
 

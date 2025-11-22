@@ -249,7 +249,7 @@
                     </button>
                     <button type="submit"
                         class="rounded-md bg-green-600 px-6 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
-                        Simpan Periode
+                        Simpan
                     </button>
                 </div>
             </form>
