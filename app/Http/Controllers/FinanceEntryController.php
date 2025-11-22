@@ -62,7 +62,7 @@ class FinanceEntryController extends Controller
 
         return redirect()
             ->route('finance.entries.index', $entry_period->id)
-            ->with('success', 'Data finance berhasil diperbarui.');
+            ->with('success', 'Data berhasil diperbarui.');
     }
 
     /**

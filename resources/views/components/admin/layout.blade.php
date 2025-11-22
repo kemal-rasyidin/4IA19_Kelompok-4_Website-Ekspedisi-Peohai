@@ -208,23 +208,41 @@
                 @endif
 
                 @if (session('error'))
-                    <div class="mb-6 bg-gradient-to-r from-red-50 to-pink-50 border border-red-200 text-red-700 px-6 py-4 rounded-2xl shadow-lg backdrop-blur-sm"
-                        role="alert">
-                        <div class="flex items-center">
-                            <div class="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center mr-3">
-                                <svg class="w-4 h-4 text-red-600" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    <div class="bg-red-50 border-l-4 border-red-500 px-6 py-4 rounded-md mb-6">
+                        <div class="flex">
+                            <div class="flex-shrink-0">
+                                <svg class="h-5 w-5 text-red-400" xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" viewBox="0 0 24 24">
+                                    <path fill="currentColor"
+                                        d="m11.95 13.15l2.475 3.75q.225.35.538.375t.562-.15t.35-.475t-.125-.65l-2.775-4.2L15.5 7.95q.2-.325.113-.612t-.338-.463t-.562-.15t-.513.375l-2.225 3.45L9.75 7.1q-.225-.35-.525-.375t-.575.15t-.362.475t.137.65l2.55 3.825L8.2 16.05q-.2.325-.112.613t.337.462t.563.138t.512-.363zM12 22q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22" />
                                 </svg>
                             </div>
-                            <span class="font-medium">{{ session('error') }}</span>
+                            <div class="ml-3">
+                                <p class="text-sm text-red-700">{{ session('error') }}</p>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+
+                @if (session('success'))
+                    <div class="bg-green-50 border-l-4 border-green-500 px-6 py-4 rounded-md mb-6">
+                        <div class="flex">
+                            <div class="flex-shrink-0">
+                                <svg class="h-5 w-5 text-green-400" xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" viewBox="0 0 24 24">
+                                    <path fill="currentColor"
+                                        d="m10.6 16.6l7.05-7.05l-1.4-1.4l-5.65 5.65l-2.85-2.85l-1.4 1.4zM12 22q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22" />
+                                </svg>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-sm text-green-700">{{ session('success') }}</p>
+                            </div>
                         </div>
                     </div>
                 @endif
 
                 {{ $slot }}
-                @yield('content')
+                {{-- @yield('success') --}}
             </main>
 
             <!-- Footer -->

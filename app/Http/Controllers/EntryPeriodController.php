@@ -108,9 +108,8 @@ class EntryPeriodController extends Controller
 
     public function destroy(EntryPeriod $entryPeriod)
     {
-        // Cek apakah ada entries terkait
         if ($entryPeriod->entries()->count() > 0) {
-            return back()->with('error', 'Periode tidak dapat dihapus karena masih memiliki data entry.');
+            return back()->with('error', 'Periode tidak dapat dihapus karena masih memiliki data entry!');
         }
 
         $entryPeriod->delete();

@@ -145,7 +145,7 @@ class AdminEntryController extends Controller
 
         return redirect()
             ->route('admin.entries.index', $entry_period->id)
-            ->with('success', 'Data admin berhasil diperbarui.');
+            ->with('success', 'Data berhasil diperbarui.');
     }
 
     /**

@@ -68,12 +68,4 @@ class EntryMain extends Model
         return $this->belongsTo(EntryPeriod::class);
     }
 
-    /**
-     * Contoh relasi (jika nanti kamu mau menambahkan user input)
-     * Misal: satu entry dibuat oleh user tertentu
-     */
-    // public function user()
-    // {
-    //     return $this->belongsTo(User::class);
-    // }
 }
