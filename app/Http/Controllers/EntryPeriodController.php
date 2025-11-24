@@ -58,7 +58,7 @@ class EntryPeriodController extends Controller
 
         if ($exists) {
             return back()
-                ->withErrors(['periode' => 'Periode untuk bulan dan tahun ini sudah ada.'])
+                ->withErrors(['periode' => 'Periode untuk bulan dan tahun ini sudah ada!'])
                 ->withInput();
         }
 
@@ -69,7 +69,7 @@ class EntryPeriodController extends Controller
         ]);
 
         return redirect()->route('entry_periods.index')
-            ->with('success', 'Periode berhasil ditambahkan');
+            ->with('success', 'Periode berhasil ditambahkan!');
     }
 
     public function edit(EntryPeriod $entryPeriod)
@@ -93,7 +93,7 @@ class EntryPeriodController extends Controller
 
         if ($exists) {
             return back()
-                ->withErrors(['periode' => 'Periode untuk bulan dan tahun ini sudah ada.'])
+                ->withErrors(['periode' => 'Periode untuk bulan dan tahun ini sudah ada!'])
                 ->withInput();
         }
 
@@ -103,7 +103,7 @@ class EntryPeriodController extends Controller
         ]);
 
         return redirect()->route('entry_periods.index')
-            ->with('success', 'Periode berhasil diperbarui');
+            ->with('success', 'Periode berhasil diperbarui!');
     }
 
     public function destroy(EntryPeriod $entryPeriod)
@@ -115,6 +115,6 @@ class EntryPeriodController extends Controller
         $entryPeriod->delete();
 
         return redirect()->route('entry_periods.index')
-            ->with('success', 'Periode berhasil dihapus');
+            ->with('success', 'Periode berhasil dihapus!');
     }
 }

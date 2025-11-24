@@ -29,7 +29,7 @@
                             <label for="tgl_stuffing" class="block text-sm/6 font-medium text-gray-900">Tgl
                                 Stuffing</label>
                             <div class="mt-2">
-                                <input type="date" name="tgl_stuffing" value="{{ old('tgl_stuffing') }}" required
+                                <input type="date" name="tgl_stuffing" value="{{ old('tgl_stuffing') }}" 
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>
@@ -46,21 +46,21 @@
                         <div class="sm:col-span-2">
                             <label for="customer" class="block text-sm/6 font-medium text-gray-900">Customer</label>
                             <div class="mt-2">
-                                <input type="text" name="customer" value="{{ old('customer') }}" required
+                                <input type="text" name="customer" value="{{ old('customer') }}" 
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>
                         <div class="sm:col-span-2">
                             <label for="pengirim" class="block text-sm/6 font-medium text-gray-900">Pengirim</label>
                             <div class="mt-2">
-                                <input type="text" name="pengirim" value="{{ old('pengirim') }}" required
+                                <input type="text" name="pengirim" value="{{ old('pengirim') }}" 
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>
                         <div class="sm:col-span-2">
                             <label for="penerima" class="block text-sm/6 font-medium text-gray-900">Penerima</label>
                             <div class="mt-2">
-                                <input type="text" name="penerima" value="{{ old('penerima') }}" required
+                                <input type="text" name="penerima" value="{{ old('penerima') }}" 
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>
@@ -68,14 +68,14 @@
                             <label for="jenis_barang" class="block text-sm/6 font-medium text-gray-900">Jenis
                                 Barang</label>
                             <div class="mt-2">
-                                <input type="text" name="jenis_barang" value="{{ old('jenis_barang') }}" required
+                                <input type="text" name="jenis_barang" value="{{ old('jenis_barang') }}" 
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>
                         <div class="sm:col-span-1">
                             <label for="pelayaran" class="block text-sm/6 font-medium text-gray-900">Pelayaran</label>
                             <div class="mt-2">
-                                <input type="text" name="pelayaran" value="{{ old('pelayaran') }}" required
+                                <input type="text" name="pelayaran" value="{{ old('pelayaran') }}" 
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>
@@ -83,35 +83,35 @@
                             <label for="nama_kapal" class="block text-sm/6 font-medium text-gray-900">Nama
                                 Kapal</label>
                             <div class="mt-2">
-                                <input type="text" name="nama_kapal" value="{{ old('nama_kapal') }}" required
+                                <input type="text" name="nama_kapal" value="{{ old('nama_kapal') }}" 
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>
                         <div class="sm:col-span-1">
                             <label for="voy" class="block text-sm/6 font-medium text-gray-900">Voy</label>
                             <div class="mt-2">
-                                <input type="text" name="voy" value="{{ old('voy') }}" required
+                                <input type="text" name="voy" value="{{ old('voy') }}" 
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>
                         <div class="sm:col-span-1">
                             <label for="tujuan" class="block text-sm/6 font-medium text-gray-900">Tujuan</label>
                             <div class="mt-2">
-                                <input type="text" name="tujuan" value="{{ old('tujuan') }}" required
+                                <input type="text" name="tujuan" value="{{ old('tujuan') }}" 
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>
                         <div class="sm:col-span-1">
                             <label for="etd" class="block text-sm/6 font-medium text-gray-900">ETD</label>
                             <div class="mt-2">
-                                <input type="date" name="etd" value="{{ old('etd') }}" required
+                                <input type="date" name="etd" value="{{ old('etd') }}" 
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>
                         <div class="sm:col-span-1">
                             <label for="eta" class="block text-sm/6 font-medium text-gray-900">ETA</label>
                             <div class="mt-2">
-                                <input type="date" name="eta" value="{{ old('eta') }}" required
+                                <input type="date" name="eta" value="{{ old('eta') }}" 
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>
@@ -119,28 +119,28 @@
                             <label for="no_cont" class="block text-sm/6 font-medium text-gray-900">No
                                 Count</label>
                             <div class="mt-2">
-                                <input type="text" name="no_cont" value="{{ old('no_cont') }}" required
+                                <input type="text" name="no_cont" value="{{ old('no_cont') }}" 
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>
                         <div class="sm:col-span-1">
                             <label for="seal" class="block text-sm/6 font-medium text-gray-900">Seal</label>
                             <div class="mt-2">
-                                <input type="text" name="seal" value="{{ old('seal') }}" required
+                                <input type="text" name="seal" value="{{ old('seal') }}" 
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>
                         <div class="sm:col-span-1">
                             <label for="agen" class="block text-sm/6 font-medium text-gray-900">Agen</label>
                             <div class="mt-2">
-                                <input type="text" name="agen" value="{{ old('agen') }}" required
+                                <input type="text" name="agen" value="{{ old('agen') }}" 
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>
                         <div class="sm:col-span-1">
                             <label for="dooring" class="block text-sm/6 font-medium text-gray-900">Dooring</label>
                             <div class="mt-2">
-                                <input type="date" name="dooring" value="{{ old('dooring') }}" required
+                                <input type="date" name="dooring" value="{{ old('dooring') }}" 
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>
@@ -151,14 +151,14 @@
                         <div class="sm:col-span-2">
                             <label for="nopol" class="block text-sm/6 font-medium text-gray-900">Nopol</label>
                             <div class="mt-2">
-                                <input type="text" name="nopol" value="{{ old('nopol') }}" required
+                                <input type="text" name="nopol" value="{{ old('nopol') }}" 
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>
                         <div class="sm:col-span-2">
                             <label for="supir" class="block text-sm/6 font-medium text-gray-900">Supir</label>
                             <div class="mt-2">
-                                <input type="text" name="supir" value="{{ old('supir') }}" required
+                                <input type="text" name="supir" value="{{ old('supir') }}" 
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>
@@ -166,14 +166,14 @@
                             <label for="no_telp" class="block text-sm/6 font-medium text-gray-900">No
                                 Telp</label>
                             <div class="mt-2">
-                                <input type="text" name="no_telp" value="{{ old('no_telp') }}" required
+                                <input type="text" name="no_telp" value="{{ old('no_telp') }}" 
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>
                         <div class="sm:col-span-2">
                             <label for="harga" class="block text-sm/6 font-medium text-gray-900">Harga</label>
                             <div class="mt-2">
-                                <input type="text" name="harga" value="{{ old('harga') }}" required
+                                <input type="text" name="harga" value="{{ old('harga') }}" 
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>
@@ -185,14 +185,14 @@
                             <label for="si_final" class="block text-sm/6 font-medium text-gray-900">SI
                                 Final</label>
                             <div class="mt-2">
-                                <input type="text" name="si_final" value="{{ old('si_final') }}" required
+                                <input type="text" name="si_final" value="{{ old('si_final') }}" 
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>
                         <div class="sm:col-span-2">
                             <label for="ba" class="block text-sm/6 font-medium text-gray-900">BA</label>
                             <div class="mt-2">
-                                <input type="date" name="ba" value="{{ old('ba') }}" required
+                                <input type="date" name="ba" value="{{ old('ba') }}" 
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>
@@ -200,7 +200,7 @@
                             <label for="ba_balik" class="block text-sm/6 font-medium text-gray-900">BA
                                 Balik</label>
                             <div class="mt-2">
-                                <input type="date" name="ba_balik" value="{{ old('ba_balik') }}" required
+                                <input type="date" name="ba_balik" value="{{ old('ba_balik') }}" 
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>
@@ -208,7 +208,7 @@
                             <label for="no_inv" class="block text-sm/6 font-medium text-gray-900">No Inv</label>
                             <div class="mt-2">
                                 <input type="number" min="1" name="no_inv" value="{{ old('no_inv') }}"
-                                    required
+                                    
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>
@@ -221,7 +221,7 @@
                                 class="block text-sm/6 font-medium text-gray-900">Alamat Penerima Barang</label>
                             <div class="mt-2">
                                 <input type="text" name="alamat_penerima_barang"
-                                    value="{{ old('alamat_penerima_barang') }}" required
+                                    value="{{ old('alamat_penerima_barang') }}" 
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>
@@ -230,7 +230,7 @@
                                 Penerima</label>
                             <div class="mt-2">
                                 <input type="text" name="nama_penerima" value="{{ old('nama_penerima') }}"
-                                    required
+                                    
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>

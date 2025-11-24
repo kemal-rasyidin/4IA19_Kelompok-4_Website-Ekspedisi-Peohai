@@ -54,7 +54,7 @@ class PartnerController extends Controller
         Partner::create($validated);
 
         return redirect()->route('partners.index')
-            ->with('success', 'Data Berhasil Disimpan!');
+            ->with('success', 'Data berhasil disimpan!');
     }
 
     /**
@@ -89,7 +89,7 @@ class PartnerController extends Controller
         $partner->update($validated);
 
         return redirect()->route('partners.index')
-            ->with('success', 'Data Berhasil Diperbarui!');
+            ->with('success', 'Data berhasil diperbarui!');
     }
 
     /**
@@ -100,6 +100,6 @@ class PartnerController extends Controller
         $partner->delete();
 
         return redirect()->route('partners.index')
-            ->with('success', 'Data Berhasil Dihapus!');
+            ->with('success', 'Data berhasil dihapus!');
     }
 }

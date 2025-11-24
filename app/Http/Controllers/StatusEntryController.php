@@ -6,15 +6,15 @@ use App\Models\EntryMain;
 use App\Models\EntryPeriod;
 use Illuminate\Http\Request;
 
-class FinanceEntryController extends Controller
+class StatusEntryController extends Controller
 {
     /**
-     * Menampilkan daftar data untuk Finance
+     * Display a listing of the resource.
      */
     public function index(EntryPeriod $entry_period)
     {
         $entries = EntryMain::where('entry_period_id', $entry_period->id)->paginate(10);
-        return view('admin.entry.finance.index', compact('entries', 'entry_period'));
+        return view('admin.entry.status.index', compact('entries', 'entry_period'));
     }
 
     /**
@@ -42,26 +42,26 @@ class FinanceEntryController extends Controller
     }
 
     /**
-     * Form edit data untuk Finance
+     * Show the form for editing the specified resource.
      */
     public function edit(EntryPeriod $entry_period, EntryMain $entry)
     {
-        return view('admin.entry.finance.edit', compact('entry_period', 'entry'));
+        return view('admin.entry.status.edit', compact('entry_period', 'entry'));
     }
 
     /**
-     * Update data oleh Finance
+     * Update the specified resource in storage.
      */
     public function update(Request $request, EntryPeriod $entry_period, EntryMain $entry)
     {
         $validated = $request->validate([
-            'pph_status' => 'nullable|string',
+            'status_paket' => 'nullable|string',
         ]);
 
         $entry->update($validated);
 
         return redirect()
-            ->route('finance.entries.index', $entry_period->id)
+            ->route('status.entries.index', $entry_period->id)
             ->with('success', 'Data berhasil diperbarui!');
     }
 

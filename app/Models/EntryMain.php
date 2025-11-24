@@ -45,14 +45,14 @@ class EntryMain extends Model
         'supir',
         'no_telp',
         'harga',
-        'pph_status',
         'si_final',
         'ba',
         'ba_balik',
         'no_inv',
         'alamat_penerima_barang',
         'nama_penerima',
-        'status',
+        'pph_status',
+        'status_paket',
     ];
 
     /**

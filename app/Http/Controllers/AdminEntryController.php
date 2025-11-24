@@ -84,7 +84,7 @@ class AdminEntryController extends Controller
 
         return redirect()
             ->route('admin.entries.index', $entry_period->id)
-            ->with('success', 'Data berhasil ditambahkan.');
+            ->with('success', 'Data berhasil disimpan!');
     }
 
     /**
@@ -101,7 +101,7 @@ class AdminEntryController extends Controller
     public function edit(EntryPeriod $entry_period, EntryMain $entry)
     {
         // $periods = EntryPeriod::orderByDesc('tahun')->get();
-        return view('admin/entry.admin.edit', compact('entry', 'entry_period'));
+        return view('admin.entry.admin.edit', compact('entry', 'entry_period'));
     }
 
 
@@ -145,7 +145,7 @@ class AdminEntryController extends Controller
 
         return redirect()
             ->route('admin.entries.index', $entry_period->id)
-            ->with('success', 'Data berhasil diperbarui.');
+            ->with('success', 'Data berhasil diperbarui!');
     }
 
     /**
@@ -158,6 +158,6 @@ class AdminEntryController extends Controller
         }
         $entry->delete();
         return redirect()->route('admin.entries.index', $entry_period->id)
-            ->with('success', 'Data berhasil dihapus.');
+            ->with('success', 'Data berhasil dihapus!');
     }
 }

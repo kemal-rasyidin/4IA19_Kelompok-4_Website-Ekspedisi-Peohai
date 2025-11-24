@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminEntryController;
 use App\Http\Controllers\FinanceEntryController;
 use App\Http\Controllers\EntryPeriodController;
+use App\Http\Controllers\StatusEntryController;
 use App\Http\Controllers\LogisticSimulationController;
 use App\Http\Controllers\PartnerController;
 use Illuminate\Support\Facades\Route;
@@ -22,6 +23,12 @@ Route::resource('entry_periods.admin_entries', AdminEntryController::class)
 Route::resource('entry_periods.finance_entries', FinanceEntryController::class)
     ->parameters(['finance_entries' => 'entry'])
     ->names('finance.entries')
+    ->except(['create', 'store', 'show', 'destroy'])
+    ->middleware(['auth', 'verified']);
+
+Route::resource('entry_periods.status_entries', StatusEntryController::class)
+    ->parameters(['status_entries' => 'entry'])
+    ->names('status.entries')
     ->except(['create', 'store', 'show', 'destroy'])
     ->middleware(['auth', 'verified']);
 

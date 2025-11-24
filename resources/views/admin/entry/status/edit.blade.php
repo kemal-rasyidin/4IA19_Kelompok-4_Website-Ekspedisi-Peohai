@@ -3,12 +3,12 @@
 
         <div class="bg-yellow-600 text-white shadow-md rounded-lg">
             <div class="p-6 text-lg font-semibold">
-                {{ __('Edit Data Finance Entry') }}
+                {{ __('Edit Data Status Entry') }}
             </div>
         </div>
 
         <div class="bg-white overflow-hidden shadow-lg rounded-lg p-6">
-            <form action="{{ route('finance.entries.update', [$entry_period->id, $entry->id]) }}" method="POST">
+            <form action="{{ route('status.entries.update', [$entry_period->id, $entry->id]) }}" method="POST">
                 @csrf
                 @method('PUT')
 
@@ -24,13 +24,22 @@
                             </div>
                         </div>
                         <div class="sm:col-span-3">
-                            <label for="pph_status" class="block text-sm/6 font-medium text-gray-900">PPH/Non</label>
+                            <label for="status_paket" class="block text-sm/6 font-medium text-gray-900">Status
+                                Paket</label>
                             <div class="mt-2 grid grid-cols-1">
-                                <select id="pph_status" name="pph_status" autocomplete="pph_status"
+                                <select id="status_paket" name="status_paket" autocomplete="status_paket"
                                     class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                                    <option value="PPH" {{ old('pph_status', $entry->pph_status) == 'PPH' ? 'selected' : '' }}>PPH
+                                    <option value="Dikemas"
+                                        {{ old('status_paket', $entry->status_paket) == 'Dikemas' ? 'selected' : '' }}>
+                                        Dikemas
                                     </option>
-                                    <option value="Non" {{ old('pph_status', $entry->pph_status) == 'Non' ? 'selected' : '' }}>Non
+                                    <option value="Dalam Perjalanan"
+                                        {{ old('status_paket', $entry->status_paket) == 'Dalam Perjalanan' ? 'selected' : '' }}>
+                                        Dalam Perjalanan
+                                    </option>
+                                    <option value="Sampai Di Tujuan"
+                                        {{ old('status_paket', $entry->status_paket) == 'Sampai Di Tujuan' ? 'selected' : '' }}>
+                                        Sampai Di Tujuan
                                     </option>
                                 </select>
                             </div>

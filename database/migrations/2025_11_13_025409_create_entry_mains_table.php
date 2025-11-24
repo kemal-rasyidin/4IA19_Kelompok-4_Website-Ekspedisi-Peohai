@@ -44,6 +44,7 @@ return new class extends Migration
             $table->string('alamat_penerima_barang')->nullable();
             $table->string('nama_penerima')->nullable();
             $table->enum('pph_status', ['PPH', 'Non'])->nullable();
+            $table->string('status_paket')->nullable();
 
             $table->timestamps();
         });
