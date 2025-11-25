@@ -91,9 +91,6 @@
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $entry->dooring }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $entry->no_inv }}</td>
-                                {{-- <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                    {{ $entry->status_paket }}
-                                </td> --}}
                                 <td class="px-6 py-4 whitespace-nowrap text-sm">
                                     @switch($entry->status_paket)
                                         @case('Dikemas')

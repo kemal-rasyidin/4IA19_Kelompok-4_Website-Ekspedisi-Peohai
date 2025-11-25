@@ -15,10 +15,6 @@
                         Indonesia!
                     </p>
                 </div>
-                {{-- <a href="#"
-                    class="inline-block px-7 py-3 text-lg font-medium text-white bg-ginger rounded-full duration-300 ease-in-out hover:opacity-80 hover:shadow-lg mx-auto">
-                    Hubungi Kami
-                </a> --}}
             </div>
             <div class="w-full">
                 <div class="grid grid-cols-1 gap-6 lg:grid-cols-6 items-stretch">
@@ -66,11 +62,6 @@
     <section id="pilar" class="py-8 lg:py-16">
         <div class="container">
             <div class="flex flex-row flex-wrap">
-                {{-- <div class="mb-10 w-full self-center">
-                    <p class="text-5xl font-bold text-ink">
-                        3 Pilar Peohai
-                    </p>
-                </div> --}}
                 <div class="flex w-full">
                     <div class="grid grid-cols-1 gap-6 sm:grid-cols-3">
                         <div class="rounded-lg bg-gray-50 p-8">
@@ -187,8 +178,8 @@
     </section>
     <!-- Contact Section End -->
 
-    <!-- Pilar Section Start -->
-    <section id="pilar" class="py-8 lg:py-16">
+    <!-- Layanan Section Start -->
+    <section id="layanan" class="py-8 lg:py-16">
         <div class="container">
             <div class="flex flex-row flex-wrap">
                 <div class="mb-10 w-full self-center">

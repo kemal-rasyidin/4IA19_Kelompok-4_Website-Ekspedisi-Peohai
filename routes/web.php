@@ -7,6 +7,7 @@ use App\Http\Controllers\EntryPeriodController;
 use App\Http\Controllers\StatusEntryController;
 use App\Http\Controllers\LogisticSimulationController;
 use App\Http\Controllers\PartnerController;
+use App\Http\Controllers\TrackingController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -41,10 +42,18 @@ Route::resource('partners', PartnerController::class)->middleware(['auth', 'veri
 Route::get('/simulasi', [LogisticSimulationController::class, 'index'])->name('logistic.simulation');
 Route::post('/logistic/calculate', [LogisticSimulationController::class, 'calculate'])->name('logistic.calculate');
 
+Route::get('/lacak', [TrackingController::class, 'index'])->name('tracking.index');
+Route::post('/lacak/cari', [TrackingController::class, 'search'])->name('tracking.search');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+// Route::get('/hasil', function () {
+//     return view('tracking.result');
+// });
+
 
 require __DIR__ . '/auth.php';

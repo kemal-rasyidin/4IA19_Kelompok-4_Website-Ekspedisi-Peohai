@@ -21,7 +21,7 @@
         <div class="container">
             <div class="relative flex items-center justify-between">
                 <div class="px-0">
-                    <a href="index.html" class="block py-6 text-lg font-bold">
+                    <a href="/" class="block py-6 text-lg font-bold">
                         <p>Ekspedisi <span class="text-ginger">Peohai</span></p>
                     </a>
                 </div>
@@ -60,7 +60,7 @@
                                 </a>
                             </li>
                             <li class="group">
-                                <a href="/simulasi"
+                                <a href="/lacak"
                                     class="group mx-4 flex items-center rounded-md p-3 text-sm text-black hover:bg-gray-200 hover:text-blue-500 lg:mx-8 lg:text-base lg:hover:bg-transparent">
                                     <svg class="flex lg:hidden" xmlns="http://www.w3.org/2000/svg" width="24"
                                         height="24" viewBox="0 0 48 48">
@@ -115,7 +115,7 @@
                 </div>
                 <hr class="my-6 border-gray-700 sm:mx-auto lg:my-8" />
                 <div class="sm:flex sm:items-center sm:justify-between">
-                    <span class="text-sm text-gray-400 sm:text-center">©2025 <a href=""
+                    <span class="text-sm text-gray-400 sm:text-center">©2025 <a href="/"
                             class="hover:underline">Ekspedisi Peohai</a>
                     </span>
                     <div class="mt-4 flex space-x-5 sm:mt-0 sm:justify-center">
