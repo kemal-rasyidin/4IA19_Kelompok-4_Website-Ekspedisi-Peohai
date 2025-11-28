@@ -8,7 +8,7 @@ use App\Http\Controllers\StatusEntryController;
 use App\Http\Controllers\LogisticSimulationController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\TrackingController;
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AnalyticsDashboardController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -34,7 +34,7 @@ Route::resource('entry_periods.status_entries', StatusEntryController::class)
     ->except(['create', 'store', 'show', 'destroy'])
     ->middleware(['auth', 'verified']);
 
-Route::get('/home', function () {
+Route::get('/dashboard', function () {
     return view('admin/home');
 })->middleware(['auth', 'verified'])->name('home');
 
@@ -53,9 +53,9 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/dashboard/analytics', [DashboardController::class, 'getAnalytics'])->name('dashboard.analytics');
-    Route::get('/dashboard/export', [DashboardController::class, 'export'])->name('dashboard.export');
+    Route::get('/analytics_dashboard', [AnalyticsDashboardController::class, 'index'])->name('analytics_dashboard');
+    // Route::get('/analytics_dashboard/analytics', [AnalyticsDashboardController::class, 'getAnalytics'])->name('analytics_dashboard.analytics');
+    // Route::get('/analytics_dashboard/export', [AnalyticsDashboardController::class, 'export'])->name('analytics_dashboard.export');
 });
 
 require __DIR__ . '/auth.php';

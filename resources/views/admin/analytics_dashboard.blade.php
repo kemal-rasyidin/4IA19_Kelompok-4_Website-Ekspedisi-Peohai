@@ -11,7 +11,7 @@
         <!-- Filter Section -->
         <div class="bg-white overflow-hidden shadow-md rounded-lg">
             <div class="p-6">
-                <form method="GET" action="{{ route('dashboard') }}" class="space-y-4">
+                <form method="GET" action="{{ route('analytics_dashboard') }}" class="space-y-4">
                     <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr_auto] gap-3 items-end">
 
                         <!-- Filter Tahun -->
@@ -72,7 +72,7 @@
                                         d="M9.5 16q-2.725 0-4.612-1.888T3 9.5t1.888-4.612T9.5 3t4.613 1.888T16 9.5q0 1.1-.35 2.075T14.7 13.3l5.6 5.6q.275.275.275.7t-.275.7t-.7.275t-.7-.275l-5.6-5.6q-.75.6-1.725.95T9.5 16m0-2q1.875 0 3.188-1.312T14 9.5t-1.312-3.187T9.5 5T6.313 6.313T5 9.5t1.313 3.188T9.5 14" />
                                 </svg>
                             </button>
-                            <a href="{{ route('dashboard') }}"
+                            <a href="{{ route('analytics_dashboard') }}"
                                 class="px-6 py-2 bg-gray-500 hover:bg-gray-600 text-white rounded-md font-semibold shadow-sm">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24">
@@ -92,7 +92,7 @@
                                 <span
                                     class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
                                     Tahun: {{ $filterTahun }}
-                                    <a href="{{ route('dashboard', array_filter(request()->except('filter_tahun'))) }}"
+                                    <a href="{{ route('analytics_dashboard', array_filter(request()->except('filter_tahun'))) }}"
                                         class="ml-2 text-blue-600 hover:text-blue-800">×</a>
                                 </span>
                             @endif
@@ -101,7 +101,7 @@
                                 <span
                                     class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
                                     Bulan: {{ $bulanList[$filterBulan] }}
-                                    <a href="{{ route('dashboard', array_filter(request()->except('filter_bulan'))) }}"
+                                    <a href="{{ route('analytics_dashboard', array_filter(request()->except('filter_bulan'))) }}"
                                         class="ml-2 text-purple-600 hover:text-purple-800">×</a>
                                 </span>
                             @endif

@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
-class DashboardController extends Controller
+class AnalyticsDashboardController extends Controller
 {
     public function index(Request $request)
     {
@@ -215,7 +215,7 @@ class DashboardController extends Controller
             ->sortByDesc('total')
             ->take(5);
 
-        return view('admin.dashboard', compact(
+        return view('admin.analytics_dashboard', compact(
             'years',
             'periods',
             'activePeriod',
