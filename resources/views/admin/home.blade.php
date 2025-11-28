@@ -1,5 +1,5 @@
 <x-admin.layout>
-    <div class="space-y-8 animate-fadeInUp">
+    <div class="space-y-6 animate-fadeInUp">
         <!-- Modern Welcome Section with Glassmorphism -->
         <div
             class="relative bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 rounded-2xl shadow-2xl overflow-hidden">
