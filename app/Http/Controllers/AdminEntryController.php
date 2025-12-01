@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\EntryMain;
 use App\Models\EntryPeriod;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\AdminEntryExport;
+use App\Imports\AdminEntryImport;
 
 class AdminEntryController extends Controller
 {
@@ -159,5 +162,47 @@ class AdminEntryController extends Controller
         $entry->delete();
         return redirect()->route('admin.entries.index', $entry_period->id)
             ->with('success', 'Data berhasil dihapus!');
+    }
+
+    // Export ke Excel
+    public function export(EntryPeriod $entry_period)
+    {
+        return Excel::download(
+            new AdminEntryExport($entry_period->id),
+            'Admin Entry-' . $entry_period->bulan . '-' . $entry_period->tahun . '.xlsx'
+        );
+    }
+
+    // Form Import
+    public function importForm(EntryPeriod $entry_period)
+    {
+        return view('admin.entry.admin.import', compact('entry_period'));
+    }
+
+    // Proses Import
+    public function import(Request $request, EntryPeriod $entry_period)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xlsx,xls,csv|max:2048'
+        ]);
+
+        try {
+            // Hitung data sebelum import
+            $countBefore = EntryMain::where('entry_period_id', $entry_period->id)->count();
+
+            Excel::import(new AdminEntryImport($entry_period->id), $request->file('file'));
+
+            // Hitung data setelah import
+            $countAfter = EntryMain::where('entry_period_id', $entry_period->id)->count();
+            $newRecords = $countAfter - $countBefore;
+
+            return redirect()
+                ->route('admin.entries.index', $entry_period->id)
+                ->with('success', "Data berhasil diimport! Total: {$newRecords} records");
+        } catch (\Exception $e) {
+            return redirect()
+                ->back()
+                ->with('error', 'Import gagal: ' . $e->getMessage());
+        }
     }
 }

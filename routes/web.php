@@ -17,16 +17,31 @@ Route::get('/', function () {
 
 Route::resource('entry_periods', EntryPeriodController::class)->middleware(['auth', 'verified']);
 
-Route::resource('entry_periods.admin_entries', AdminEntryController::class)
-    ->parameters(['admin_entries' => 'entry'])
-    ->names('admin.entries')
-    ->middleware(['auth', 'verified']);
+// Route::resource('entry_periods.admin_entries', AdminEntryController::class)
+//     ->parameters(['admin_entries' => 'entry'])
+//     ->names('admin.entries')
+//     ->middleware(['auth', 'verified']);
 
 Route::resource('entry_periods.finance_entries', FinanceEntryController::class)
     ->parameters(['finance_entries' => 'entry'])
     ->names('finance.entries')
     ->except(['create', 'store', 'show', 'destroy'])
     ->middleware(['auth', 'verified']);
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::controller(AdminEntryController::class)->group(function () {
+        Route::get('entry_periods/{entry_period}/admin_entries/export', 'export')
+            ->name('admin.entries.export');
+        Route::get('entry_periods/{entry_period}/admin_entries/import', 'importForm')
+            ->name('admin.entries.import.form');
+        Route::post('entry_periods/{entry_period}/admin_entries/import', 'import')
+            ->name('admin.entries.import');
+    });
+
+    Route::resource('entry_periods.admin_entries', AdminEntryController::class)
+        ->parameters(['admin_entries' => 'entry'])
+        ->names('admin.entries');
+});
 
 Route::resource('entry_periods.status_entries', StatusEntryController::class)
     ->parameters(['status_entries' => 'entry'])
@@ -36,7 +51,7 @@ Route::resource('entry_periods.status_entries', StatusEntryController::class)
 
 Route::get('/dashboard', function () {
     return view('admin/home');
-})->middleware(['auth', 'verified'])->name('home');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::resource('partners', PartnerController::class)->middleware(['auth', 'verified']);
 
