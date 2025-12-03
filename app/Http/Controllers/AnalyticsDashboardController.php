@@ -122,9 +122,9 @@ class AnalyticsDashboardController extends Controller
         $pendingCount = (clone $baseQuery)->whereNull('ba')->whereNull('etd')->count();
 
         $shipmentsByStatus = [
-            ['status' => 'Completed', 'total' => $completedCount],
-            ['status' => 'In Transit', 'total' => $inTransitCount],
-            ['status' => 'Pending', 'total' => $pendingCount],
+            ['status' => 'Selesai', 'total' => $completedCount],
+            ['status' => 'Dalam Perjalanan', 'total' => $inTransitCount],
+            ['status' => 'Menunggu', 'total' => $pendingCount],
         ];
 
         // 3. Monthly Shipments (6 bulan terakhir atau berdasarkan filter)

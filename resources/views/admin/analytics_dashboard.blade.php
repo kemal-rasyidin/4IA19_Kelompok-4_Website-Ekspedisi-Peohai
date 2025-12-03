@@ -111,123 +111,152 @@
             </div>
         </div>
 
-        <!-- Stats Cards -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <!-- Total Shipments -->
-            <div class="bg-white overflow-hidden shadow-md rounded-lg">
-                <div class="p-5">
-                    <div class="flex items-center">
-                        <div class="flex-shrink-0">
-                            <svg class="h-8 w-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-                            </svg>
-                        </div>
-                        <div class="ml-5 w-0 flex-1">
-                            <dl>
-                                <dt class="text-sm font-medium text-gray-500 truncate">Total Shipments</dt>
-                                <dd class="flex items-baseline">
-                                    <div class="text-2xl font-semibold text-gray-900">
-                                        {{ number_format($totalShipments) }}
+            <div class="group relative bg-white overflow-hidden shadow-lg rounded-2xl border border-gray-200 hover:shadow-2xl hover:border-blue-300 transition-all duration-300 transform hover:-translate-y-1 animate-slideInRight"
+                style="animation-delay: 0.1s">
+                <div
+                    class="absolute inset-0 bg-gradient-to-br from-blue-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                </div>
+                <div class="relative p-6">
+                    <div class="flex items-center justify-between">
+                        <div class="flex-1">
+                            <div class="flex items-center space-x-4">
+                                <div class="flex-shrink-0">
+                                    <div
+                                        class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow duration-300">
+                                        <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                                        </svg>
                                     </div>
-                                </dd>
-                            </dl>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-sm font-medium text-gray-600 mb-1">Total Logistik</p>
+                                    <p class="text-2xl font-bold text-gray-900">{{ number_format($totalShipments) }}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="mt-4 flex items-center justify-between">
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+                                    <p class="text-sm"><span class="text-green-600">+{{ $shipmentsThisMonth }}</span>
+                                        bulan ini</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="bg-gray-50 px-5 py-3">
-                    <div class="text-sm">
-                        <span class="text-green-600 font-medium">+{{ $shipmentsThisMonth }}</span>
-                        <span class="text-gray-500"> bulan ini</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Total Revenue -->
-            <div class="bg-white overflow-hidden shadow-md rounded-lg">
-                <div class="p-5">
-                    <div class="flex items-center">
-                        <div class="flex-shrink-0">
-                            <svg class="h-8 w-8 text-green-600" fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                        </div>
-                        <div class="ml-5 w-0 flex-1">
-                            <dl>
-                                <dt class="text-sm font-medium text-gray-500 truncate">Total Revenue</dt>
-                                <dd class="flex items-baseline">
-                                    <div class="text-2xl font-semibold text-gray-900">Rp
-                                        {{ number_format($totalRevenue, 0, ',', '.') }}</div>
-                                </dd>
-                            </dl>
-                        </div>
-                    </div>
+            <div class="group relative bg-white overflow-hidden shadow-lg rounded-2xl border border-gray-200 hover:shadow-2xl hover:border-green-300 transition-all duration-300 transform hover:-translate-y-1 animate-slideInRight"
+                style="animation-delay: 0.2s">
+                <div
+                    class="absolute inset-0 bg-gradient-to-br from-green-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 </div>
-                <div class="bg-gray-50 px-5 py-3">
-                    <div class="text-sm">
-                        <span class="text-green-600 font-medium">Rp
-                            {{ number_format($revenueThisMonth, 0, ',', '.') }}</span>
-                        <span class="text-gray-500"> bulan ini</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Pending Shipments -->
-            <div class="bg-white overflow-hidden shadow-md rounded-lg">
-                <div class="p-5">
-                    <div class="flex items-center">
-                        <div class="flex-shrink-0">
-                            <svg class="h-8 w-8 text-yellow-600" fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
+                <div class="relative p-6">
+                    <div class="flex items-center justify-between">
+                        <div class="flex-1">
+                            <div class="flex items-center space-x-4">
+                                <div class="flex-shrink-0">
+                                    <div
+                                        class="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow duration-300">
+                                        <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-sm font-medium text-gray-600 mb-1">Total Keuangan</p>
+                                    <p class="text-2xl font-bold text-gray-900">
+                                        {{ number_format($totalRevenue, 0, ',', '.') }}</p>
+                                </div>
+                            </div>
+                            <div class="mt-4 flex items-center justify-between">
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                                    <p class="text-sm"><span class="text-green-600">Rp
+                                            {{ number_format($revenueThisMonth, 0, ',', '.') }}</span>
+                                        bulan ini</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="ml-5 w-0 flex-1">
-                            <dl>
-                                <dt class="text-sm font-medium text-gray-500 truncate">Pending</dt>
-                                <dd class="flex items-baseline">
-                                    <div class="text-2xl font-semibold text-gray-900">{{ $pendingShipments }}</div>
-                                </dd>
-                            </dl>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-gray-50 px-5 py-3">
-                    <div class="text-sm text-gray-500">
-                        Memerlukan perhatian
                     </div>
                 </div>
             </div>
 
-            <!-- Completed -->
-            <div class="bg-white overflow-hidden shadow-md rounded-lg">
-                <div class="p-5">
-                    <div class="flex items-center">
-                        <div class="flex-shrink-0">
-                            <svg class="h-8 w-8 text-purple-600" fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                        </div>
-                        <div class="ml-5 w-0 flex-1">
-                            <dl>
-                                <dt class="text-sm font-medium text-gray-500 truncate">Completed</dt>
-                                <dd class="flex items-baseline">
-                                    <div class="text-2xl font-semibold text-gray-900">{{ $completedShipments }}</div>
-                                </dd>
-                            </dl>
+            <div class="group relative bg-white overflow-hidden shadow-lg rounded-2xl border border-gray-200 hover:shadow-2xl hover:border-yellow-300 transition-all duration-300 transform hover:-translate-y-1 animate-slideInRight"
+                style="animation-delay: 0.4s">
+                <div
+                    class="absolute inset-0 bg-gradient-to-br from-yellow-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                </div>
+                <div class="relative p-6">
+                    <div class="flex items-center justify-between">
+                        <div class="flex-1">
+                            <div class="flex items-center space-x-4">
+                                <div class="flex-shrink-0">
+                                    <div
+                                        class="w-12 h-12 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow duration-300">
+                                        <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-sm font-medium text-gray-600 mb-1">Menunggu</p>
+                                    <p class="text-2xl font-bold text-gray-900">{{ $pendingShipments }}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="mt-4 flex items-center justify-between">
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                                    <p class="text-sm">Memerlukan perhatian</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="bg-gray-50 px-5 py-3">
-                    <div class="text-sm">
-                        <span
-                            class="text-green-600 font-medium">{{ $totalShipments > 0 ? number_format(($completedShipments / $totalShipments) * 100, 1) : 0 }}%</span>
-                        <span class="text-gray-500"> success rate</span>
+            </div>
+
+            <div class="group relative bg-white overflow-hidden shadow-lg rounded-2xl border border-gray-200 hover:shadow-2xl hover:border-purple-300 transition-all duration-300 transform hover:-translate-y-1 animate-slideInRight"
+                style="animation-delay: 0.3s">
+                <div
+                    class="absolute inset-0 bg-gradient-to-br from-purple-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                </div>
+                <div class="relative p-6">
+                    <div class="flex items-center justify-between">
+                        <div class="flex-1">
+                            <div class="flex items-center space-x-4">
+                                <div class="flex-shrink-0">
+                                    <div
+                                        class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow duration-300">
+                                        <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-sm font-medium text-gray-600 mb-1">Selesai</p>
+                                    <p class="text-2xl font-bold text-gray-900">
+                                        1</p>
+                                </div>
+                            </div>
+                            <div class="mt-4 flex items-center justify-between">
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-2 h-2 bg-purple-500 rounded-full"></div>
+                                    <p class="text-sm"><span
+                                            class="text-green-600">{{ $totalShipments > 0 ? number_format(($completedShipments / $totalShipments) * 100, 1) : 0 }}%</span>
+                                        tingkat keberhasilan</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -235,15 +264,13 @@
 
         <!-- Charts Row 1 -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <!-- Monthly Shipments Chart -->
             <div class="bg-white shadow-md rounded-lg p-6">
-                <h3 class="text-lg font-semibold text-gray-900 mb-4">Shipments Bulanan</h3>
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Logistik Bulanan</h3>
                 <canvas id="monthlyChart" class="w-full" style="max-height: 300px;"></canvas>
             </div>
 
-            <!-- Shipments by Status -->
             <div class="bg-white shadow-md rounded-lg p-6">
-                <h3 class="text-lg font-semibold text-gray-900 mb-4">Status Shipments</h3>
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Status Logistik</h3>
                 <canvas id="statusChart" class="w-full" style="max-height: 300px;"></canvas>
             </div>
         </div>
@@ -352,7 +379,7 @@
         <!-- Recent Shipments Table -->
         <div class="bg-white shadow-md rounded-lg overflow-hidden">
             <div class="px-6 py-4 border-b border-gray-200">
-                <h3 class="text-lg font-semibold text-gray-900">Shipments Terbaru</h3>
+                <h3 class="text-lg font-semibold text-gray-900">Logistik Terbaru</h3>
             </div>
             <div class="overflow-x-auto">
                 <table class="min-w-full divide-y divide-gray-200">
@@ -380,14 +407,14 @@
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     @if ($item->ba)
                                         <span
-                                            class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Completed</span>
+                                            class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Selesai</span>
                                     @elseif($item->etd)
                                         <span
-                                            class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">In
-                                            Transit</span>
+                                            class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">Dalam
+                                            Perjalanan</span>
                                     @else
                                         <span
-                                            class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">Pending</span>
+                                            class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">Menunggu</span>
                                     @endif
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Rp
@@ -407,187 +434,187 @@
     </div>
 
     @stack('scripts')
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <script>
-            // Monthly Shipments Chart
-            const monthlyCtx = document.getElementById('monthlyChart').getContext('2d');
-            new Chart(monthlyCtx, {
-                type: 'line',
-                data: {
-                    labels: [
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Monthly Shipments Chart
+        const monthlyCtx = document.getElementById('monthlyChart').getContext('2d');
+        new Chart(monthlyCtx, {
+            type: 'line',
+            data: {
+                labels: [
+                    @foreach ($monthlyShipments as $month)
+                        '{{ \Carbon\Carbon::parse($month->month)->format('M Y') }}',
+                    @endforeach
+                ],
+                datasets: [{
+                    label: 'Shipments',
+                    data: [
                         @foreach ($monthlyShipments as $month)
-                            '{{ \Carbon\Carbon::parse($month->month)->format('M Y') }}',
+                            {{ $month->total }},
                         @endforeach
                     ],
-                    datasets: [{
-                        label: 'Shipments',
-                        data: [
-                            @foreach ($monthlyShipments as $month)
-                                {{ $month->total }},
-                            @endforeach
-                        ],
-                        borderColor: 'rgb(59, 130, 246)',
-                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
-                        tension: 0.4,
-                        fill: true
-                    }]
+                    borderColor: 'rgb(59, 130, 246)',
+                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
                 },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: true,
-                    plugins: {
-                        legend: {
-                            display: false
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
+                scales: {
+                    y: {
+                        beginAtZero: true
                     }
                 }
-            });
+            }
+        });
 
-            // Status Chart
-            const statusCtx = document.getElementById('statusChart').getContext('2d');
-            new Chart(statusCtx, {
-                type: 'doughnut',
-                data: {
-                    labels: [
+        // Status Chart
+        const statusCtx = document.getElementById('statusChart').getContext('2d');
+        new Chart(statusCtx, {
+            type: 'doughnut',
+            data: {
+                labels: [
+                    @foreach ($shipmentsByStatus as $status)
+                        '{{ $status['status'] }}',
+                    @endforeach
+                ],
+                datasets: [{
+                    data: [
                         @foreach ($shipmentsByStatus as $status)
-                            '{{ $status['status'] }}',
+                            {{ $status['total'] }},
                         @endforeach
                     ],
-                    datasets: [{
-                        data: [
-                            @foreach ($shipmentsByStatus as $status)
-                                {{ $status['total'] }},
-                            @endforeach
-                        ],
-                        backgroundColor: [
-                            'rgb(34, 197, 94)',
-                            'rgb(59, 130, 246)',
-                            'rgb(234, 179, 8)'
-                        ]
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: true,
-                    plugins: {
-                        legend: {
-                            position: 'bottom'
-                        }
+                    backgroundColor: [
+                        'rgb(34, 197, 94)',
+                        'rgb(59, 130, 246)',
+                        'rgb(234, 179, 8)'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
                     }
                 }
-            });
+            }
+        });
 
-            // Destination Chart
-            const destCtx = document.getElementById('destinationChart').getContext('2d');
-            new Chart(destCtx, {
-                type: 'bar',
-                data: {
-                    labels: [
+        // Destination Chart
+        const destCtx = document.getElementById('destinationChart').getContext('2d');
+        new Chart(destCtx, {
+            type: 'bar',
+            data: {
+                labels: [
+                    @foreach ($topDestinations as $dest)
+                        '{{ $dest->tujuan }}',
+                    @endforeach
+                ],
+                datasets: [{
+                    label: 'Shipments',
+                    data: [
                         @foreach ($topDestinations as $dest)
-                            '{{ $dest->tujuan }}',
+                            {{ $dest->total }},
                         @endforeach
                     ],
-                    datasets: [{
-                        label: 'Shipments',
-                        data: [
-                            @foreach ($topDestinations as $dest)
-                                {{ $dest->total }},
-                            @endforeach
-                        ],
-                        backgroundColor: 'rgb(147, 51, 234)'
-                    }]
+                    backgroundColor: 'rgb(147, 51, 234)'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
                 },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: true,
-                    plugins: {
-                        legend: {
-                            display: false
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
+                scales: {
+                    y: {
+                        beginAtZero: true
                     }
                 }
-            });
+            }
+        });
 
-            // Pelayaran Chart
-            const pelayaranCtx = document.getElementById('pelayaranChart').getContext('2d');
-            new Chart(pelayaranCtx, {
-                type: 'bar',
-                data: {
-                    labels: [
+        // Pelayaran Chart
+        const pelayaranCtx = document.getElementById('pelayaranChart').getContext('2d');
+        new Chart(pelayaranCtx, {
+            type: 'bar',
+            data: {
+                labels: [
+                    @foreach ($shipmentsByPelayaran as $pel)
+                        '{{ $pel->pelayaran }}',
+                    @endforeach
+                ],
+                datasets: [{
+                    label: 'Shipments',
+                    data: [
                         @foreach ($shipmentsByPelayaran as $pel)
-                            '{{ $pel->pelayaran }}',
+                            {{ $pel->total }},
                         @endforeach
                     ],
-                    datasets: [{
-                        label: 'Shipments',
-                        data: [
-                            @foreach ($shipmentsByPelayaran as $pel)
-                                {{ $pel->total }},
-                            @endforeach
-                        ],
-                        backgroundColor: 'rgb(239, 68, 68)'
-                    }]
+                    backgroundColor: 'rgb(239, 68, 68)'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
                 },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: true,
-                    plugins: {
-                        legend: {
-                            display: false
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
+                scales: {
+                    y: {
+                        beginAtZero: true
                     }
                 }
-            });
+            }
+        });
 
-            // Jenis Barang Chart
-            const jenisBarangCtx = document.getElementById('jenisBarangChart').getContext('2d');
-            new Chart(jenisBarangCtx, {
-                type: 'doughnut',
-                data: {
-                    labels: [
+        // Jenis Barang Chart
+        const jenisBarangCtx = document.getElementById('jenisBarangChart').getContext('2d');
+        new Chart(jenisBarangCtx, {
+            type: 'doughnut',
+            data: {
+                labels: [
+                    @foreach ($shipmentsByJenisBarang as $jenis)
+                        '{{ $jenis->jenis_barang }}',
+                    @endforeach
+                ],
+                datasets: [{
+                    data: [
                         @foreach ($shipmentsByJenisBarang as $jenis)
-                            '{{ $jenis->jenis_barang }}',
+                            {{ $jenis->total }},
                         @endforeach
                     ],
-                    datasets: [{
-                        data: [
-                            @foreach ($shipmentsByJenisBarang as $jenis)
-                                {{ $jenis->total }},
-                            @endforeach
-                        ],
-                        backgroundColor: [
-                            'rgb(59, 130, 246)',
-                            'rgb(16, 185, 129)',
-                            'rgb(245, 158, 11)',
-                            'rgb(239, 68, 68)',
-                            'rgb(139, 92, 246)'
-                        ]
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: true,
-                    plugins: {
-                        legend: {
-                            position: 'bottom'
-                        }
+                    backgroundColor: [
+                        'rgb(59, 130, 246)',
+                        'rgb(16, 185, 129)',
+                        'rgb(245, 158, 11)',
+                        'rgb(239, 68, 68)',
+                        'rgb(139, 92, 246)'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
                     }
                 }
-            });
-        </script>
+            }
+        });
+    </script>
 </x-admin.layout>
