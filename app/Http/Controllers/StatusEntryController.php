@@ -44,10 +44,10 @@ class StatusEntryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(EntryPeriod $entry_period, EntryMain $entry)
-    {
-        return view('admin.entry.status.edit', compact('entry_period', 'entry'));
-    }
+    // public function edit(EntryPeriod $entry_period, EntryMain $entry)
+    // {
+    //     return view('admin.entry.status.edit', compact('entry_period', 'entry'));
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -55,7 +55,8 @@ class StatusEntryController extends Controller
     public function update(Request $request, EntryPeriod $entry_period, EntryMain $entry)
     {
         $validated = $request->validate([
-            'status_paket' => 'nullable|string',
+            'ba' => 'nullable|string',
+            'etd' => 'nullable|date',
         ]);
 
         $entry->update($validated);

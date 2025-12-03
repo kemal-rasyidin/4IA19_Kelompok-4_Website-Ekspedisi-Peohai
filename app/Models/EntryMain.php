@@ -52,11 +52,10 @@ class EntryMain extends Model
         'alamat_penerima_barang',
         'nama_penerima',
         'pph_status',
-        'status_paket',
     ];
 
     /**
-     * Scope untuk filter berdasarkan status (opsional, biar mudah dipakai di controller)
+     * Scope untuk filter berdasarkan status
      */
     public function scopeStatus($query, $status)
     {
@@ -68,4 +67,14 @@ class EntryMain extends Model
         return $this->belongsTo(EntryPeriod::class);
     }
 
+    /**
+     * Stasus Paket
+     */
+    protected $appends = ['status_paket'];
+    public function getStatusPaketAttribute()
+    {
+        if (!is_null($this->ba)) return 'Sampai Di Tujuan';
+        if (!is_null($this->etd)) return 'Dalam Perjalanan';
+        return 'Dikemas';
+    }
 }
