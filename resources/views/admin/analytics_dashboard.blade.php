@@ -149,7 +149,7 @@
                 </div>
             </div>
 
-            <div class="group relative bg-white overflow-hidden shadow-lg rounded-2xl border border-gray-200 hover:shadow-2xl hover:border-green-300 transition-all duration-300 transform hover:-translate-y-1 animate-slideInRight"
+            {{-- <div class="group relative bg-white overflow-hidden shadow-lg rounded-2xl border border-gray-200 hover:shadow-2xl hover:border-green-300 transition-all duration-300 transform hover:-translate-y-1 animate-slideInRight"
                 style="animation-delay: 0.2s">
                 <div
                     class="absolute inset-0 bg-gradient-to-br from-green-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -171,7 +171,7 @@
                                 <div class="flex-1">
                                     <p class="text-sm font-medium text-gray-600 mb-1">Total Keuangan</p>
                                     <p class="text-2xl font-bold text-gray-900">
-                                        {{ number_format($totalRevenue, 0, ',', '.') }}</p>
+                                        Rp {{ number_format($totalRevenue, 0, ',', '.') }}</p>
                                 </div>
                             </div>
                             <div class="mt-4 flex items-center justify-between">
@@ -185,7 +185,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
             <div class="group relative bg-white overflow-hidden shadow-lg rounded-2xl border border-gray-200 hover:shadow-2xl hover:border-yellow-300 transition-all duration-300 transform hover:-translate-y-1 animate-slideInRight"
                 style="animation-delay: 0.4s">
@@ -245,7 +245,7 @@
                                 <div class="flex-1">
                                     <p class="text-sm font-medium text-gray-600 mb-1">Selesai</p>
                                     <p class="text-2xl font-bold text-gray-900">
-                                        1</p>
+                                        {{ $completedShipments }}</p>
                                 </div>
                             </div>
                             <div class="mt-4 flex items-center justify-between">
