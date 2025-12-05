@@ -102,4 +102,28 @@ class PartnerController extends Controller
         return redirect()->route('partners.index')
             ->with('success', 'Data berhasil dihapus!');
     }
+
+    public function bulkDestroy(Request $request)
+    {
+        // Validasi input
+        $request->validate([
+            'partner_ids' => 'required|array',
+            'partner_ids.*' => 'exists:partners,id'
+        ]);
+
+        try {
+            // Hapus data berdasarkan ID yang dipilih
+            $deletedCount = Partner::whereIn('id', $request->partner_ids)->delete();
+
+            // Redirect dengan pesan sukses
+            return redirect()->route('partners.index')->with([
+                'success' => "Berhasil menghapus {$deletedCount} data partner!"
+            ]);
+        } catch (\Exception $e) {
+            // Redirect dengan pesan error
+            return redirect()->route('partners.index')->with([
+                'error' => 'Gagal menghapus data: ' . $e->getMessage()
+            ]);
+        }
+    }
 }

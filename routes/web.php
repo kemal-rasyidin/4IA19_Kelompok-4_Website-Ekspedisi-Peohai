@@ -53,6 +53,9 @@ Route::get('/dashboard', function () {
     return view('admin/home');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::delete('partners/bulk-destroy', [PartnerController::class, 'bulkDestroy'])
+    ->name('partners.bulkDestroy')
+    ->middleware(['auth', 'verified']);
 Route::resource('partners', PartnerController::class)->middleware(['auth', 'verified']);
 
 Route::get('/simulasi', [LogisticSimulationController::class, 'index'])->name('logistic.simulation');
