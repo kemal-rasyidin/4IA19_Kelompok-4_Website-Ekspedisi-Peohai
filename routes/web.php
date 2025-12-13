@@ -10,6 +10,7 @@ use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\TrackingController;
 use App\Http\Controllers\AnalyticsDashboardController;
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\TariffSimulationController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -81,5 +82,8 @@ Route::middleware(['auth'])->group(function () {
     // Route::get('/analytics_dashboard/analytics', [AnalyticsDashboardController::class, 'getAnalytics'])->name('analytics_dashboard.analytics');
     // Route::get('/analytics_dashboard/export', [AnalyticsDashboardController::class, 'export'])->name('analytics_dashboard.export');
 });
+
+Route::get('/simulasi-tarif', [TariffSimulationController::class, 'index'])->name('tariff.simulation');
+Route::post('/simulasi-tarif', [TariffSimulationController::class, 'simulate'])->name('tariff.simulate');
 
 require __DIR__ . '/auth.php';
