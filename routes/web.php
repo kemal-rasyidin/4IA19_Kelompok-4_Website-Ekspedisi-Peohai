@@ -9,6 +9,7 @@ use App\Http\Controllers\LogisticSimulationController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\TrackingController;
 use App\Http\Controllers\AnalyticsDashboardController;
+use App\Http\Controllers\CityController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -57,6 +58,11 @@ Route::delete('partners/bulk-destroy', [PartnerController::class, 'bulkDestroy']
     ->name('partners.bulkDestroy')
     ->middleware(['auth', 'verified']);
 Route::resource('partners', PartnerController::class)->middleware(['auth', 'verified']);
+
+Route::delete('cities/bulk-destroy', [CityController::class, 'bulkDestroy'])
+    ->name('cities.bulkDestroy')
+    ->middleware(['auth', 'verified']);
+Route::resource('cities', CityController::class)->middleware(['auth', 'verified']);
 
 Route::get('/simulasi', [LogisticSimulationController::class, 'index'])->name('logistic.simulation');
 Route::post('/logistic/calculate', [LogisticSimulationController::class, 'calculate'])->name('logistic.calculate');

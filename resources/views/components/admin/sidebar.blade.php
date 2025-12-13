@@ -88,6 +88,20 @@
                 </div>
             </div>
 
+            <div class="pt-4 mt-4 border-t border-blue-400 border-opacity-30">
+                <p class="px-4 text-xs font-semibold text-blue-200 uppercase tracking-wider">Rate Cities</p>
+                <div class="mt-2 space-y-2">
+                    <a href="/cities"
+                        class="group flex items-center px-4 py-3 text-sm font-medium rounded-lg {{ request()->routeIs('profile.*') ? 'bg-white bg-opacity-20 text-white' : 'text-blue-100 hover:bg-white hover:bg-opacity-10 hover:text-white' }} transition-colors duration-200">
+                        <svg class="mr-3 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                        </svg>
+                        Cities
+                    </a>
+                </div>
+            </div>
+
             <!-- Account Settings -->
             <div class="pt-4 mt-4 border-t border-blue-400 border-opacity-30">
                 <p class="px-4 text-xs font-semibold text-blue-200 uppercase tracking-wider">Account</p>
