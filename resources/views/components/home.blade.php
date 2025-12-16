@@ -48,7 +48,7 @@
                                 </a>
                             </li>
                             <li class="group">
-                                <a href="/simulasi"
+                                <a href="/simulasi-tarif"
                                     class="group mx-4 flex items-center rounded-md p-3 text-sm text-black hover:bg-gray-200 hover:text-blue-500 lg:mx-8 lg:text-base lg:hover:bg-transparent">
                                     <svg class="flex lg:hidden" xmlns="http://www.w3.org/2000/svg" width="24"
                                         height="24" viewBox="0 0 48 48">
@@ -108,7 +108,10 @@
                                 <a href="/" class="hover:underline">Beranda</a>
                             </li>
                             <li class="mb-4">
-                                <a href="/simulasi" class="hover:underline">Simulasi</a>
+                                <a href="/simulasi-tarif" class="hover:underline">Simulasi</a>
+                            </li>
+                            <li class="mb-4">
+                                <a href="/lacak" class="hover:underline">Lacak Pengiriman</a>
                             </li>
                         </ul>
                     </div>

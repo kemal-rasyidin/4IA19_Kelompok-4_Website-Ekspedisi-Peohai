@@ -5,7 +5,6 @@ use App\Http\Controllers\AdminEntryController;
 use App\Http\Controllers\FinanceEntryController;
 use App\Http\Controllers\EntryPeriodController;
 use App\Http\Controllers\StatusEntryController;
-use App\Http\Controllers\LogisticSimulationController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\TrackingController;
 use App\Http\Controllers\AnalyticsDashboardController;
@@ -67,9 +66,6 @@ Route::delete('cities/bulk-destroy', [CityController::class, 'bulkDestroy'])
     ->name('cities.bulkDestroy')
     ->middleware(['auth', 'verified']);
 Route::resource('cities', CityController::class)->middleware(['auth', 'verified']);
-
-Route::get('/simulasi', [LogisticSimulationController::class, 'index'])->name('logistic.simulation');
-Route::post('/logistic/calculate', [LogisticSimulationController::class, 'calculate'])->name('logistic.calculate');
 
 Route::get('/lacak', [TrackingController::class, 'index'])->name('tracking.index');
 Route::post('/lacak/cari', [TrackingController::class, 'search'])->name('tracking.search');
