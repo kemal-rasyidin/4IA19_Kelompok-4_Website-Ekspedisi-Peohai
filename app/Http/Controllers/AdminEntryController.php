@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\AdminEntryExport;
 use App\Imports\AdminEntryImport;
+use Illuminate\Support\Facades\DB;
 
 class AdminEntryController extends Controller
 {
@@ -71,7 +72,7 @@ class AdminEntryController extends Controller
             'nopol' => 'nullable|string|max:255',
             'supir' => 'nullable|string|max:255',
             'no_telp' => 'nullable|string|max:50',
-            'harga' => 'nullable|string',
+            'harga_trucking' => 'nullable|string',
             'si_final' => 'nullable|string|max:255',
             'ba' => 'nullable|date',
             'ba_balik' => 'nullable|date',
@@ -135,7 +136,7 @@ class AdminEntryController extends Controller
             'nopol' => 'nullable|string|max:255',
             'supir' => 'nullable|string|max:255',
             'no_telp' => 'nullable|string|max:50',
-            'harga' => 'nullable|string',
+            'harga_trucking' => 'nullable|string',
             'si_final' => 'nullable|string|max:255',
             'ba' => 'nullable|date',
             'ba_balik' => 'nullable|date',
@@ -154,17 +155,35 @@ class AdminEntryController extends Controller
     /**
      * Hapus data Entry (Admin)
      */
-    public function destroy(EntryPeriod $entry_period, EntryMain $entry)
+    public function bulkDestroy(Request $request, EntryPeriod $entry_period)
     {
-        if ($entry->entry_period_id != $entry_period->id) {
-            abort(404);
+        $request->validate([
+            'admin_ids' => 'required|array|min:1',
+            'admin_ids.*' => 'exists:entry_mains,id'
+        ]);
+
+        try {
+            $deleted = 0;
+
+            DB::transaction(function () use ($request, $entry_period, &$deleted) {
+                $deleted = EntryMain::whereIn('id', $request->admin_ids)
+                    ->where('entry_period_id', $entry_period->id)
+                    ->delete();
+            });
+
+            return redirect()
+                ->route('admin.entries.index', $entry_period->id)
+                ->with('success', "Berhasil menghapus {$deleted} data entry!");
+        } catch (\Throwable $e) {
+            return redirect()
+                ->back()
+                ->with('error', 'Gagal menghapus data: ' . $e->getMessage());
         }
-        $entry->delete();
-        return redirect()->route('admin.entries.index', $entry_period->id)
-            ->with('success', 'Data berhasil dihapus!');
     }
 
-    // Export ke Excel
+    /**
+     * Export
+     */
     public function export(EntryPeriod $entry_period)
     {
         return Excel::download(
@@ -173,13 +192,14 @@ class AdminEntryController extends Controller
         );
     }
 
-    // Form Import
+    /**
+     * Import
+     */
     public function importForm(EntryPeriod $entry_period)
     {
         return view('admin.entry.admin.import', compact('entry_period'));
     }
 
-    // Proses Import
     public function import(Request $request, EntryPeriod $entry_period)
     {
         $request->validate([
@@ -187,12 +207,10 @@ class AdminEntryController extends Controller
         ]);
 
         try {
-            // Hitung data sebelum import
             $countBefore = EntryMain::where('entry_period_id', $entry_period->id)->count();
 
             Excel::import(new AdminEntryImport($entry_period->id), $request->file('file'));
 
-            // Hitung data setelah import
             $countAfter = EntryMain::where('entry_period_id', $entry_period->id)->count();
             $newRecords = $countAfter - $countBefore;
 

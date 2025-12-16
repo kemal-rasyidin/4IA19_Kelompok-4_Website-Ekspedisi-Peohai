@@ -64,7 +64,7 @@ class AdminEntryImport implements ToModel, SkipsOnError
             'nopol'         => $row[17] ?? null,
             'supir'         => $row[18] ?? null,
             'no_telp'       => $row[19] ?? null,
-            'harga'         => $row[20] ?? null,
+            'harga_trucking'=> $row[20] ?? null,
 
             // SI Final & BA Done
             'si_final'      => $this->transformDate($row[21] ?? null),
