@@ -86,20 +86,18 @@ class AdminEntryExport implements FromCollection, WithHeadings, WithMapping, Wit
                 '',
                 '',
 
-                // TRUCKING
                 'Nopol',
                 'Supir',
                 'No Telp',
                 'Harga Trucking',
 
-                // SI FINAL
                 'SI Final',
                 'BA',
                 'BA Balik',
                 'No Invoice',
 
-                '', // Nama penerima
-                '', // Alamat penerima
+                '',
+                '',
             ],
         ];
     }
