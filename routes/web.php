@@ -57,6 +57,17 @@ Route::get('/dashboard', function () {
     return view('admin/home');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::controller(PartnerController::class)->group(function () {
+        Route::get('partners/export', 'export')
+            ->name('partners.export');
+        Route::delete('partners/bulk-destroy', 'bulkDestroy')
+            ->name('partners.bulkDestroy');
+    });
+
+    Route::resource('partners', PartnerController::class);
+});
+
 Route::delete('partners/bulk-destroy', [PartnerController::class, 'bulkDestroy'])
     ->name('partners.bulkDestroy')
     ->middleware(['auth', 'verified']);

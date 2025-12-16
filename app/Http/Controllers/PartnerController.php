@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Partner;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\PartnerExport;
+use Illuminate\Support\Facades\DB;
 
 class PartnerController extends Controller
 {
@@ -114,5 +117,16 @@ class PartnerController extends Controller
                 'error' => 'Gagal menghapus data: ' . $e->getMessage()
             ]);
         }
+    }
+
+    /**
+     * Export
+     */
+    public function export()
+    {
+        return Excel::download(
+            new PartnerExport(),
+            'Partner_' . date('Y-m-d') . '.xlsx'
+        );
     }
 }

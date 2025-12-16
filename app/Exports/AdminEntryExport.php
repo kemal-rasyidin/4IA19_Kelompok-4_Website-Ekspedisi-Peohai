@@ -154,6 +154,9 @@ class AdminEntryExport implements FromCollection, WithHeadings, WithMapping, Wit
             AfterSheet::class => function (AfterSheet $event) {
                 $sheet = $event->sheet->getDelegate();
 
+                $sheet->getRowDimension(1)->setRowHeight(25);
+                $sheet->getRowDimension(2)->setRowHeight(25);
+
                 // Merge kolom No (A)
                 $sheet->mergeCells('A1:A2');
 
