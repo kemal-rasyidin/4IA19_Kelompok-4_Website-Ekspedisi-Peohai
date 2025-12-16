@@ -98,7 +98,7 @@ class EntryMain extends Model
     protected $appends = ['status_paket'];
     public function getStatusPaketAttribute()
     {
-        if (!is_null($this->ba)) return 'Sampai Di Tujuan';
+        if (!is_null($this->dooring)) return 'Sampai Di Tujuan';
         if (!is_null($this->etd)) return 'Dalam Perjalanan';
         return 'Dikemas';
     }

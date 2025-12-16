@@ -73,7 +73,7 @@ return new class extends Migration
             $table->bigInteger('bu_lia')->nullable();
             $table->bigInteger('nol')->nullable();
 
-            $table->decimal('persentase_marketing', 5, 2)->nullable();
+            $table->decimal('persentase_marketing', 10, 2)->nullable();
 
             $table->string('agen_daerah')->nullable();
             $table->string('keterangan_marketing')->nullable();
