@@ -28,7 +28,7 @@ Route::resource('entry_periods.finance_entries', FinanceEntryController::class)
 Route::resource('entry_periods.marketing', MarketingController::class)
     ->parameters(['marketing' => 'entry'])
     ->names('marketing.entries')
-    ->middleware(['auth', 'verified']);
+    ->middleware(['auth', 'verified', 'role:super-admin']);
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::controller(AdminEntryController::class)->group(function () {
@@ -67,11 +67,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::resource('partners', PartnerController::class);
 });
-
-Route::delete('partners/bulk-destroy', [PartnerController::class, 'bulkDestroy'])
-    ->name('partners.bulkDestroy')
-    ->middleware(['auth', 'verified']);
-Route::resource('partners', PartnerController::class)->middleware(['auth', 'verified']);
 
 Route::delete('cities/bulk-destroy', [CityController::class, 'bulkDestroy'])
     ->name('cities.bulkDestroy')

@@ -168,14 +168,16 @@
                                                 d="M5 21q-.825 0-1.412-.587T3 19V3h2v16h16v2zm1-3V9h4v9zm5 0V4h4v14zm5 0v-5h4v5z" />
                                         </svg>
                                     </a>
-                                    <a href="{{ route('marketing.entries.index', ['entry_period' => $period->id]) }}"
-                                        class="bg-teal-600 hover:bg-teal-500 text-white px-3 py-1 rounded-md text-sm shadow-md inline-flex items-center gap-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24">
-                                            <path fill="currentColor"
-                                                d="M15 16h3q.425 0 .713-.288T19 15V9q0-.425-.288-.712T18 8h-3q-.425 0-.712.288T14 9v6q0 .425.288.713T15 16m1-2v-4h1v4zm-7 2h3q.425 0 .713-.288T13 15V9q0-.425-.288-.712T12 8H9q-.425 0-.712.288T8 9v6q0 .425.288.713T9 16m1-2v-4h1v4zm-3 1V9q0-.425-.288-.712T6 8t-.712.288T5 9v6q0 .425.288.713T6 16t.713-.288T7 15m-5 3V6q0-.825.588-1.412T4 4h16q.825 0 1.413.588T22 6v12q0 .825-.587 1.413T20 20H4q-.825 0-1.412-.587T2 18m2 0h16V6H4zm0 0V6z" />
-                                        </svg>
-                                    </a>
+                                    @if (Auth::user()->role === 'super-admin')
+                                        <a href="{{ route('marketing.entries.index', ['entry_period' => $period->id]) }}"
+                                            class="bg-teal-600 hover:bg-teal-500 text-white px-3 py-1 rounded-md text-sm shadow-md inline-flex items-center gap-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24">
+                                                <path fill="currentColor"
+                                                    d="M15 16h3q.425 0 .713-.288T19 15V9q0-.425-.288-.712T18 8h-3q-.425 0-.712.288T14 9v6q0 .425.288.713T15 16m1-2v-4h1v4zm-7 2h3q.425 0 .713-.288T13 15V9q0-.425-.288-.712T12 8H9q-.425 0-.712.288T8 9v6q0 .425.288.713T9 16m1-2v-4h1v4zm-3 1V9q0-.425-.288-.712T6 8t-.712.288T5 9v6q0 .425.288.713T6 16t.713-.288T7 15m-5 3V6q0-.825.588-1.412T4 4h16q.825 0 1.413.588T22 6v12q0 .825-.587 1.413T20 20H4q-.825 0-1.412-.587T2 18m2 0h16V6H4zm0 0V6z" />
+                                            </svg>
+                                        </a>
+                                    @endif
                                     <a href="{{ route('status.entries.index', ['entry_period' => $period->id]) }}"
                                         class="bg-purple-600 hover:bg-purple-500 text-white px-3 py-1 rounded-md text-sm shadow-md inline-flex items-center gap-2">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
