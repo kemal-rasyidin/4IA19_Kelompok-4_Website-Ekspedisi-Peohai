@@ -20,11 +20,6 @@ Route::get('/', function () {
 
 Route::resource('entry_periods', EntryPeriodController::class)->middleware(['auth', 'verified']);
 
-// Route::resource('entry_periods.admin_entries', AdminEntryController::class)
-//     ->parameters(['admin_entries' => 'entry'])
-//     ->names('admin.entries')
-//     ->middleware(['auth', 'verified']);
-
 Route::resource('entry_periods.finance_entries', FinanceEntryController::class)
     ->parameters(['finance_entries' => 'entry'])
     ->names('finance.entries')
@@ -44,6 +39,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
             ->name('admin.entries.import.form');
         Route::post('entry_periods/{entry_period}/admin_entries/import', 'import')
             ->name('admin.entries.import');
+        Route::delete('entry_periods/{entry_period}/admin_entries/bulk-destroy', 'bulkDestroy')
+            ->name('admin.entries.bulkDestroy');
     });
 
     Route::resource('entry_periods.admin_entries', AdminEntryController::class)

@@ -43,12 +43,10 @@
         </div>
 
         <div class="bg-white overflow-hidden shadow-md rounded-lg">
-            <!-- Form untuk bulk delete -->
             <form id="bulkDeleteForm" action="{{ route('partners.bulkDestroy') }}" method="POST">
                 @csrf
                 @method('DELETE')
 
-                <!-- Header dengan tombol bulk delete -->
                 <div class="px-6 py-3 bg-gray-50 border-b border-gray-200 flex items-center justify-between">
                     <div class="flex items-center gap-3">
                         <input type="checkbox" id="selectAll" class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500">
