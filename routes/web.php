@@ -10,6 +10,7 @@ use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\TrackingController;
 use App\Http\Controllers\AnalyticsDashboardController;
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\MarketingController;
 use App\Http\Controllers\TariffSimulationController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +29,11 @@ Route::resource('entry_periods.finance_entries', FinanceEntryController::class)
     ->parameters(['finance_entries' => 'entry'])
     ->names('finance.entries')
     ->except(['create', 'store', 'show', 'destroy'])
+    ->middleware(['auth', 'verified']);
+
+Route::resource('entry_periods.marketing', MarketingController::class)
+    ->parameters(['marketing' => 'entry'])
+    ->names('marketing.entries')
     ->middleware(['auth', 'verified']);
 
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -79,8 +85,6 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/analytics_dashboard', [AnalyticsDashboardController::class, 'index'])->name('analytics_dashboard');
-    // Route::get('/analytics_dashboard/analytics', [AnalyticsDashboardController::class, 'getAnalytics'])->name('analytics_dashboard.analytics');
-    // Route::get('/analytics_dashboard/export', [AnalyticsDashboardController::class, 'export'])->name('analytics_dashboard.export');
 });
 
 Route::get('/simulasi-tarif', [TariffSimulationController::class, 'index'])->name('tariff.simulation');

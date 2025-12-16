@@ -90,7 +90,7 @@ class AdminEntryExport implements FromCollection, WithHeadings, WithMapping, Wit
                 'Nopol',
                 'Supir',
                 'No Telp',
-                'Harga',
+                'Harga Trucking',
 
                 // SI FINAL
                 'SI Final',
@@ -129,7 +129,7 @@ class AdminEntryExport implements FromCollection, WithHeadings, WithMapping, Wit
             $entry->nopol,
             $entry->supir,
             $entry->no_telp,
-            $entry->harga,
+            $entry->harga_trucking,
 
             // SI FINAL
             $entry->si_final,

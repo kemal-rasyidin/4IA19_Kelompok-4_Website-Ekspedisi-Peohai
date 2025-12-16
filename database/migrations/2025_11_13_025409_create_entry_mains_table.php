@@ -36,7 +36,7 @@ return new class extends Migration
             $table->string('nopol')->nullable();
             $table->string('supir')->nullable();
             $table->string('no_telp')->nullable();
-            $table->string('harga', 15, 2)->nullable();
+            $table->bigInteger('harga_trucking')->nullable();
             $table->string('si_final')->nullable();
             $table->date('ba')->nullable();
             $table->date('ba_balik')->nullable();
@@ -44,7 +44,39 @@ return new class extends Migration
             $table->string('alamat_penerima_barang')->nullable();
             $table->string('nama_penerima')->nullable();
             $table->enum('pph_status', ['PPH', 'Non'])->nullable();
-            $table->string('status_paket')->nullable();
+
+            $table->date('tgl_marketing')->nullable();
+            $table->date('tgl_jatuh_tempo')->nullable();
+            $table->string('muat_barang')->nullable();
+            $table->string('vessel')->nullable();
+            $table->bigInteger('door_daerah')->nullable();
+            $table->bigInteger('stufing_dalam')->nullable();
+
+            $table->string('freight')->nullable();
+            $table->date('tgl_freight')->nullable();
+
+            $table->bigInteger('thc')->nullable();
+            $table->bigInteger('asuransi')->nullable();
+            $table->bigInteger('bl')->nullable();
+            $table->bigInteger('ops')->nullable();
+            $table->bigInteger('total_marketing')->nullable();
+
+            $table->bigInteger('asuransi_inv')->nullable();
+            $table->bigInteger('adm')->nullable();
+            $table->bigInteger('harga_jual')->nullable();
+            $table->bigInteger('pph23')->nullable();
+            $table->bigInteger('total_inv')->nullable();
+
+            $table->bigInteger('refund')->nullable();
+            $table->bigInteger('diterima')->nullable();
+
+            $table->bigInteger('bu_lia')->nullable();
+            $table->bigInteger('nol')->nullable();
+
+            $table->decimal('persentase_marketing', 5, 2)->nullable();
+
+            $table->string('agen_daerah')->nullable();
+            $table->string('keterangan_marketing')->nullable();
 
             $table->timestamps();
         });

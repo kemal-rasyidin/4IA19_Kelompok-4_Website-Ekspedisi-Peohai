@@ -68,23 +68,14 @@
                 <table class="min-w-full divide-gray-200">
                     <thead class="bg-gray-50">
                         <tr>
-                            <!-- Kolom Kosong untuk Kolom Standar -->
                             <th colspan="18"></th>
-
-                            <!-- Kategori TRUCKING -->
-                            <th colspan="4" class="border border-pink-400 px-4 py-2">
+                            <th colspan="4" class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider bg-yellow-50">
                                 TRUCKING
                             </th>
-
-                            <!-- Kategori SI FINAL & BA DONE -->
-                            <th colspan="4" class="border border-pink-400 px-4 py-2">
+                            <th colspan="4" class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider bg-blue-50">
                                 SI FINAL &amp; BA DONE
                             </th>
-
-                            <!-- Kolom Kosong Tambahan -->
                             <th colspan="2"></th>
-
-                            <!-- Kolom Aksi yang Merge ke Baris Bawah -->
                             <th rowspan="2"
                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Aksi
@@ -120,7 +111,7 @@
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 ETA</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                No Count</th>
+                                No Cont</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Seal</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -194,7 +185,7 @@
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $entry->supir }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $entry->no_telp }}
                                 </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $entry->harga }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $entry->harga_trucking }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $entry->si_final }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $entry->ba }}</td>
