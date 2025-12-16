@@ -37,44 +37,44 @@ class AdminEntryImport implements ToModel, SkipsOnError
         return new EntryMain([
             'entry_period_id' => $this->entry_period_id,
 
-            // Data Utama
-            'qty'           => $row[0] ?? null,
-            'tgl_stuffing'  => $this->transformDate($row[1] ?? null),
-            'sl_sd'         => $row[2] ?? null,
-            'customer'      => $row[3] ?? null,
-            'pengirim'      => $row[4] ?? null,
-            'penerima'      => $row[5] ?? null,
-            'jenis_barang'  => $row[6] ?? null,
+            // Data Utama - PERHATIKAN: index bergeser +1 karena ada kolom No di awal
+            'qty'           => $row[1] ?? null,  // berubah dari $row[0]
+            'tgl_stuffing'  => $this->transformDate($row[2] ?? null),  // berubah dari $row[1]
+            'sl_sd'         => $row[3] ?? null,  // berubah dari $row[2]
+            'customer'      => $row[4] ?? null,  // berubah dari $row[3]
+            'pengirim'      => $row[5] ?? null,  // berubah dari $row[4]
+            'penerima'      => $row[6] ?? null,  // berubah dari $row[5]
+            'jenis_barang'  => $row[7] ?? null,  // berubah dari $row[6]
 
             // Shipping Info
-            'pelayaran'     => $row[7] ?? null,
-            'nama_kapal'    => $row[8] ?? null,
-            'voy'           => $row[9] ?? null,
-            'tujuan'        => $row[10] ?? null,
-            'etd'           => $this->transformDate($row[11] ?? null),
-            'eta'           => $this->transformDate($row[12] ?? null),
+            'pelayaran'     => $row[8] ?? null,  // berubah dari $row[7]
+            'nama_kapal'    => $row[9] ?? null,  // berubah dari $row[8]
+            'voy'           => $row[10] ?? null, // berubah dari $row[9]
+            'tujuan'        => $row[11] ?? null, // berubah dari $row[10]
+            'etd'           => $this->transformDate($row[12] ?? null), // berubah dari $row[11]
+            'eta'           => $this->transformDate($row[13] ?? null), // berubah dari $row[12]
 
             // Container Info
-            'no_cont'       => $row[13] ?? null,
-            'seal'          => $row[14] ?? null,
-            'agen'          => $row[15] ?? null,
-            'dooring'       => $this->transformDate($row[16] ?? null),
+            'no_cont'       => $row[14] ?? null, // berubah dari $row[13]
+            'seal'          => $row[15] ?? null, // berubah dari $row[14]
+            'agen'          => $row[16] ?? null, // berubah dari $row[15]
+            'dooring'       => $this->transformDate($row[17] ?? null), // berubah dari $row[16]
 
             // Trucking
-            'nopol'         => $row[17] ?? null,
-            'supir'         => $row[18] ?? null,
-            'no_telp'       => $row[19] ?? null,
-            'harga_trucking'=> $row[20] ?? null,
+            'nopol'         => $row[18] ?? null, // berubah dari $row[17]
+            'supir'         => $row[19] ?? null, // berubah dari $row[18]
+            'no_telp'       => $row[20] ?? null, // berubah dari $row[19]
+            'harga_trucking' => $row[21] ?? null, // berubah dari $row[20]
 
             // SI Final & BA Done
-            'si_final'      => $this->transformDate($row[21] ?? null),
-            'ba'            => $this->transformDate($row[22] ?? null),
-            'ba_balik'      => $this->transformDate($row[23] ?? null),
-            'no_inv'        => $row[24] ?? null,
+            'si_final'      => $this->transformDate($row[22] ?? null), // berubah dari $row[21]
+            'ba'            => $this->transformDate($row[23] ?? null), // berubah dari $row[22]
+            'ba_balik'      => $this->transformDate($row[24] ?? null), // berubah dari $row[23]
+            'no_inv'        => $row[25] ?? null, // berubah dari $row[24]
 
             // Penerima
-            'alamat_penerima_barang' => $row[25] ?? null,
-            'nama_penerima'          => $row[26] ?? null,
+            'alamat_penerima_barang' => $row[26] ?? null, // berubah dari $row[25]
+            'nama_penerima'          => $row[27] ?? null, // berubah dari $row[26]
         ]);
     }
 

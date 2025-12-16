@@ -92,17 +92,6 @@ class PartnerController extends Controller
             ->with('success', 'Data berhasil diperbarui!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Partner $partner): RedirectResponse
-    {
-        $partner->delete();
-
-        return redirect()->route('partners.index')
-            ->with('success', 'Data berhasil dihapus!');
-    }
-
     public function bulkDestroy(Request $request)
     {
         // Validasi input

@@ -32,6 +32,7 @@ class AdminEntryExport implements FromCollection, WithHeadings, WithMapping, Wit
         return [
             // ROW 1 – MAIN HEADER
             [
+                'No',
                 'Qty',
                 'Tanggal Stuffing',
                 'SL/SD',
@@ -85,6 +86,7 @@ class AdminEntryExport implements FromCollection, WithHeadings, WithMapping, Wit
                 '',
                 '',
                 '',
+                '',
 
                 'Nopol',
                 'Supir',
@@ -102,9 +104,12 @@ class AdminEntryExport implements FromCollection, WithHeadings, WithMapping, Wit
         ];
     }
 
+    protected $rowNumber = 0;
+
     public function map($entry): array
     {
         return [
+            ++$this->rowNumber,
             $entry->qty,
             $entry->tgl_stuffing,
             $entry->sl_sd,
@@ -149,26 +154,29 @@ class AdminEntryExport implements FromCollection, WithHeadings, WithMapping, Wit
             AfterSheet::class => function (AfterSheet $event) {
                 $sheet = $event->sheet->getDelegate();
 
-                // Merge main headers (A–Q)
-                $singleMerge = range('A', 'Q');
+                // Merge kolom No (A)
+                $sheet->mergeCells('A1:A2');
+
+                // Merge main headers (B–R) - perhatikan bergeser dari A menjadi B
+                $singleMerge = range('B', 'R');
                 foreach ($singleMerge as $col) {
                     $sheet->mergeCells("{$col}1:{$col}2");
                 }
 
-                // TRUCKING (R–U)
-                $sheet->mergeCells('R1:U1');
+                // TRUCKING (S–V) - bergeser satu kolom
+                $sheet->mergeCells('S1:V1');
 
-                // SI FINAL (V–Y)
-                $sheet->mergeCells('V1:Y1');
+                // SI FINAL (W–Z)
+                $sheet->mergeCells('W1:Z1');
 
-                // Nama Penerima (Z)
-                $sheet->mergeCells('Z1:Z2');
-
-                // Alamat Penerima (AA)
+                // Nama Penerima (AA)
                 $sheet->mergeCells('AA1:AA2');
 
-                // Styling
-                $sheet->getStyle('A1:AA2')->applyFromArray([
+                // Alamat Penerima (AB)
+                $sheet->mergeCells('AB1:AB2');
+
+                // Styling - update range menjadi AB
+                $sheet->getStyle('A1:AB2')->applyFromArray([
                     'font' => ['bold' => true],
                     'alignment' => [
                         'horizontal' => Alignment::HORIZONTAL_CENTER,
@@ -179,39 +187,35 @@ class AdminEntryExport implements FromCollection, WithHeadings, WithMapping, Wit
                     ],
                 ]);
 
-                // TRUCKING color
-                $sheet->getStyle('R1:U1')->applyFromArray([
+                // Update range TRUCKING dan SI FINAL
+                $sheet->getStyle('S1:V1')->applyFromArray([
                     'fill' => [
                         'fillType' => Fill::FILL_SOLID,
                         'startColor' => ['rgb' => 'FFC0CB'],
                     ]
                 ]);
 
-                // TRUCKING sub headers
-                $sheet->getStyle('R2:U2')->applyFromArray([
+                $sheet->getStyle('S2:V2')->applyFromArray([
                     'fill' => [
                         'fillType' => Fill::FILL_SOLID,
                         'startColor' => ['rgb' => 'FFE4E6'],
                     ]
                 ]);
 
-                // SI FINAL color
-                $sheet->getStyle('V1:Y1')->applyFromArray([
+                $sheet->getStyle('W1:Z1')->applyFromArray([
                     'fill' => [
                         'fillType' => Fill::FILL_SOLID,
                         'startColor' => ['rgb' => 'ADD8E6'],
                     ]
                 ]);
 
-                // SI FINAL sub headers
-                $sheet->getStyle('V2:Y2')->applyFromArray([
+                $sheet->getStyle('W2:Z2')->applyFromArray([
                     'fill' => [
                         'fillType' => Fill::FILL_SOLID,
                         'startColor' => ['rgb' => 'E0F2FE'],
                     ]
                 ]);
 
-                // Freeze top headers
                 $sheet->freezePane('A3');
             },
         ];

@@ -2,7 +2,7 @@
     <div class="space-y-6">
         <div class="bg-green-600 text-white shadow-md rounded-lg">
             <div class="p-6 text-lg font-semibold">
-                {{ __('Tambah Data Admin Entry') }}
+                {{ __('Tambah Data Admin Entry (Import)') }}
             </div>
         </div>
 
