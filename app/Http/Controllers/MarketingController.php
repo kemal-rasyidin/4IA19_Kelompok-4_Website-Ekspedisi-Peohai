@@ -55,7 +55,9 @@ class MarketingController extends Controller
     public function update(Request $request, EntryPeriod $entry_period, EntryMain $entry)
     {
         $validated = $request->validate([
-            'harga_trucking' => 'nullable|integer',
+            'tgl_marketing' => 'nullable|date',
+            'tgl_jatuh_tempo' => 'nullable|date',
+            'muat_barang' => 'nullable|string',
             'door_daerah' => 'nullable|integer',
             'stufing_dalam' => 'nullable|integer',
             'freight' => 'nullable|integer',

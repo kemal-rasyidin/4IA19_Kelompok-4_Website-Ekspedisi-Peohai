@@ -33,7 +33,7 @@
                                 Stuffing</label>
                             <div class="mt-2">
                                 <input type="date" name="tgl_stuffing"
-                                    value="{{ old('tgl_stuffing', $entry->tgl_stuffing) }}"  
+                                    value="{{ old('tgl_stuffing', $entry->tgl_stuffing) }}"
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>
@@ -55,7 +55,6 @@
                             <label for="customer" class="block text-sm/6 font-medium text-gray-900">Customer</label>
                             <div class="mt-2">
                                 <input type="text" name="customer" value="{{ old('customer', $entry->customer) }}"
-                                     
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>
@@ -63,7 +62,6 @@
                             <label for="pengirim" class="block text-sm/6 font-medium text-gray-900">Pengirim</label>
                             <div class="mt-2">
                                 <input type="text" name="pengirim" value="{{ old('pengirim', $entry->pengirim) }}"
-                                     
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>
@@ -71,7 +69,6 @@
                             <label for="penerima" class="block text-sm/6 font-medium text-gray-900">Penerima</label>
                             <div class="mt-2">
                                 <input type="text" name="penerima" value="{{ old('penerima', $entry->penerima) }}"
-                                     
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>
@@ -80,7 +77,7 @@
                                 Barang</label>
                             <div class="mt-2">
                                 <input type="text" name="jenis_barang"
-                                    value="{{ old('jenis_barang', $entry->jenis_barang) }}"  
+                                    value="{{ old('jenis_barang', $entry->jenis_barang) }}"
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>
@@ -88,7 +85,7 @@
                             <label for="pelayaran" class="block text-sm/6 font-medium text-gray-900">Pelayaran</label>
                             <div class="mt-2">
                                 <input type="text" name="pelayaran"
-                                    value="{{ old('pelayaran', $entry->pelayaran) }}"  
+                                    value="{{ old('pelayaran', $entry->pelayaran) }}"
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>
@@ -97,14 +94,14 @@
                                 Kapal</label>
                             <div class="mt-2">
                                 <input type="text" name="nama_kapal"
-                                    value="{{ old('nama_kapal', $entry->nama_kapal) }}"  
+                                    value="{{ old('nama_kapal', $entry->nama_kapal) }}"
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>
                         <div class="sm:col-span-1">
                             <label for="voy" class="block text-sm/6 font-medium text-gray-900">Voy</label>
                             <div class="mt-2">
-                                <input type="text" name="voy" value="{{ old('voy', $entry->voy) }}"  
+                                <input type="text" name="voy" value="{{ old('voy', $entry->voy) }}"
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>
@@ -112,21 +109,20 @@
                             <label for="tujuan" class="block text-sm/6 font-medium text-gray-900">Tujuan</label>
                             <div class="mt-2">
                                 <input type="text" name="tujuan" value="{{ old('tujuan', $entry->tujuan) }}"
-                                     
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>
                         <div class="sm:col-span-1">
                             <label for="etd" class="block text-sm/6 font-medium text-gray-900">ETD</label>
                             <div class="mt-2">
-                                <input type="date" name="etd" value="{{ old('etd', $entry->etd) }}"  
+                                <input type="date" name="etd" value="{{ old('etd', $entry->etd) }}"
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>
                         <div class="sm:col-span-1">
                             <label for="eta" class="block text-sm/6 font-medium text-gray-900">ETA</label>
                             <div class="mt-2">
-                                <input type="date" name="eta" value="{{ old('eta', $entry->eta) }}"  
+                                <input type="date" name="eta" value="{{ old('eta', $entry->eta) }}"
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>
@@ -135,7 +131,6 @@
                                 Count</label>
                             <div class="mt-2">
                                 <input type="text" name="no_cont" value="{{ old('no_cont', $entry->no_cont) }}"
-                                     
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>
@@ -143,7 +138,6 @@
                             <label for="seal" class="block text-sm/6 font-medium text-gray-900">Seal</label>
                             <div class="mt-2">
                                 <input type="text" name="seal" value="{{ old('seal', $entry->seal) }}"
-                                     
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>
@@ -151,7 +145,6 @@
                             <label for="agen" class="block text-sm/6 font-medium text-gray-900">Agen</label>
                             <div class="mt-2">
                                 <input type="text" name="agen" value="{{ old('agen', $entry->agen) }}"
-                                     
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>
@@ -159,7 +152,6 @@
                             <label for="dooring" class="block text-sm/6 font-medium text-gray-900">Dooring</label>
                             <div class="mt-2">
                                 <input type="date" name="dooring" value="{{ old('dooring', $entry->dooring) }}"
-                                     
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>
@@ -171,7 +163,6 @@
                             <label for="nopol" class="block text-sm/6 font-medium text-gray-900">Nopol</label>
                             <div class="mt-2">
                                 <input type="text" name="nopol" value="{{ old('nopol', $entry->nopol) }}"
-                                     
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>
@@ -179,7 +170,6 @@
                             <label for="supir" class="block text-sm/6 font-medium text-gray-900">Supir</label>
                             <div class="mt-2">
                                 <input type="text" name="supir" value="{{ old('supir', $entry->supir) }}"
-                                     
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>
@@ -188,15 +178,15 @@
                                 Telp</label>
                             <div class="mt-2">
                                 <input type="text" name="no_telp" value="{{ old('no_telp', $entry->no_telp) }}"
-                                     
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>
                         <div class="sm:col-span-2">
-                            <label for="harga_trucking" class="block text-sm/6 font-medium text-gray-900">Harga</label>
+                            <label for="harga_trucking"
+                                class="block text-sm/6 font-medium text-gray-900">Harga</label>
                             <div class="mt-2">
-                                <input type="text" name="harga_trucking" value="{{ old('harga_trucking', $entry->harga_trucking) }}"
-                                     
+                                <input type="text" name="harga_trucking"
+                                    value="{{ old('harga_trucking', $entry->harga_trucking) }}"
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>
@@ -209,14 +199,14 @@
                                 Final</label>
                             <div class="mt-2">
                                 <input type="text" name="si_final"
-                                    value="{{ old('si_final', $entry->si_final) }}"  
+                                    value="{{ old('si_final', $entry->si_final) }}"
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>
                         <div class="sm:col-span-2">
                             <label for="ba" class="block text-sm/6 font-medium text-gray-900">BA</label>
                             <div class="mt-2">
-                                <input type="date" name="ba" value="{{ old('ba', $entry->ba) }}"  
+                                <input type="date" name="ba" value="{{ old('ba', $entry->ba) }}"
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>
@@ -225,7 +215,7 @@
                                 Balik</label>
                             <div class="mt-2">
                                 <input type="date" name="ba_balik"
-                                    value="{{ old('ba_balik', $entry->ba_balik) }}"  
+                                    value="{{ old('ba_balik', $entry->ba_balik) }}"
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>
@@ -233,7 +223,7 @@
                             <label for="no_inv" class="block text-sm/6 font-medium text-gray-900">No Inv</label>
                             <div class="mt-2">
                                 <input type="number" min="1" name="no_inv"
-                                    value="{{ old('no_inv', $entry->no_inv) }}"  
+                                    value="{{ old('no_inv', $entry->no_inv) }}"
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>
@@ -247,7 +237,6 @@
                             <div class="mt-2">
                                 <input type="text" name="alamat_penerima_barang"
                                     value="{{ old('alamat_penerima_barang', $entry->alamat_penerima_barang) }}"
-                                     
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>
@@ -256,7 +245,7 @@
                                 Penerima</label>
                             <div class="mt-2">
                                 <input type="text" name="nama_penerima"
-                                    value="{{ old('nama_penerima', $entry->nama_penerima) }}"  
+                                    value="{{ old('nama_penerima', $entry->nama_penerima) }}"
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>

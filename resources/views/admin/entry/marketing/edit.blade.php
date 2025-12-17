@@ -15,6 +15,33 @@
                 <div class="">
                     <div class="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                         <div class="sm:col-span-2">
+                            <label for="tgl_marketing" class="block text-sm/6 font-medium text-gray-900">Tanggal
+                                Bayar</label>
+                            <div class="mt-2">
+                                <input type="date" name="tgl_marketing"
+                                    value="{{ old('tgl_marketing', $entry->tgl_marketing) }}"
+                                    class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
+                            </div>
+                        </div>
+                        <div class="sm:col-span-2">
+                            <label for="tgl_jatuh_tempo" class="block text-sm/6 font-medium text-gray-900">Tanggal
+                                Jatuh Tempo</label>
+                            <div class="mt-2">
+                                <input type="date" name="tgl_jatuh_tempo"
+                                    value="{{ old('tgl_jatuh_tempo', $entry->tgl_jatuh_tempo) }}"
+                                    class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
+                            </div>
+                        </div>
+                        <div class="sm:col-span-2">
+                            <label for="muat_barang" class="block text-sm/6 font-medium text-gray-900">Muat
+                                Barang</label>
+                            <div class="mt-2">
+                                <input type="text" name="muat_barang"
+                                    value="{{ old('muat_barang', $entry->muat_barang) }}"
+                                    class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
+                            </div>
+                        </div>
+                        <div class="sm:col-span-2">
                             <label for="customer" class="block text-sm/6 font-medium text-gray-900">Customer</label>
                             <div class="mt-2">
                                 <input type="text" name="customer" value="{{ old('customer', $entry->customer) }}"

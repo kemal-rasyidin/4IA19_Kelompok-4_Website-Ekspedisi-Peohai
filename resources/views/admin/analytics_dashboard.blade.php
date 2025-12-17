@@ -264,12 +264,12 @@
 
         <!-- Charts Row 1 -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div class="bg-white shadow-md rounded-lg p-6">
+            <div class="bg-white shadow-lg rounded-lg p-6">
                 <h3 class="text-lg font-semibold text-gray-900 mb-4">Logistik Bulanan</h3>
                 <canvas id="monthlyChart" class="w-full" style="max-height: 300px;"></canvas>
             </div>
 
-            <div class="bg-white shadow-md rounded-lg p-6">
+            <div class="bg-white shadow-lg rounded-lg p-6">
                 <h3 class="text-lg font-semibold text-gray-900 mb-4">Status Logistik</h3>
                 <canvas id="statusChart" class="w-full" style="max-height: 300px;"></canvas>
             </div>
@@ -278,7 +278,7 @@
         <!-- Charts Row 2 -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <!-- Top Customers -->
-            <div class="bg-white shadow-md rounded-lg p-6">
+            <div class="bg-white shadow-lg rounded-lg p-6">
                 <h3 class="text-lg font-semibold text-gray-900 mb-4">Top 5 Customers</h3>
                 <div class="space-y-4">
                     @php
@@ -304,7 +304,7 @@
             </div>
 
             <!-- Top Destinations -->
-            <div class="bg-white shadow-md rounded-lg p-6">
+            <div class="bg-white shadow-lg rounded-lg p-6">
                 <h3 class="text-lg font-semibold text-gray-900 mb-4">Top 5 Tujuan</h3>
                 <canvas id="destinationChart" class="w-full" style="max-height: 300px;"></canvas>
             </div>
@@ -313,13 +313,13 @@
         <!-- Charts Row 3 -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <!-- Shipments by Pelayaran -->
-            <div class="bg-white shadow-md rounded-lg p-6">
+            <div class="bg-white shadow-lg rounded-lg p-6">
                 <h3 class="text-lg font-semibold text-gray-900 mb-4">Top 5 Pelayaran</h3>
                 <canvas id="pelayaranChart" class="w-full" style="max-height: 300px;"></canvas>
             </div>
 
             <!-- Shipments by Jenis Barang -->
-            <div class="bg-white shadow-md rounded-lg p-6">
+            <div class="bg-white shadow-lg rounded-lg p-6">
                 <h3 class="text-lg font-semibold text-gray-900 mb-4">Top 5 Jenis Barang</h3>
                 <canvas id="jenisBarangChart" class="w-full" style="max-height: 300px;"></canvas>
             </div>
@@ -327,7 +327,7 @@
 
         <!-- Upcoming ETD -->
         @if ($upcomingETD->count() > 0)
-            <div class="bg-white shadow-md rounded-lg overflow-hidden">
+            <div class="bg-white shadow-lg rounded-lg overflow-hidden">
                 <div class="px-6 py-4 border-b border-gray-200 bg-yellow-50">
                     <h3 class="text-lg font-semibold text-gray-900 flex items-center">
                         <svg class="h-5 w-5 text-yellow-600 mr-2" fill="currentColor" viewBox="0 0 20 20">

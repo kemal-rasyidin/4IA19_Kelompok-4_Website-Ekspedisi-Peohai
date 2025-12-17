@@ -17,7 +17,15 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::resource('entry_periods', EntryPeriodController::class)->middleware(['auth', 'verified']);
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::resource('entry_periods', EntryPeriodController::class)
+        ->middleware(['auth', 'verified']);
+
+    Route::middleware('role:super-admin')->group(function () {
+        Route::resource('entry_periods', EntryPeriodController::class)
+            ->only(['create', 'store', 'edit', 'update', 'destroy']);
+    });
+});
 
 Route::resource('entry_periods.finance_entries', FinanceEntryController::class)
     ->parameters(['finance_entries' => 'entry'])
