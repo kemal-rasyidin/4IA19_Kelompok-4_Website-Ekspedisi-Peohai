@@ -21,7 +21,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('entry_periods', EntryPeriodController::class)
         ->middleware(['auth', 'verified']);
 
-    Route::middleware('role:super-admin')->group(function () {
+    Route::middleware('role:Super Admin')->group(function () {
         Route::resource('entry_periods', EntryPeriodController::class)
             ->only(['create', 'store', 'edit', 'update', 'destroy']);
     });
@@ -36,7 +36,7 @@ Route::resource('entry_periods.finance_entries', FinanceEntryController::class)
 Route::resource('entry_periods.marketing', MarketingController::class)
     ->parameters(['marketing' => 'entry'])
     ->names('marketing.entries')
-    ->middleware(['auth', 'verified', 'role:super-admin']);
+    ->middleware(['auth', 'verified', 'role:Super Admin']);
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::controller(AdminEntryController::class)->group(function () {

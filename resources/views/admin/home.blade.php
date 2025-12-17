@@ -79,14 +79,14 @@
                                 <div class="flex-1">
                                     <p class="text-sm font-medium text-gray-600 mb-1">Total Users</p>
                                     <p class="text-2xl font-bold text-gray-900">
-                                        3</p>
+                                        {{ \App\Models\User::whereIn('role', ['Admin', 'Super Admin'])->count() }}
+                                    </p>
                                 </div>
                             </div>
-                            <div class="mt-4 flex items-center justify-between">
+                            {{-- <div class="mt-4 flex items-center justify-between">
                                 <div class="flex items-center space-x-2">
                                     <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                                    <span class="text-sm text-green-600 font-semibold">3
-                                        active</span>
+                                    <span class="text-sm text-green-600 font-semibold">3 active</span>
                                 </div>
                                 <div class="flex items-center text-xs text-gray-500">
                                     <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -95,7 +95,7 @@
                                     </svg>
                                     +12% this month
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -125,10 +125,11 @@
                                 <div class="flex-1">
                                     <p class="text-sm font-medium text-gray-600 mb-1">Total Roles</p>
                                     <p class="text-2xl font-bold text-gray-900">
-                                        1</p>
+                                        {{ \App\Models\User::distinct('role')->count('role') }}
+                                    </p>
                                 </div>
                             </div>
-                            <div class="mt-4 flex items-center justify-between">
+                            {{-- <div class="mt-4 flex items-center justify-between">
                                 <div class="flex items-center space-x-2">
                                     <div class="w-2 h-2 bg-green-500 rounded-full"></div>
                                     <span class="text-sm text-green-600 font-semibold">1
@@ -141,7 +142,7 @@
                                     </svg>
                                     All secure
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -174,7 +175,7 @@
                                         1</p>
                                 </div>
                             </div>
-                            <div class="mt-4 flex items-center justify-between">
+                            {{-- <div class="mt-4 flex items-center justify-between">
                                 <div class="flex items-center space-x-2">
                                     <div class="w-2 h-2 bg-purple-500 rounded-full"></div>
                                     <span class="text-sm text-purple-600 font-semibold">System wide</span>
@@ -188,7 +189,7 @@
                                     </svg>
                                     Protected
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -215,12 +216,12 @@
                                     </div>
                                 </div>
                                 <div class="flex-1">
-                                    <p class="text-sm font-medium text-gray-600 mb-1">Your Roles</p>
-                                    <p class="text-2xl font-bold text-gray-900">Lorem
+                                    <p class="text-sm font-medium text-gray-600 mb-1">Your Role</p>
+                                    <p class="text-2xl font-bold text-gray-900">{{ Auth::user()->role }}
                                     </p>
                                 </div>
                             </div>
-                            <div class="mt-4 flex items-center justify-between">
+                            {{-- <div class="mt-4 flex items-center justify-between">
                                 <div class="flex items-center space-x-2">
                                     <div class="w-2 h-2 bg-yellow-500 rounded-full"></div>
                                     <span class="text-sm text-yellow-600 font-semibold">Personal</span>
@@ -232,145 +233,14 @@
                                             d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z">
                                         </path>
                                     </svg>
-                                    Lorem
+                                    Roles
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Modern Quick Actions & Recent Activity -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <!-- Modern Quick Actions -->
-            <div class="lg:col-span-1">
-                <div class="bg-white shadow-xl rounded-2xl border border-gray-200 overflow-hidden">
-                    <div class="bg-gradient-to-r from-gray-50 to-white px-6 py-5 border-b border-gray-200">
-                        <div class="flex items-center">
-                            <div
-                                class="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center mr-3">
-                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                                </svg>
-                            </div>
-                            <h3 class="text-lg font-semibold text-gray-900">Quick Actions</h3>
-                        </div>
-                    </div>
-                    <div class="p-6 space-y-3">
-                        <!-- System Status -->
-                        <div
-                            class="group w-full flex items-center px-4 py-4 text-sm font-medium text-gray-700 bg-gradient-to-r from-purple-50 to-purple-100 rounded-xl">
-                            <div
-                                class="w-10 h-10 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center mr-4">
-                                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
-                                    </path>
-                                </svg>
-                            </div>
-                            <div class="flex-1">
-                                <p class="font-semibold text-gray-900">System Status</p>
-                                <div class="flex items-center space-x-2 mt-1">
-                                    <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                                    <p class="text-xs text-green-600 font-medium">All systems operational</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Modern Recent Users -->
-            <div class="lg:col-span-2">
-                <div class="bg-white shadow-xl rounded-2xl border border-gray-200 overflow-hidden">
-                    <div class="bg-gradient-to-r from-gray-50 to-white px-6 py-5 border-b border-gray-200">
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center">
-                                <div
-                                    class="w-8 h-8 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center mr-3">
-                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z">
-                                        </path>
-                                    </svg>
-                                </div>
-                                <h3 class="text-lg font-semibold text-gray-900">Recent Users</h3>
-                            </div>
-                            <div class="flex items-center space-x-2 text-sm text-gray-500">
-                                <div class="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-                                <span>Live updates</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="divide-y divide-gray-100">
-                        <div class="px-6 py-4 hover:bg-gray-50 transition-colors duration-200">
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center space-x-4">
-                                    <div class="relative">
-                                        <div
-                                            class="w-12 h-12 bg-gradient-to-br from-blue-400 to-purple-500 rounded-xl flex items-center justify-center shadow-lg">
-                                            <span class="text-sm font-bold text-white">1</span>
-                                        </div>
-                                        <div
-                                            class="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white">
-                                        </div>
-                                    </div>
-                                    <div class="flex-1">
-                                        <p class="text-sm font-semibold text-gray-900"></p>
-                                        <p class="text-sm text-gray-500"></p>
-                                        <div class="flex items-center space-x-2 mt-1">
-                                            {{-- @foreach ($user->roles->take(2) as $role) --}}
-                                            <span
-                                                class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-blue-100 text-blue-800">
-                                                {{-- {{ $role->display_name }} --}}
-                                            </span>
-                                            {{-- @endforeach
-                                                @if ($user->roles->count() > 2) --}}
-                                            <span
-                                                class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-gray-100 text-gray-600">
-                                                +
-                                                {{-- {{ $user->roles->count() - 2 }}  --}}
-                                                more
-                                            </span>
-                                            {{-- @endif --}}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex flex-col items-end space-y-1">
-                                    <span
-                                        class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold  shadow-sm">
-                                    </span>
-                                    <span class="text-xs text-gray-500 flex items-center">
-                                        <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor"
-                                            viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                        </svg>
-                                        LOL
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="px-6 py-4 bg-gradient-to-r from-gray-50 to-blue-50 border-t border-gray-100">
-                        <a href=""
-                            class="group flex items-center justify-center text-sm font-semibold text-blue-600 hover:text-blue-800 transition-colors duration-200">
-                            <span>View all users</span>
-                            <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-200"
-                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </x-admin.layout>

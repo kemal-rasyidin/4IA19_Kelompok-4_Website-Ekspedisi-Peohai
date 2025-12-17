@@ -173,7 +173,7 @@
                                                 </path>
                                             </svg>
                                             <a href="{{ route('analytics_dashboard') }}"
-                                                class="ml-2 text-gray-500 hover:text-gray-700">Dashboard</a>
+                                                class="ml-2 text-gray-500 hover:text-gray-700">Dashboard {{ Auth::user()->role }}</a>
                                         </div>
                                     </li>
 

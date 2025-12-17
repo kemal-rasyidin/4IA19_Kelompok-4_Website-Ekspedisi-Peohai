@@ -23,13 +23,13 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Admin Peohai 1',
                 'email' => 'admin1@admin.com',
                 'password' => Hash::make('password123'),
-                'role' => 'super-admin',
+                'role' => 'Super Admin',
             ],
             [
                 'name' => 'Admin Peohai 2',
                 'email' => 'admin2@admin.com',
                 'password' => Hash::make('password123'),
-                'role' => 'admin',
+                'role' => 'Admin',
             ],
         ]);
 
