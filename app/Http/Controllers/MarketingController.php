@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\EntryMain;
 use App\Models\EntryPeriod;
 use Illuminate\Http\Request;
+use App\Exports\MarketingExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class MarketingController extends Controller
 {
@@ -55,24 +57,24 @@ class MarketingController extends Controller
     public function update(Request $request, EntryPeriod $entry_period, EntryMain $entry)
     {
         $validated = $request->validate([
+            'harga_trucking' => 'nullable|integer',
             'tgl_marketing' => 'nullable|date',
             'tgl_jatuh_tempo' => 'nullable|date',
             'muat_barang' => 'nullable|string',
             'door_daerah' => 'nullable|integer',
             'stufing_dalam' => 'nullable|integer',
             'freight' => 'nullable|integer',
+            'tgl_freight' => 'nullable|date',
             'thc' => 'nullable|integer',
             'asuransi' => 'nullable|integer',
             'bl' => 'nullable|integer',
             'ops' => 'nullable|integer',
-
             'asuransi_inv' => 'nullable|integer',
             'adm' => 'nullable|integer',
             'harga_jual' => 'nullable|integer',
             'pph23' => 'nullable|integer',
-
             'refund' => 'nullable|integer',
-
+            'nol' => 'nullable|integer',
             'agen_daerah' => 'nullable|string',
             'keterangan_marketing' => 'nullable|string',
         ]);
@@ -119,5 +121,16 @@ class MarketingController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    /**
+     * Export
+     */
+    public function export(EntryPeriod $entry_period)
+    {
+        return Excel::download(
+            new MarketingExport($entry_period->id),
+            'Marketing Entry-' . $entry_period->bulan . '-' . $entry_period->tahun . '.xlsx'
+        );
     }
 }

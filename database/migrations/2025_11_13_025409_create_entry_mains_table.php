@@ -48,7 +48,6 @@ return new class extends Migration
             $table->date('tgl_marketing')->nullable();
             $table->date('tgl_jatuh_tempo')->nullable();
             $table->string('muat_barang')->nullable();
-            $table->string('vessel')->nullable();
             $table->bigInteger('door_daerah')->nullable();
             $table->bigInteger('stufing_dalam')->nullable();
 

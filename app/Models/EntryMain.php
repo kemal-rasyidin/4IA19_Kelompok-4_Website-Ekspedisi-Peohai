@@ -55,7 +55,6 @@ class EntryMain extends Model
         'tgl_marketing',
         'tgl_jatuh_tempo',
         'muat_barang',
-        'vessel',
         'door_daerah',
         'stufing_dalam',
         'freight',

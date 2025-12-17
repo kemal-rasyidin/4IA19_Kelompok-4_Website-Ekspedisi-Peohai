@@ -32,9 +32,9 @@
             </form>
         </div>
 
-        {{-- <div class="flex justify-end space-x-2">
+        <div class="flex justify-end space-x-2">
             <a href="{{ route('marketing.entries.export', $entry_period) }}"
-                class="inline-flex items-center px-4 py-2 border border-green-500 bg-blue-50 text-green-600 hover:text-white hover:bg-green-500 font-medium rounded-md shadow-md">
+                class="inline-flex items-center px-4 py-2 border border-yellow-500 bg-blue-50 text-yellow-600 hover:text-white hover:bg-yellow-500 font-medium rounded-md shadow-md">
                 <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                     viewBox="0 0 24 24">
                     <path fill="currentColor"
@@ -42,7 +42,7 @@
                 </svg>
                 Ekspor
             </a>
-        </div> --}}
+        </div>
 
         <div class="bg-white overflow-hidden shadow-md rounded-lg">
             <div class="overflow-x-auto">
