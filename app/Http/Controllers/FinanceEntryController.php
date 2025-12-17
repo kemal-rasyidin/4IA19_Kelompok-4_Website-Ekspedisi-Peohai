@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\EntryMain;
 use App\Models\EntryPeriod;
 use Illuminate\Http\Request;
+use App\Exports\FinanceEntryExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class FinanceEntryController extends Controller
 {
@@ -71,5 +73,16 @@ class FinanceEntryController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    /**
+     * Export
+     */
+    public function export(EntryPeriod $entry_period)
+    {
+        return Excel::download(
+            new FinanceEntryExport($entry_period->id),
+            'Finance Entry-' . $entry_period->bulan . '-' . $entry_period->tahun . '.xlsx'
+        );
     }
 }

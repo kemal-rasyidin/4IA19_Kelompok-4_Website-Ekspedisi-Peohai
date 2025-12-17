@@ -27,6 +27,28 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
 });
 
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::controller(FinanceEntryController::class)->group(function () {
+        Route::get('entry_periods/{entry_period}/finance_entries/export', 'export')
+            ->name('finance.entries.export');
+    });
+
+    Route::resource('entry_periods.finance_entries', FinanceEntryController::class)
+        ->parameters(['finance_entries' => 'entry'])
+        ->names('finance.entries');
+});
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::controller(MarketingController::class)->group(function () {
+        Route::get('entry_periods/{entry_period}/marketing_entries/export', 'export')
+            ->name('marketing.entries.export');
+    });
+
+    Route::resource('entry_periods.marketing_entries', MarketingController::class)
+        ->parameters(['marketing_entries' => 'entry'])
+        ->names('marketing.entries');
+});
+
 Route::resource('entry_periods.finance_entries', FinanceEntryController::class)
     ->parameters(['finance_entries' => 'entry'])
     ->names('finance.entries')
