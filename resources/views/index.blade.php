@@ -180,39 +180,70 @@
 
     <!-- Layanan Section Start -->
     <section id="layanan" class="py-8 lg:py-16">
-        <div class="container">
+        <div class="container mx-auto px-4">
             <div class="flex flex-row flex-wrap">
-                <div class="mb-10 w-full self-center">
-                    <p class="text-5xl font-bold text-ink">
+                <div class="mb-10 w-full">
+                    <p class="text-5xl font-bold text-gray-900">
                         Jenis Layanan Kami
                     </p>
                 </div>
-                <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 w-full">
-                    <div class="col-span-1 rounded-lg bg-gray-50 p-8">
-                        <svg class="mb-3 h-10 w-10 text-blue-500" xmlns="http://www.w3.org/2000/svg" width="24"
-                            height="24" viewBox="0 0 24 24">
-                            <path fill="currentColor"
-                                d="M5 21q-.825 0-1.412-.587T3 19V6.525q0-.35.113-.675t.337-.6L4.7 3.725q.275-.35.687-.538T6.25 3h11.5q.45 0 .863.188t.687.537l1.25 1.525q.225.275.338.6t.112.675V19q0 .825-.587 1.413T19 21zM5.4 6h13.2l-.85-1H6.25z" />
-                        </svg>
-                        <h5 class="mb-2 text-2xl font-semibold tracking-tight text-ink">
-                            Ukuran 2x20
-                        </h5>
-                        <p class="mb-3 font-medium leading-relaxed text-gray-500">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit veniam suscipit error?
-                        </p>
+                <div class="grid grid-cols-1 gap-8 lg:grid-cols-2 w-full">
+                    <!-- Container 20ft -->
+                    <div class="rounded-lg bg-gray-50 p-8 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="flex items-start gap-6">
+                            <div class="flex-1">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <svg class="h-10 w-10 text-blue-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                        <path fill="currentColor" d="M5 21q-.825 0-1.412-.587T3 19V6.525q0-.35.113-.675t.337-.6L4.7 3.725q.275-.35.687-.538T6.25 3h11.5q.45 0 .863.188t.687.537l1.25 1.525q.225.275.338.6t.112.675V19q0 .825-.587 1.413T19 21zM5.4 6h13.2l-.85-1H6.25z" />
+                                    </svg>
+                                    <h5 class="text-2xl font-semibold tracking-tight text-gray-900">
+                                        Container 20ft
+                                    </h5>
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <img src="/img/20ft.png" 
+                                         alt="Container 20ft" 
+                                         class="w-full h-auto rounded-lg" />
+                                </div>
+                                
+                                <div class="space-y-2 text-gray-700">
+                                    <p class="font-semibold text-lg text-gray-900">Spesifikasi:</p>
+                                    <p><span class="font-medium">Dimensi:</span> 5,9m (P) x 2,4m (L) x 2,7m (T)</p>
+                                    <p><span class="font-medium">Berat Kosong:</span> 2,315 kg</p>
+                                    <p><span class="font-medium">Berat Maksimum:</span> 30,480 kg</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-span-1 rounded-lg bg-gray-50 p-8">
-                        <svg class="mb-3 h-10 w-10 text-blue-500" xmlns="http://www.w3.org/2000/svg" width="24"
-                            height="24" viewBox="0 0 24 24">
-                            <path fill="currentColor"
-                                d="M5 21q-.825 0-1.412-.587T3 19V6.525q0-.35.113-.675t.337-.6L4.7 3.725q.275-.35.687-.538T6.25 3h11.5q.45 0 .863.188t.687.537l1.25 1.525q.225.275.338.6t.112.675V19q0 .825-.587 1.413T19 21zM5.4 6h13.2l-.85-1H6.25z" />
-                        </svg>
-                        <h5 class="mb-2 text-2xl font-semibold tracking-tight text-ink">
-                            Ukuran 2x40
-                        </h5>
-                        <p class="mb-3 font-medium leading-relaxed text-gray-500">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit veniam suscipit error?
-                        </p>
+
+                    <!-- Container 40ft -->
+                    <div class="rounded-lg bg-gray-50 p-8 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="flex items-start gap-6">
+                            <div class="flex-1">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <svg class="h-10 w-10 text-blue-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                        <path fill="currentColor" d="M5 21q-.825 0-1.412-.587T3 19V6.525q0-.35.113-.675t.337-.6L4.7 3.725q.275-.35.687-.538T6.25 3h11.5q.45 0 .863.188t.687.537l1.25 1.525q.225.275.338.6t.112.675V19q0 .825-.587 1.413T19 21zM5.4 6h13.2l-.85-1H6.25z" />
+                                    </svg>
+                                    <h5 class="text-2xl font-semibold tracking-tight text-gray-900">
+                                        Container 40ft
+                                    </h5>
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <img src="/img/40ft.png" 
+                                         alt="Container 40ft" 
+                                         class="w-full h-auto rounded-lg" />
+                                </div>
+                                
+                                <div class="space-y-2 text-gray-700">
+                                    <p class="font-semibold text-lg text-gray-900">Spesifikasi:</p>
+                                    <p><span class="font-medium">Dimensi:</span> 12m (P) x 2,4m (L) x 2,7m (T)</p>
+                                    <p><span class="font-medium">Berat Kosong:</span> 3,940 kg</p>
+                                    <p><span class="font-medium">Berat Maksimum:</span> 32,500 kg</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
