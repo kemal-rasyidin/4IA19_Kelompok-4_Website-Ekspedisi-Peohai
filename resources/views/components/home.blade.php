@@ -21,7 +21,8 @@
         <div class="container">
             <div class="relative flex items-center justify-between">
                 <div class="px-0">
-                    <a href="/" class="block py-6 text-lg font-bold">
+                    <a href="/" class="py-6 text-lg font-bold flex items-center gap-1">
+                        <img src="/img/logo.png" alt="Logo Peohai" class="h-10 w-auto">
                         <p>Ekspedisi <span class="text-ginger">Peohai</span></p>
                     </a>
                 </div>

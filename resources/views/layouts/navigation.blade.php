@@ -5,9 +5,10 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
-                    </a>
+                    <a href="{{ route('dashboard') }}" class="flex items-center gap-2">
+                    <img src="/img/logo.png" alt="Logo Peohai" class="h-9 w-auto">
+                    <span class="text-lg font-semibold">Ekspedisi Peohai</span>
+                </a>
                 </div>
 
                 <!-- Navigation Links -->
