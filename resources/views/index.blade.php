@@ -9,12 +9,12 @@
         <div class="mb-10 flex flex-wrap text-center">
             <div class="w-full">
                 <hr class="bg-sea mb-4 h-1 w-32 border-0 md:h-2 mx-auto" />
-                <p class="mb-4 text-6xl font-bold leading-none tracking-wide text-blue-500">
-                    Kirim barangmu dengan cara mudah!
+                <p class="mb-4 text-6xl font-extrabold leading-none tracking-wide text-blue-500">
+                    Kirim Barangmu Dengan Cara Mudah!
                 </p>
             </div>
             <div class="w-full">
-                <p class="mb-10 mt-7 font-medium leading-relaxed ">
+                <p class="mb-10 mt-7 text-lg font-semibold leading-relaxed ">
                     Percayakan pengiriman Anda kepada kami. Layanan ekspedisi cepat, aman, dan terpercaya ke seluruh
                     Indonesia!
                 </p>
