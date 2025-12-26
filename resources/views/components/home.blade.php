@@ -23,7 +23,10 @@
                 <div class="px-0">
                     <a href="/" class="py-6 text-lg font-bold flex items-center gap-1">
                         <img src="/img/logo.png" alt="Logo Peohai" class="h-10 w-auto">
-                        <p>Ekspedisi <span class="text-ginger">Peohai</span></p>
+                        <div class="flex flex-col items-start">
+                        <span class="text-lg font-bold text-gray-800">Ekspedisi</span>
+                        <span class="text-lg font-bold text-blue-600">Peohai</span>
+                    </div>
                     </a>
                 </div>
                 <!-- Hamburger Start -->

@@ -1,21 +1,25 @@
 <x-home>
     <!-- Hero Section Start -->
-    <section id="beranda" class="py-8 lg:py-16 bg-gray-200 rounded-xl md:mx-4">
-        <div class="container">
-            <div class="mb-10 flex flex-wrap text-center">
-                <div class="w-full">
-                    <hr class="bg-sea mb-4 h-1 w-32 border-0 md:h-2" />
-                    <p class="mb-4 text-6xl font-bold leading-none tracking-wide text-blue-500">
-                        Kirim barangmu dengan cara mudah!
-                    </p>
-                </div>
-                <div class="w-full">
-                    <p class="mb-10 mt-7 font-medium leading-relaxed ">
-                        Percayakan pengiriman Anda kepada kami. Layanan ekspedisi cepat, aman, dan terpercaya ke seluruh
-                        Indonesia!
-                    </p>
-                </div>
+    <section id="beranda" class="py-8 lg:py-16 rounded-xl md:mx-4 relative overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="/img/background2.png" alt="Background" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-br from-blue-500/30 via-white/70 to-red-500/30"></div>
+        </div>
+         <div class="container relative z-10">
+        <div class="mb-10 flex flex-wrap text-center">
+            <div class="w-full">
+                <hr class="bg-sea mb-4 h-1 w-32 border-0 md:h-2 mx-auto" />
+                <p class="mb-4 text-6xl font-bold leading-none tracking-wide text-blue-500">
+                    Kirim barangmu dengan cara mudah!
+                </p>
             </div>
+            <div class="w-full">
+                <p class="mb-10 mt-7 font-medium leading-relaxed ">
+                    Percayakan pengiriman Anda kepada kami. Layanan ekspedisi cepat, aman, dan terpercaya ke seluruh
+                    Indonesia!
+                </p>
+            </div>
+        </div>
             <div class="w-full">
                 <div class="grid grid-cols-1 gap-6 lg:grid-cols-6 items-stretch">
                     <!-- Kolom kiri -->
