@@ -1,6 +1,6 @@
 <x-home>
     <!-- Hero Section Start -->
-    <section id="beranda" class="py-8 lg:py-16 rounded-xl md:mx-4 relative overflow-hidden">
+    <section id="beranda" class="pt-32 pb-8 lg:pt-40 lg:pb-16 bg-gray-200 rounded-xl relative overflow-hidden">
         <div class="absolute inset-0 z-0">
             <img src="/img/background2.png" alt="Background" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-br from-blue-500/30 via-white/70 to-red-500/30"></div>
