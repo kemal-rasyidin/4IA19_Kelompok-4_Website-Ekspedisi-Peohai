@@ -17,7 +17,7 @@
 
 <body>
     <!-- Header Section Start -->
-    <header class="flex w-full items-center bg-black/50 fixed backdrop-blur-md top-0 left-0 z-50 shadow-md">
+    <header class="flex w-full items-center bg-ink backdrop-blur-md top-0 left-0 z-50 shadow-md">
         <div class="container">
             <div class="relative flex items-center justify-between">
                 <div class="px-0">

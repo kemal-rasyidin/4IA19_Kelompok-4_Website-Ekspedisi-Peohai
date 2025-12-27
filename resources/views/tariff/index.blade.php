@@ -1,10 +1,16 @@
 <x-home>
-    <section id="form" class="py-8 mb-8 lg:py-16 bg-gray-200 rounded-xl md:mx-4">
-        <div class="container">
+    <section id="form" class="py-8 lg:py-16 relative overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="/img/background2.png" alt="Background Ekspedisi" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-br from-black/60 via-black/50 to-blue-900/60"></div>
+        </div>
+    
+    <!-- Content -->
+        <div class="container relative z-10">
             <div class="mb-10 flex flex-wrap text-center">
                 <div class="w-full">
                     <hr class="bg-sea mb-4 h-1 w-32 border-0 md:h-2" />
-                    <p class="mb-4 text-6xl font-bold leading-none tracking-wide text-blue-500">
+                    <p class="mb-4 text-5xl lg:text-6xl font-bold leading-tight tracking-wide text-white drop-shadow-lg" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.8)">
                         Simulasi Biaya Pengiriman Kontainer
                     </p>
                 </div>
