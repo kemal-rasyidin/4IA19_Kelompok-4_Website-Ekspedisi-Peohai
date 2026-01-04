@@ -22,8 +22,8 @@
             </div>
             <!-- CTA Buttons -->
             <div class="w-full flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a href="#contact" class="inline-block px-8 py-4 text-lg font-semibold text-white bg-orange-500 rounded-full duration-300 ease-in-out hover:bg-orange-600 hover:shadow-2xl transform hover:scale-105 min-w-[200px] text-center">
-                    Hubungi Kami
+                <a href="/simulasi-tarif" class="inline-block px-8 py-4 text-lg font-semibold text-white bg-orange-500 rounded-full duration-300 ease-in-out hover:bg-orange-600 hover:shadow-2xl transform hover:scale-105 min-w-[200px] text-center">
+                    Cek Tarif Pengiriman
                 </a>
                 <a href="/lacak" class="inline-block px-8 py-4 text-lg font-semibold text-white bg-transparent border-2 border-white rounded-full duration-300 ease-in-out hover:bg-white hover:text-blue-900 hover:shadow-2xl transform hover:scale-105 min-w-[200px] text-center">
                     Lacak Pengiriman
@@ -52,22 +52,35 @@
                     </div>
                 </div>
 
-                <!-- Kolom kanan -->
+                <!-- Kolom kanan (versi lebih elegan & profesional) -->
                 <div class="col-span-1 lg:col-span-3 h-full">
-                    <div class="rounded-lg bg-white/95 backdrop-blur-sm p-8 flex flex-col justify-center h-full space-y-6 text-center shadow-xl">
-                        <p class="text-gray-700 leading-relaxed text-lg">
-                            Butuh bantuan atau informasi lebih lanjut? Hubungi admin kami sekarang!
-                        </p>
-                        <div class="flex flex-col sm:flex-row gap-3 justify-center">
-                            <a href="#contact" class="inline-block px-6 py-3 text-base font-medium text-white bg-orange-500 rounded-full duration-300 ease-in-out hover:bg-orange-600 hover:shadow-lg">
-                                Hubungi Kami
-                            </a>
-                            <a href="/simulasi-tarif" class="inline-block px-6 py-3 text-base font-medium text-blue-600 bg-blue-50 rounded-full duration-300 ease-in-out hover:bg-blue-100 hover:shadow-lg border border-blue-200">
-                                Cek Tarif Pengiriman
-                            </a>
-                        </div>
+                <div role="region" aria-labelledby="help-heading"
+                    class="rounded-2xl bg-white/90 backdrop-blur-sm p-8 flex flex-col justify-center h-full space-y-4 text-center shadow-lg border border-slate-100">
+                    
+                    <h3 id="help-heading" class="text-xl font-semibold text-slate-800">
+                    Butuh Bantuan? Kami Siap Membantu
+                    </h3>
+
+                    <p class="text-slate-600 leading-relaxed text-base max-w-xl mx-auto">
+                    Butuh informasi lebih lanjut atau estimasi cepat? Hubungi admin kami atau gunakan fitur simulasi tarif untuk mendapatkan perkiraan biaya secara instan.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                    <a href="#contact"
+                        class="inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-white bg-orange-500 rounded-full shadow-md hover:bg-orange-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-300 transition">
+                        <svg class="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h4l3 8 4-16 3 8h4" />
+                        </svg>
+                        Hubungi Kami
+                    </a>
                     </div>
+
+                    <p class="text-xs text-slate-400">
+                    Layanan pelanggan aktif: Senin–Jumat, 09:00–17:00. Sabtu 09:00-13:00.
+                    </p>
                 </div>
+                </div>
+
             </div>
         </div>
 
