@@ -7,6 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin Peohai</title>
 
+    <!--Icons -->
+    <link rel="icon" href="{{ asset('img/logo2.png') }}" type="image/png">
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <style>
@@ -173,7 +176,8 @@
                                                 </path>
                                             </svg>
                                             <a href="{{ route('analytics_dashboard') }}"
-                                                class="ml-2 text-gray-500 hover:text-gray-700">Dashboard {{ Auth::user()->role }}</a>
+                                                class="ml-2 text-gray-500 hover:text-gray-700">Dashboard
+                                                {{ Auth::user()->role }}</a>
                                         </div>
                                     </li>
 
