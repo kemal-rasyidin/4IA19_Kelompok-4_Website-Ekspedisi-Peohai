@@ -238,77 +238,303 @@
 </section>
     <!-- Contact Section End -->
 
-    <!-- Layanan Section Start -->
-    <section id="layanan" class="py-8 lg:py-16">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-row flex-wrap">
-                <div class="mb-10 w-full">
-                    <p class="text-5xl font-bold text-gray-900">
-                        Jenis Layanan Kami
-                    </p>
-                </div>
-                <div class="grid grid-cols-1 gap-8 lg:grid-cols-2 w-full">
-                    <!-- Container 20ft -->
-                    <div class="rounded-lg bg-gray-50 p-8 shadow-sm hover:shadow-md transition-shadow">
-                        <div class="flex items-start gap-6">
-                            <div class="flex-1">
-                                <div class="flex items-center gap-3 mb-4">
-                                    <svg class="h-10 w-10 text-blue-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                        <path fill="currentColor" d="M5 21q-.825 0-1.412-.587T3 19V6.525q0-.35.113-.675t.337-.6L4.7 3.725q.275-.35.687-.538T6.25 3h11.5q.45 0 .863.188t.687.537l1.25 1.525q.225.275.338.6t.112.675V19q0 .825-.587 1.413T19 21zM5.4 6h13.2l-.85-1H6.25z" />
-                                    </svg>
-                                    <h5 class="text-2xl font-semibold tracking-tight text-gray-900">
-                                        Container 20ft
-                                    </h5>
+<!-- Layanan Section Start - Modern Design -->
+<section id="layanan" class="py-16 lg:py-24 bg-gradient-to-b from-slate-50 to-white">
+    <div class="container mx-auto px-4 lg:px-8">
+        <!-- Section Header - Elegant -->
+        <div class="text-center mb-16 lg:mb-20">
+            <div class="inline-flex items-center gap-3 mb-4">
+                <div class="h-0.5 w-8 bg-gradient-to-r from-blue-500 to-emerald-500"></div>
+                <span class="text-sm font-semibold uppercase tracking-wider text-blue-600 bg-blue-50 px-3 py-1 rounded-full">
+                    Layanan Unggulan
+                </span>
+                <div class="h-0.5 w-8 bg-gradient-to-r from-emerald-500 to-blue-500"></div>
+            </div>
+            
+            <h2 class="text-4xl lg:text-4xl font-bold text-slate-900 mb-4 leading-tight">
+                Solusi Logistik
+                <span class="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-500">
+                    Yang Tepat untuk Bisnis Anda
+                </span>
+            </h2>
+            
+            <p class="text-lg lg:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+                Pilih layanan kontainer yang sesuai dengan kebutuhan pengiriman Anda. 
+            </p>
+        </div>
+
+        <!-- Services Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
+            
+            <!-- Container 20ft - Modern Card -->
+            <div class="group relative overflow-hidden rounded-2xl bg-white shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+                <!-- Decorative Corner -->
+                <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-blue-500/10 to-emerald-500/10 rounded-bl-full"></div>
+                
+                <div class="p-8 lg:p-10">
+                    <!-- Header with Icon -->
+                    <div class="flex items-start justify-between mb-6">
+                        <div class="flex items-center gap-4">
+                            <div class="p-3 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl shadow-lg">
+                                <svg class="w-8 h-8 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path fill="currentColor" d="M5 21q-.825 0-1.412-.587T3 19V6.525q0-.35.113-.675t.337-.6L4.7 3.725q.275-.35.687-.538T6.25 3h11.5q.45 0 .863.188t.687.537l1.25 1.525q.225.275.338.6t.112.675V19q0 .825-.587 1.413T19 21zM5.4 6h13.2l-.85-1H6.25z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl lg:text-3xl font-bold text-slate-900">Container 20ft</h3>
+                                <p class="text-sm text-blue-600 font-medium mt-1">Standard Dry Container</p>
+                            </div>
+                        </div>
+                        <span class="px-3 py-1 text-sm font-semibold text-white bg-gradient-to-r from-blue-500 to-blue-600 rounded-full">
+                            Paling Populer
+                        </span>
+                    </div>
+
+                    <!-- Image Container - Diperbesar -->
+                    <div class="relative mb-8 overflow-hidden rounded-xl group-hover:scale-[1.02] transition-transform duration-500 bg-gradient-to-br from-slate-50 to-blue-50">
+                        <div class="flex items-center justify-center h-[280px] lg:h-[320px] p-4">
+                            <img src="/img/20ft.png" 
+                                 alt="Container 20ft - Pengiriman Standar" 
+                                 class="w-full h-full object-contain rounded-lg"
+                                 onerror="this.src='https://images.unsplash.com/photo-1602002418816-5c0aeef426aa?auto=format&fit=crop&q=80&w=1170'">
+                        </div>
+                    </div>
+
+                    <!-- Specifications Grid -->
+                    <div class="mb-8">
+                        <h4 class="text-lg font-semibold text-slate-800 mb-4 flex items-center gap-2">
+                            <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            Spesifikasi Teknis
+                        </h4>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-blue-50/50 p-4 rounded-lg border border-blue-100">
+                                <p class="text-xs font-semibold text-blue-600 uppercase tracking-wider mb-1">Dimensi</p>
+                                <p class="text-lg font-bold text-slate-800">5,9 × 2,4 × 2,7 m</p>
+                                <p class="text-sm text-slate-600 mt-1">Panjang × Lebar × Tinggi</p>
+                            </div>
+                            
+                            <div class="bg-emerald-50/50 p-4 rounded-lg border border-emerald-100">
+                                <p class="text-xs font-semibold text-emerald-600 uppercase tracking-wider mb-1">Kapasitas</p>
+                                <p class="text-lg font-bold text-slate-800">30,480 kg</p>
+                                <p class="text-sm text-slate-600 mt-1">Berat Maksimum</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4 bg-slate-50 p-4 rounded-lg">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-sm font-medium text-slate-700">Berat Kosong</p>
+                                    <p class="text-lg font-semibold text-slate-900">2,315 kg</p>
                                 </div>
-                                
-                                <div class="mb-4">
-                                    <img src="/img/20ft.png" 
-                                         alt="Container 20ft" 
-                                         class="w-full h-auto rounded-lg" />
-                                </div>
-                                
-                                <div class="space-y-2 text-gray-700">
-                                    <p class="font-semibold text-lg text-gray-900">Spesifikasi:</p>
-                                    <p><span class="font-medium">Dimensi:</span> 5,9m (P) x 2,4m (L) x 2,7m (T)</p>
-                                    <p><span class="font-medium">Berat Kosong:</span> 2,315 kg</p>
-                                    <p><span class="font-medium">Berat Maksimum:</span> 30,480 kg</p>
+                                <div class="text-right">
+                                    <p class="text-sm font-medium text-slate-700">Volume</p>
+                                    <p class="text-lg font-semibold text-slate-900">33.2 m³</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Container 40ft -->
-                    <div class="rounded-lg bg-gray-50 p-8 shadow-sm hover:shadow-md transition-shadow">
-                        <div class="flex items-start gap-6">
-                            <div class="flex-1">
-                                <div class="flex items-center gap-3 mb-4">
-                                    <svg class="h-10 w-10 text-blue-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                        <path fill="currentColor" d="M5 21q-.825 0-1.412-.587T3 19V6.525q0-.35.113-.675t.337-.6L4.7 3.725q.275-.35.687-.538T6.25 3h11.5q.45 0 .863.188t.687.537l1.25 1.525q.225.275.338.6t.112.675V19q0 .825-.587 1.413T19 21zM5.4 6h13.2l-.85-1H6.25z" />
-                                    </svg>
-                                    <h5 class="text-2xl font-semibold tracking-tight text-gray-900">
-                                        Container 40ft
-                                    </h5>
+                    <!-- Features List -->
+                    <div class="space-y-3 mb-8">
+                        <h4 class="text-lg font-semibold text-slate-800 mb-4">Keunggulan Layanan:</h4>
+                        <div class="flex items-center gap-3 text-slate-700">
+                            <svg class="w-5 h-5 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>Cocok untuk barang dengan volume menengah</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-slate-700">
+                            <svg class="w-5 h-5 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>Biaya pengiriman lebih efisien</span>
+                        </div>
+                    </div>
+
+                    <!-- CTA Button -->
+                    <div class="pt-4 border-t border-slate-100">
+                        <a href="/simulasi-tarif?type=20ft" 
+                           class="group inline-flex items-center justify-center w-full px-6 py-3 text-base font-semibold text-white bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 rounded-lg shadow-md hover:shadow-xl transition-all duration-300">
+                            <svg class="w-5 h-5 mr-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+                            </svg>
+                            Simulasi Tarif 20ft
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Container 40ft - Modern Card -->
+            <div class="group relative overflow-hidden rounded-2xl bg-white shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+                <!-- Decorative Corner -->
+                <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-emerald-500/10 to-blue-500/10 rounded-bl-full"></div>
+                
+                <div class="p-8 lg:p-10">
+                    <!-- Header with Icon -->
+                    <div class="flex items-start justify-between mb-6">
+                        <div class="flex items-center gap-4">
+                            <div class="p-3 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl shadow-lg">
+                                <svg class="w-8 h-8 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path fill="currentColor" d="M19 8H5v11h14zm-3-5v2H8V3H6v2H5a2 2 0 00-2 2v12a2 2 0 002 2h14a2 2 0 002-2V7a2 2 0 00-2-2h-1V3z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl lg:text-3xl font-bold text-slate-900">Container 40ft</h3>
+                                <p class="text-sm text-emerald-600 font-medium mt-1">High Capacity Container</p>
+                            </div>
+                        </div>
+                        <span class="px-3 py-1 text-sm font-semibold text-white bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-full">
+                            Kapasitas Besar
+                        </span>
+                    </div>
+
+                    <!-- Image Container - Diperbesar -->
+                    <div class="relative mb-8 overflow-hidden rounded-xl group-hover:scale-[1.02] transition-transform duration-500 bg-gradient-to-br from-slate-50 to-emerald-50">
+                        <div class="flex items-center justify-center h-[280px] lg:h-[320px] p-4">
+                            <img src="/img/40ft.png" 
+                                 alt="Container 40ft - Pengiriman Kapasitas Besar" 
+                                 class="w-full h-full object-contain rounded-lg"
+                                 onerror="this.src='https://images.unsplash.com/photo-1586511925558-a4c6376fe65f?auto=format&fit=crop&q=80&w=1170'">
+                        </div>
+                    </div>
+
+                    <!-- Specifications Grid -->
+                    <div class="mb-8">
+                        <h4 class="text-lg font-semibold text-slate-800 mb-4 flex items-center gap-2">
+                            <svg class="w-5 h-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            Spesifikasi Teknis
+                        </h4>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-emerald-50/50 p-4 rounded-lg border border-emerald-100">
+                                <p class="text-xs font-semibold text-emerald-600 uppercase tracking-wider mb-1">Dimensi</p>
+                                <p class="text-lg font-bold text-slate-800">12 × 2,4 × 2,7 m</p>
+                                <p class="text-sm text-slate-600 mt-1">Panjang × Lebar × Tinggi</p>
+                            </div>
+                            
+                            <div class="bg-blue-50/50 p-4 rounded-lg border border-blue-100">
+                                <p class="text-xs font-semibold text-blue-600 uppercase tracking-wider mb-1">Kapasitas</p>
+                                <p class="text-lg font-bold text-slate-800">32,500 kg</p>
+                                <p class="text-sm text-slate-600 mt-1">Berat Maksimum</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4 bg-slate-50 p-4 rounded-lg">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-sm font-medium text-slate-700">Berat Kosong</p>
+                                    <p class="text-lg font-semibold text-slate-900">3,940 kg</p>
                                 </div>
-                                
-                                <div class="mb-4">
-                                    <img src="/img/40ft.png" 
-                                         alt="Container 40ft" 
-                                         class="w-full h-auto rounded-lg" />
-                                </div>
-                                
-                                <div class="space-y-2 text-gray-700">
-                                    <p class="font-semibold text-lg text-gray-900">Spesifikasi:</p>
-                                    <p><span class="font-medium">Dimensi:</span> 12m (P) x 2,4m (L) x 2,7m (T)</p>
-                                    <p><span class="font-medium">Berat Kosong:</span> 3,940 kg</p>
-                                    <p><span class="font-medium">Berat Maksimum:</span> 32,500 kg</p>
+                                <div class="text-right">
+                                    <p class="text-sm font-medium text-slate-700">Volume</p>
+                                    <p class="text-lg font-semibold text-slate-900">67.7 m³</p>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Features List -->
+                    <div class="space-y-3 mb-8">
+                        <h4 class="text-lg font-semibold text-slate-800 mb-4">Keunggulan Layanan:</h4>
+                        <div class="flex items-center gap-3 text-slate-700">
+                            <svg class="w-5 h-5 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>Ideal untuk pengiriman barang dalam jumlah besar</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-slate-700">
+                            <svg class="w-5 h-5 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>Efisiensi biaya per volume lebih tinggi</span>
+                        </div>
+                    </div>
+
+                    <!-- CTA Button -->
+                    <div class="pt-4 border-t border-slate-100">
+                        <a href="/simulasi-tarif?type=40ft" 
+                           class="group inline-flex items-center justify-center w-full px-6 py-3 text-base font-semibold text-white bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 rounded-lg shadow-md hover:shadow-xl transition-all duration-300">
+                            <svg class="w-5 h-5 mr-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+                            </svg>
+                            Simulasi Tarif 40ft
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- Pilar Section End -->
+
+        <!-- Comparison Table -->
+        <div class="mt-20 bg-white rounded-2xl shadow-lg overflow-hidden">
+            <div class="bg-gradient-to-r from-slate-900 to-slate-800 px-8 py-6">
+                <h3 class="text-2xl font-bold text-white flex items-center gap-3">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                    </svg>
+                    Perbandingan Spesifikasi
+                </h3>
+                <p class="text-slate-300 mt-2">Pilih yang sesuai dengan kebutuhan logistik Anda</p>
+            </div>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead class="bg-slate-50">
+                        <tr>
+                            <th class="px-6 py-4 text-left text-sm font-semibold text-slate-700">Spesifikasi</th>
+                            <th class="px-6 py-4 text-center text-sm font-semibold text-blue-600">Container 20ft</th>
+                            <th class="px-6 py-4 text-center text-sm font-semibold text-emerald-600">Container 40ft</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100">
+                        <tr>
+                            <td class="px-6 py-4 text-sm font-medium text-slate-700">Dimensi (P×L×T)</td>
+                            <td class="px-6 py-4 text-center">5.9 × 2.4 × 2.7 m</td>
+                            <td class="px-6 py-4 text-center">12 × 2.4 × 2.7 m</td>
+                        </tr>
+                        <tr class="bg-slate-50/50">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-700">Berat Maksimum</td>
+                            <td class="px-6 py-4 text-center font-semibold">30,480 kg</td>
+                            <td class="px-6 py-4 text-center font-semibold">32,500 kg</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 text-sm font-medium text-slate-700">Volume</td>
+                            <td class="px-6 py-4 text-center">33.2 m³</td>
+                            <td class="px-6 py-4 text-center">67.7 m³</td>
+                        </tr>
+                        <tr class="bg-slate-50/50">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-700">Efisiensi Biaya</td>
+                            <td class="px-6 py-4 text-center">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                                    Optimal
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 text-center">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
+                                    Sangat Efisien
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="bg-slate-50 px-6 py-4 text-center">
+                <a href="#contact" 
+                   class="inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors">
+                    Butuh rekomendasi khusus?
+                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Layanan Section End -->
 
 </x-home>
