@@ -127,30 +127,143 @@ class AnalyticsDashboardController extends Controller
             ['status' => 'Menunggu', 'total' => $pendingCount],
         ];
 
-        // 3. Monthly Shipments (6 bulan terakhir atau berdasarkan filter)
-        if ($filterTahun && $filterBulan) {
-            // Jika ada filter spesifik, ambil data 6 bulan sebelumnya
-            $startDate = Carbon::create($filterTahun, $filterBulan, 1)->subMonths(5);
-            $endDate = Carbon::create($filterTahun, $filterBulan, 1)->endOfMonth();
+        // 3. Monthly Shipments - berdasarkan entry_period_id
+        $bulanIndonesia = [
+            1 => 'Jan',
+            2 => 'Feb',
+            3 => 'Mar',
+            4 => 'Apr',
+            5 => 'Mei',
+            6 => 'Jun',
+            7 => 'Jul',
+            8 => 'Agu',
+            9 => 'Sep',
+            10 => 'Okt',
+            11 => 'Nov',
+            12 => 'Des'
+        ];
 
-            $monthlyShipments = EntryMain::select(
-                DB::raw('DATE_FORMAT(tgl_stuffing, "%Y-%m") as month'),
-                DB::raw('count(*) as total')
-            )
-                ->whereBetween('tgl_stuffing', [$startDate, $endDate])
-                ->groupBy('month')
-                ->orderBy('month')
-                ->get();
-        } else {
-            $monthlyShipments = (clone $baseQuery)
-                ->select(
-                    DB::raw('DATE_FORMAT(created_at, "%Y-%m") as month'),
-                    DB::raw('count(*) as total')
-                )
-                ->where('created_at', '>=', now()->subMonths(6))
-                ->groupBy('month')
-                ->orderBy('month')
-                ->get();
+        $monthlyShipments = EntryMain::select(
+            'entry_periods.tahun',
+            'entry_periods.bulan',
+            DB::raw('count(entry_mains.id) as total')
+        )
+            ->join('entry_periods', 'entry_mains.entry_period_id', '=', 'entry_periods.id')
+            ->groupBy('entry_periods.id', 'entry_periods.tahun', 'entry_periods.bulan')
+            ->orderBy('entry_periods.tahun')
+            ->orderBy('entry_periods.bulan')
+            ->limit(12)
+            ->get()
+            ->map(function ($item) use ($bulanIndonesia) {
+                $date = Carbon::create($item->tahun, $item->bulan, 1);
+
+                return (object) [
+                    'month' => $date->format('Y-m'), // Format: "2026-01" - untuk parse
+                    'month_label' => $bulanIndonesia[$item->bulan] . ' ' . $item->tahun, // Format: "Jan 2026" - untuk display
+                    'total' => $item->total,
+                    'tahun' => $item->tahun,
+                    'bulan' => $item->bulan
+                ];
+            });
+
+        // Prediction
+        // Prediction - 2 bulan ke depan
+        $predictedNextMonth = null;
+        $predictedSecondMonth = null;
+        $nextMonthLabel = null;
+        $secondMonthLabel = null;
+        $nextMonthLabelDisplay = null;
+        $secondMonthLabelDisplay = null;
+        $predictionAccuracy = null;
+
+        if ($monthlyShipments->count() >= 2) {
+            // Ambil hanya 2 bulan terakhir untuk prediksi
+            $last2Months = $monthlyShipments->slice(-2);
+
+            $y = $last2Months->pluck('total')->values()->toArray();
+            $n = count($y);
+            $x = range(1, $n);
+
+            $sumX = array_sum($x);
+            $sumY = array_sum($y);
+            $sumXY = 0;
+            $sumX2 = 0;
+
+            for ($i = 0; $i < $n; $i++) {
+                $sumXY += $x[$i] * $y[$i];
+                $sumX2 += $x[$i] ** 2;
+            }
+
+            $denominator = ($n * $sumX2) - ($sumX ** 2);
+
+            if ($denominator != 0) {
+                $slope = (($n * $sumXY) - ($sumX * $sumY)) / $denominator;
+                $intercept = ($sumY - ($slope * $sumX)) / $n;
+
+                // Prediksi bulan ke-3 (bulan depan)
+                $predictedNextMonth = round(($slope * ($n + 1)) + $intercept);
+                $predictedNextMonth = max(0, $predictedNextMonth);
+
+                // Prediksi bulan ke-4 (2 bulan ke depan)
+                $predictedSecondMonth = round(($slope * ($n + 2)) + $intercept);
+                $predictedSecondMonth = max(0, $predictedSecondMonth);
+
+                // Hitung label bulan berikutnya
+                $lastMonth = $monthlyShipments->last();
+
+                // Bulan pertama prediksi
+                $nextMonth = Carbon::create($lastMonth->tahun, $lastMonth->bulan, 1)->addMonth();
+                $nextMonthLabel = $nextMonth->format('Y-m');
+                $nextMonthLabelDisplay = $bulanIndonesia[$nextMonth->month] . ' ' . $nextMonth->year;
+
+                // Bulan kedua prediksi
+                $secondMonth = Carbon::create($lastMonth->tahun, $lastMonth->bulan, 1)->addMonths(2);
+                $secondMonthLabel = $secondMonth->format('Y-m');
+                $secondMonthLabelDisplay = $bulanIndonesia[$secondMonth->month] . ' ' . $secondMonth->year;
+
+                // Hitung akurasi menggunakan MAPE (Mean Absolute Percentage Error)
+                // Lebih cocok untuk data kecil
+                $totalPercentageError = 0;
+                $validCount = 0;
+
+                for ($i = 0; $i < $n; $i++) {
+                    $yPredicted = ($slope * $x[$i]) + $intercept;
+                    if ($y[$i] != 0) { // Hindari division by zero
+                        $percentageError = abs(($y[$i] - $yPredicted) / $y[$i]) * 100;
+                        $totalPercentageError += $percentageError;
+                        $validCount++;
+                    }
+                }
+
+                if ($validCount > 0) {
+                    $mape = $totalPercentageError / $validCount;
+                    // Akurasi = 100 - MAPE
+                    // Tapi batasi antara 0-100
+                    $predictionAccuracy = max(0, min(100, 100 - $mape));
+                    $predictionAccuracy = round($predictionAccuracy, 1);
+                } else {
+                    // Fallback: hitung menggunakan R² dengan penyesuaian
+                    $yMean = array_sum($y) / $n;
+                    $ssTotal = 0;
+                    $ssResidual = 0;
+
+                    for ($i = 0; $i < $n; $i++) {
+                        $yPredicted = ($slope * $x[$i]) + $intercept;
+                        $ssTotal += ($y[$i] - $yMean) ** 2;
+                        $ssResidual += ($y[$i] - $yPredicted) ** 2;
+                    }
+
+                    if ($ssTotal > 0) {
+                        $rSquared = 1 - ($ssResidual / $ssTotal);
+                        // Konversi R² ke persentase dan pastikan tidak negatif
+                        $predictionAccuracy = max(0, min(100, $rSquared * 100));
+                        $predictionAccuracy = round($predictionAccuracy, 1);
+                    } else {
+                        // Jika variance = 0 (semua data sama), berarti prediksi sempurna
+                        $predictionAccuracy = 100;
+                    }
+                }
+            }
         }
 
         // 4. Top Destinations
@@ -237,7 +350,14 @@ class AnalyticsDashboardController extends Controller
             'shipmentsByPelayaran',
             'recentShipments',
             'upcomingETD',
-            'revenueByCustomer'
+            'revenueByCustomer',
+            'predictedNextMonth',
+            'predictedSecondMonth',  // TAMBAHKAN
+            'nextMonthLabel',
+            'secondMonthLabel',      // TAMBAHKAN
+            'nextMonthLabelDisplay',
+            'secondMonthLabelDisplay', // TAMBAHKAN
+            'predictionAccuracy'
         ));
     }
 

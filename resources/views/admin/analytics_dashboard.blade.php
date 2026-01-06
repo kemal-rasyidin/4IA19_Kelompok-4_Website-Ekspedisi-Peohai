@@ -140,52 +140,13 @@
                             <div class="mt-4 flex items-center justify-between">
                                 <div class="flex items-center space-x-2">
                                     <div class="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-                                    <p class="text-sm"><span class="text-green-600">+{{ $shipmentsThisMonth }}</span>
-                                        bulan ini</p>
+                                    <p class="text-sm">Jumlah logistik</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            {{-- <div class="group relative bg-white overflow-hidden shadow-lg rounded-2xl border border-gray-200 hover:shadow-2xl hover:border-green-300 transition-all duration-300 transform hover:-translate-y-1 animate-slideInRight"
-                style="animation-delay: 0.2s">
-                <div
-                    class="absolute inset-0 bg-gradient-to-br from-green-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                </div>
-                <div class="relative p-6">
-                    <div class="flex items-center justify-between">
-                        <div class="flex-1">
-                            <div class="flex items-center space-x-4">
-                                <div class="flex-shrink-0">
-                                    <div
-                                        class="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow duration-300">
-                                        <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor"
-                                            viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div class="flex-1">
-                                    <p class="text-sm font-medium text-gray-600 mb-1">Total Keuangan</p>
-                                    <p class="text-2xl font-bold text-gray-900">
-                                        Rp {{ number_format($totalRevenue, 0, ',', '.') }}</p>
-                                </div>
-                            </div>
-                            <div class="mt-4 flex items-center justify-between">
-                                <div class="flex items-center space-x-2">
-                                    <div class="w-2 h-2 bg-green-500 rounded-full"></div>
-                                    <p class="text-sm"><span class="text-green-600">Rp
-                                            {{ number_format($revenueThisMonth, 0, ',', '.') }}</span>
-                                        bulan ini</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
 
             <div class="group relative bg-white overflow-hidden shadow-lg rounded-2xl border border-gray-200 hover:shadow-2xl hover:border-yellow-300 transition-all duration-300 transform hover:-translate-y-1 animate-slideInRight"
                 style="animation-delay: 0.4s">
@@ -261,6 +222,84 @@
                 </div>
             </div>
         </div>
+
+        @if ($predictedNextMonth !== null)
+            <div
+                class="bg-gradient-to-br from-indigo-50 to-purple-50 shadow-lg rounded-2xl overflow-hidden border-2 border-indigo-200">
+                <div class="p-6">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <div class="flex items-center space-x-3 mb-4">
+                                <div
+                                    class="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
+                                    <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-bold text-gray-900">Prediksi Logistik</h3>
+                                    <p class="text-xs text-gray-500">Berdasarkan 2 bulan terakhir</p>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <!-- Prediksi Bulan 1 -->
+                                <div class="bg-white rounded-xl p-4 shadow-md border-l-4 border-indigo-500">
+                                    <p class="text-xs font-medium text-gray-600 mb-1">{{ $nextMonthLabelDisplay }}</p>
+                                    <p
+                                        class="text-3xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                                        {{ number_format($predictedNextMonth) }}
+                                    </p>
+                                    <p class="text-xs text-gray-500 mt-1">shipments</p>
+                                </div>
+
+                                <!-- Prediksi Bulan 2 -->
+                                @if ($predictedSecondMonth !== null)
+                                    <div class="bg-white rounded-xl p-4 shadow-md border-l-4 border-purple-500">
+                                        <p class="text-xs font-medium text-gray-600 mb-1">
+                                            {{ $secondMonthLabelDisplay }}</p>
+                                        <p
+                                            class="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                                            {{ number_format($predictedSecondMonth) }}
+                                        </p>
+                                        <p class="text-xs text-gray-500 mt-1">shipments</p>
+                                    </div>
+                                @endif
+
+                                <!-- Tingkat Akurasi -->
+                                <div class="bg-white rounded-xl p-4 shadow-md">
+                                    <p class="text-xs font-medium text-gray-600 mb-1">Tingkat Akurasi</p>
+                                    <div class="flex items-end space-x-2">
+                                        <p
+                                            class="text-3xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
+                                            {{ $predictionAccuracy }}%
+                                        </p>
+                                    </div>
+                                    <div class="mt-2 bg-gray-200 rounded-full h-2 overflow-hidden">
+                                        <div class="bg-gradient-to-r from-green-500 to-emerald-500 h-full transition-all duration-500"
+                                            style="width: {{ $predictionAccuracy }}%"></div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div
+                                class="mt-4 flex items-center space-x-2 text-xs text-gray-600 bg-white rounded-lg p-3">
+                                <svg class="h-4 w-4 text-indigo-500" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span>Prediksi menggunakan regresi linear berdasarkan tren 2 bulan terakhir. Akurasi
+                                    dihitung dengan metode MAPE (Mean Absolute Percentage Error)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
 
         <!-- Charts Row 1 -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -436,185 +475,256 @@
     @stack('scripts')
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        // Monthly Shipments Chart
-        const monthlyCtx = document.getElementById('monthlyChart').getContext('2d');
-        new Chart(monthlyCtx, {
-            type: 'line',
-            data: {
-                labels: [
-                    @foreach ($monthlyShipments as $month)
-                        '{{ \Carbon\Carbon::parse($month->month)->format('M Y') }}',
-                    @endforeach
-                ],
-                datasets: [{
-                    label: 'Shipments',
-                    data: [
-                        @foreach ($monthlyShipments as $month)
-                            {{ $month->total }},
-                        @endforeach
-                    ],
-                    borderColor: 'rgb(59, 130, 246)',
-                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
-                    tension: 0.4,
-                    fill: true
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: true,
-                plugins: {
-                    legend: {
-                        display: false
-                    }
+        // Monthly Shipments Chart with 2 Predictions
+        const monthlyCtx = document.getElementById('monthlyChart');
+
+        if (monthlyCtx) {
+            const ctx = monthlyCtx.getContext('2d');
+
+            const historicalData = [
+                @foreach ($monthlyShipments as $month)
+                    {{ $month->total }},
+                @endforeach
+            ];
+
+            const labels = [
+                @foreach ($monthlyShipments as $month)
+                    '{{ $month->month_label }}',
+                @endforeach
+                @if (isset($predictedNextMonth) && $predictedNextMonth !== null)
+                    '{{ $nextMonthLabelDisplay }}',
+                @endif
+                @if (isset($predictedSecondMonth) && $predictedSecondMonth !== null)
+                    {{ $predictedSecondMonth }}
+                @endif
+            ];
+
+            const allData = [
+                ...historicalData,
+                @if (isset($predictedNextMonth) && $predictedNextMonth !== null)
+                    {{ $predictedNextMonth }},
+                @endif
+                @if (isset($predictedSecondMonth) && $predictedSecondMonth !== null)
+                    {{ $predictedSecondMonth }}
+                @endif
+            ];
+
+            const predictionStartIndex = historicalData.length - 1;
+
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Shipments',
+                        data: allData,
+                        borderColor: 'rgb(59, 130, 246)',
+                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                        tension: 0.4,
+                        fill: true,
+                        segment: {
+                            borderDash: ctx => {
+                                // Garis putus-putus untuk prediksi
+                                return ctx.p0DataIndex >= predictionStartIndex ? [5, 5] : [];
+                            },
+                            borderColor: ctx => {
+                                // Warna ungu untuk prediksi
+                                return ctx.p0DataIndex >= predictionStartIndex ? 'rgb(147, 51, 234)' :
+                                    'rgb(59, 130, 246)';
+                            }
+                        },
+                        pointBackgroundColor: (context) => {
+                            // Warna berbeda untuk titik prediksi
+                            return context.dataIndex >= historicalData.length ? 'rgb(147, 51, 234)' :
+                                'rgb(59, 130, 246)';
+                        },
+                        pointBorderColor: (context) => {
+                            return context.dataIndex >= historicalData.length ? 'rgb(147, 51, 234)' :
+                                'rgb(59, 130, 246)';
+                        },
+                        pointRadius: 5,
+                        pointHoverRadius: 7
+                    }]
                 },
-                scales: {
-                    y: {
-                        beginAtZero: true
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = 'Shipments: ' + context.parsed.y;
+                                    if (context.dataIndex >= historicalData.length) {
+                                        label += ' (Prediksi)';
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                stepSize: 1
+                            }
+                        }
                     }
                 }
-            }
-        });
+            });
+        }
 
         // Status Chart
-        const statusCtx = document.getElementById('statusChart').getContext('2d');
-        new Chart(statusCtx, {
-            type: 'doughnut',
-            data: {
-                labels: [
-                    @foreach ($shipmentsByStatus as $status)
-                        '{{ $status['status'] }}',
-                    @endforeach
-                ],
-                datasets: [{
-                    data: [
+        const statusCtx = document.getElementById('statusChart');
+        if (statusCtx) {
+            new Chart(statusCtx.getContext('2d'), {
+                type: 'doughnut',
+                data: {
+                    labels: [
                         @foreach ($shipmentsByStatus as $status)
-                            {{ $status['total'] }},
+                            '{{ $status['status'] }}',
                         @endforeach
                     ],
-                    backgroundColor: [
-                        'rgb(34, 197, 94)',
-                        'rgb(59, 130, 246)',
-                        'rgb(234, 179, 8)'
-                    ]
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: true,
-                plugins: {
-                    legend: {
-                        position: 'bottom'
+                    datasets: [{
+                        data: [
+                            @foreach ($shipmentsByStatus as $status)
+                                {{ $status['total'] }},
+                            @endforeach
+                        ],
+                        backgroundColor: [
+                            'rgb(34, 197, 94)',
+                            'rgb(59, 130, 246)',
+                            'rgb(234, 179, 8)'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
                     }
                 }
-            }
-        });
+            });
+        }
 
         // Destination Chart
-        const destCtx = document.getElementById('destinationChart').getContext('2d');
-        new Chart(destCtx, {
-            type: 'bar',
-            data: {
-                labels: [
-                    @foreach ($topDestinations as $dest)
-                        '{{ $dest->tujuan }}',
-                    @endforeach
-                ],
-                datasets: [{
-                    label: 'Shipments',
-                    data: [
+        const destCtx = document.getElementById('destinationChart');
+        if (destCtx) {
+            new Chart(destCtx.getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: [
                         @foreach ($topDestinations as $dest)
-                            {{ $dest->total }},
+                            '{{ $dest->tujuan }}',
                         @endforeach
                     ],
-                    backgroundColor: 'rgb(147, 51, 234)'
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: true,
-                plugins: {
-                    legend: {
-                        display: false
-                    }
+                    datasets: [{
+                        label: 'Shipments',
+                        data: [
+                            @foreach ($topDestinations as $dest)
+                                {{ $dest->total }},
+                            @endforeach
+                        ],
+                        backgroundColor: 'rgb(147, 51, 234)'
+                    }]
                 },
-                scales: {
-                    y: {
-                        beginAtZero: true
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
                     }
                 }
-            }
-        });
+            });
+        }
 
         // Pelayaran Chart
-        const pelayaranCtx = document.getElementById('pelayaranChart').getContext('2d');
-        new Chart(pelayaranCtx, {
-            type: 'bar',
-            data: {
-                labels: [
-                    @foreach ($shipmentsByPelayaran as $pel)
-                        '{{ $pel->pelayaran }}',
-                    @endforeach
-                ],
-                datasets: [{
-                    label: 'Shipments',
-                    data: [
+        const pelayaranCtx = document.getElementById('pelayaranChart');
+        if (pelayaranCtx) {
+            new Chart(pelayaranCtx.getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: [
                         @foreach ($shipmentsByPelayaran as $pel)
-                            {{ $pel->total }},
+                            '{{ $pel->pelayaran }}',
                         @endforeach
                     ],
-                    backgroundColor: 'rgb(239, 68, 68)'
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: true,
-                plugins: {
-                    legend: {
-                        display: false
-                    }
+                    datasets: [{
+                        label: 'Shipments',
+                        data: [
+                            @foreach ($shipmentsByPelayaran as $pel)
+                                {{ $pel->total }},
+                            @endforeach
+                        ],
+                        backgroundColor: 'rgb(239, 68, 68)'
+                    }]
                 },
-                scales: {
-                    y: {
-                        beginAtZero: true
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
                     }
                 }
-            }
-        });
+            });
+        }
 
         // Jenis Barang Chart
-        const jenisBarangCtx = document.getElementById('jenisBarangChart').getContext('2d');
-        new Chart(jenisBarangCtx, {
-            type: 'doughnut',
-            data: {
-                labels: [
-                    @foreach ($shipmentsByJenisBarang as $jenis)
-                        '{{ $jenis->jenis_barang }}',
-                    @endforeach
-                ],
-                datasets: [{
-                    data: [
+        const jenisBarangCtx = document.getElementById('jenisBarangChart');
+        if (jenisBarangCtx) {
+            new Chart(jenisBarangCtx.getContext('2d'), {
+                type: 'doughnut',
+                data: {
+                    labels: [
                         @foreach ($shipmentsByJenisBarang as $jenis)
-                            {{ $jenis->total }},
+                            '{{ $jenis->jenis_barang }}',
                         @endforeach
                     ],
-                    backgroundColor: [
-                        'rgb(59, 130, 246)',
-                        'rgb(16, 185, 129)',
-                        'rgb(245, 158, 11)',
-                        'rgb(239, 68, 68)',
-                        'rgb(139, 92, 246)'
-                    ]
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: true,
-                plugins: {
-                    legend: {
-                        position: 'bottom'
+                    datasets: [{
+                        data: [
+                            @foreach ($shipmentsByJenisBarang as $jenis)
+                                {{ $jenis->total }},
+                            @endforeach
+                        ],
+                        backgroundColor: [
+                            'rgb(59, 130, 246)',
+                            'rgb(16, 185, 129)',
+                            'rgb(245, 158, 11)',
+                            'rgb(239, 68, 68)',
+                            'rgb(139, 92, 246)'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
                     }
                 }
-            }
-        });
+            });
+        }
     </script>
 </x-admin.layout>
