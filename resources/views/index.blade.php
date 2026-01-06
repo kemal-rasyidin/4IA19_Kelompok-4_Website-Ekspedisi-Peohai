@@ -90,53 +90,77 @@
 
  <!-- Pilar Section Start -->
 <section id="pilar" class="py-8 lg:py-16">
-    <div class="container">
-        <div class="flex flex-row flex-wrap">
-            <div class="flex w-full">
-                <div class="grid grid-cols-1 gap-6 sm:grid-cols-3">
-                    <div class="rounded-lg bg-gray-50 p-8 hover:shadow-lg transition-shadow duration-300">
-                        <svg class="mb-3 h-10 w-10 text-blue-500" xmlns="http://www.w3.org/2000/svg" width="24"
-                            height="24" viewBox="0 0 24 24">
-                            <path fill="currentColor"
-                                d="M12 21.9q-.175 0-.325-.025t-.3-.075Q8 20.675 6 17.638T4 11.1V6.375q0-.625.363-1.125t.937-.725l6-2.25q.35-.125.7-.125t.7.125l6 2.25q.575.225.938.725T20 6.375V11.1q0 3.5-2 6.538T12.625 21.8q-.15.05-.3.075T12 21.9" />
-                        </svg>
-                        <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900">
-                            Aman
-                        </h5>
-                        <p class="mb-3 font-medium leading-relaxed text-gray-600">
-                            Barang Anda dijamin aman dengan sistem pengawasan ketat dan asuransi pengiriman terpercaya.
-                        </p>
-                    </div>
-                    <div class="rounded-lg bg-gray-50 p-8 hover:shadow-lg transition-shadow duration-300">
-                        <svg class="mb-3 h-10 w-10 text-green-500" xmlns="http://www.w3.org/2000/svg" width="24"
-                            height="24" viewBox="0 0 24 24">
-                            <path fill="currentColor"
-                                d="m7.625 6.4l2.8-3.625q.3-.4.713-.587T12 2t.863.188t.712.587l2.8 3.625l4.25 1.425q.65.2 1.025.738t.375 1.187q0 .3-.088.6t-.287.575l-2.75 3.9l.1 4.1q.025.875-.575 1.475t-1.4.6q-.05 0-.55-.075L12 19.675l-4.475 1.25q-.125.05-.275.063T6.975 21q-.8 0-1.4-.6T5 18.925l.1-4.125l-2.725-3.875q-.2-.275-.288-.575T2 9.75q0-.625.363-1.162t1.012-.763z" />
-                        </svg>
-                        <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900">
-                            Handal
-                        </h5>
-                        <p class="mb-3 font-medium leading-relaxed text-gray-600">
-                            Didukung oleh mitra kapal dan trucking berpengalaman untuk memastikan pengiriman tepat waktu.
-                        </p>
-                    </div>
-                    <div class="rounded-lg bg-gray-50 p-8 hover:shadow-lg transition-shadow duration-300">
-                        <svg class="mb-3 h-10 w-10 text-orange-500" xmlns="http://www.w3.org/2000/svg" width="24"
-                            height="24" viewBox="0 0 24 24">
-                            <path fill="currentColor"
-                                d="M21 8q.8 0 1.4.6T23 10v2q0 .175-.038.375t-.112.375l-3 7.05q-.225.5-.75.85T18 21h-8q-.825 0-1.412-.587T8 19V8.825q0-.4.163-.762t.437-.638l5.425-5.4q.375-.35.888-.425t.987.175t.688.7t.087.925L15.55 8zM4 21q-.825 0-1.412-.587T2 19v-9q0-.825.588-1.412T4 8t1.413.588T6 10v9q0 .825-.587 1.413T4 21" />
-                        </svg>
-                        <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900">
-                            Terpercaya
-                        </h5>
-                        <p class="mb-3 font-medium leading-relaxed text-gray-600">
-                            Melayani pengiriman container dan logistik sejak tahun 2015 dengan ribuan klien puas.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <div class="container">
+    <!-- Section header -->
+    <div class="mb-8 text-center">
+      <h3 class="text-3xl lg:text-4xl font-semibold text-slate-900">Mengapa Memilih Kami</h3>
+      <div class="mt-3 mx-auto h-1 w-20 rounded-full bg-amber-500"></div>
+      <p class="mt-4 max-w-2xl mx-auto text-slate-500">
+        Layanan kami dibangun untuk memastikan keamanan, ketepatan waktu, dan kepercayaan dalam setiap pengiriman.
+      </p>
     </div>
+
+    <!-- Cards -->
+    <div class="grid gap-6 sm:grid-cols-3">
+      <!-- Card 1 -->
+      <div
+        class="group rounded-2xl bg-white p-7 shadow-md hover:shadow-xl transform transition hover:-translate-y-2 focus-within:shadow-xl focus-within:-translate-y-2">
+        <div class="flex items-start gap-4">
+          <div
+            class="flex h-12 w-12 items-center justify-center rounded-lg bg-sky-50 text-sky-600 shrink-0">
+            <!-- icon: shield -->
+            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 21.9q-.175 0-.325-.025t-.3-.075Q8 20.675 6 17.638T4 11.1V6.375q0-.625.363-1.125t.937-.725l6-2.25q.35-.125.7-.125t.7.125l6 2.25q.575.225.938.725T20 6.375V11.1q0 3.5-2 6.538T12.625 21.8q-.15.05-.3.075T12 21.9" />
+            </svg>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold text-slate-900">Aman</h4>
+            <p class="mt-2 text-sm text-slate-500">
+              Barang Anda dilindungi dengan prosedur keamanan ketat dan pilihan asuransi untuk jaminan pengiriman.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div
+        class="group rounded-2xl bg-white p-7 shadow-md hover:shadow-xl transform transition hover:-translate-y-2 focus-within:shadow-xl focus-within:-translate-y-2">
+        <div class="flex items-start gap-4">
+          <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-emerald-50 text-emerald-600 shrink-0">
+            <!-- icon: truck -->
+            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m7.625 6.4l2.8-3.625q.3-.4.713-.587T12 2t.863.188t.712.587l2.8 3.625l4.25 1.425q.65.2 1.025.738t.375 1.187q0 .3-.088.6t-.287.575l-2.75 3.9l.1 4.1q.025.875-.575 1.475t-1.4.6q-.05 0-.55-.075L12 19.675l-4.475 1.25q-.125.05-.275.063T6.975 21q-.8 0-1.4-.6T5 18.925l.1-4.125l-2.725-3.875q-.2-.275-.288-.575T2 9.75q0-.625.363-1.162t1.012-.763z" />
+            </svg>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold text-slate-900">Handal</h4>
+            <p class="mt-2 text-sm text-slate-500">
+              Didukung jaringan mitra pelayaran dan trucking berpengalaman yang memastikan pengiriman tepat waktu.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div
+        class="group rounded-2xl bg-white p-7 shadow-md hover:shadow-xl transform transition hover:-translate-y-2 focus-within:shadow-xl focus-within:-translate-y-2">
+        <div class="flex items-start gap-4">
+          <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-amber-50 text-amber-600 shrink-0">
+            <!-- icon: thumbs-up -->
+            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M21 8q.8 0 1.4.6T23 10v2q0 .175-.038.375t-.112.375l-3 7.05q-.225.5-.75.85T18 21h-8q-.825 0-1.412-.587T8 19V8.825q0-.4.163-.762t.437-.638l5.425-5.4q.375-.35.888-.425t.987.175t.688.7t.087.925L15.55 8zM4 21q-.825 0-1.412-.587T2 19v-9q0-.825.588-1.412T4 8t1.413.588T6 10v9q0 .825-.587 1.413T4 21" />
+            </svg>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold text-slate-900">Terpercaya</h4>
+            <p class="mt-2 text-sm text-slate-500">
+              Melayani pengiriman kontainer sejak 2015 dengan ribuan pengiriman dan klien yang puas.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 <!-- Pilar Section End -->
 
