@@ -244,7 +244,7 @@
                                 </div>
                             </div>
 
-                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <!-- Prediksi Bulan 1 -->
                                 <div class="bg-white rounded-xl p-4 shadow-md border-l-4 border-indigo-500">
                                     <p class="text-xs font-medium text-gray-600 mb-1">{{ $nextMonthLabelDisplay }}</p>
@@ -267,22 +267,6 @@
                                         <p class="text-xs text-gray-500 mt-1">shipments</p>
                                     </div>
                                 @endif
-
-                                <!-- Tingkat Akurasi -->
-                                <div class="bg-white rounded-xl p-4 shadow-md">
-                                    <p class="text-xs font-medium text-gray-600 mb-1">Tingkat Akurasi</p>
-                                    <div class="flex items-end space-x-2">
-                                        <p
-                                            class="text-3xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
-                                            {{ $predictionAccuracy }}%
-                                        </p>
-                                    </div>
-                                    <div class="mt-2 bg-gray-200 rounded-full h-2 overflow-hidden">
-                                        <div class="bg-gradient-to-r from-green-500 to-emerald-500 h-full transition-all duration-500"
-                                            style="width: {{ $predictionAccuracy }}%"></div>
-                                    </div>
-                                </div>
-
                             </div>
 
                             <div
@@ -292,8 +276,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
-                                <span>Prediksi menggunakan regresi linear berdasarkan tren 2 bulan terakhir. Akurasi
-                                    dihitung dengan metode MAPE (Mean Absolute Percentage Error)</span>
+                                <span>Angka di atas adalah hasil prediksi sistem berdasarkan data historis dan dapat berubah sewaktu-waktu sesuai dengan fluktuasi data terbaru.</span>
                             </div>
                         </div>
                     </div>
