@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="public/img/logo2.png" alt="Peohai Logo" width="400" height="150">
+  <img src="public/img/logo.png" alt="Peohai Logo" width="400" height="150">
 
   <h3><b>Ekspedisi Peohai</b></h3>
 </div>
