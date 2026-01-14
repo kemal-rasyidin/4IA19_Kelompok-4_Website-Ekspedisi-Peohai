@@ -1,11 +1,11 @@
 <div align="center">
-  <img src="img/logo2.png" alt="Peohai Logo" width="400" height="150">
+  <img src="public/img/logo2.png" alt="Peohai Logo" width="400" height="150">
 
   <h3><b>Ekspedisi Peohai</b></h3>
 </div>
 
 ### 🧩 Apa ini?
-**Website Ekspedisi Peohai** adalah projek dari mata kuliah Pengembangan Pengel. Proyek Perangkat Lunak. Projek ini adalah website ekspedisi Peohai yang dibuat untuk memudahkan owner/admin dalam mengolah dan menganalisis data yang diperlukan.Projek ini dibangun oleh tim `Kelompok 4 - 4IA19` yang beranggotakan 1 PM, 1 Designer, 1 TW, dan 2 Prog. 
+**Website Ekspedisi Peohai** adalah projek dari mata kuliah Pengembangan Pengel. Proyek Perangkat Lunak. Projek ini adalah website ekspedisi Peohai yang dibuat untuk memudahkan owner/admin dalam mengolah dan menganalisis data yang diperlukan. Projek ini dibangun oleh tim `Kelompok 4 - 4IA19` yang beranggotakan 1 PM, 1 Designer, 1 TW, dan 2 Prog. 
 
 <div align="center">
   <h3> 👥 Anggota Tim 👥</h3>
