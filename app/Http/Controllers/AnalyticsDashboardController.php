@@ -152,119 +152,32 @@ class AnalyticsDashboardController extends Controller
             ->groupBy('entry_periods.id', 'entry_periods.tahun', 'entry_periods.bulan')
             ->orderBy('entry_periods.tahun')
             ->orderBy('entry_periods.bulan')
-            ->limit(12)
             ->get()
             ->map(function ($item) use ($bulanIndonesia) {
                 $date = Carbon::create($item->tahun, $item->bulan, 1);
 
                 return (object) [
-                    'month' => $date->format('Y-m'), // Format: "2026-01" - untuk parse
-                    'month_label' => $bulanIndonesia[$item->bulan] . ' ' . $item->tahun, // Format: "Jan 2026" - untuk display
+                    'month' => $date->format('Y-m'),
+                    'month_label' => $bulanIndonesia[$item->bulan] . ' ' . $item->tahun,
                     'total' => $item->total,
                     'tahun' => $item->tahun,
                     'bulan' => $item->bulan
                 ];
             });
 
-        // Prediction
-        // Prediction - 2 bulan ke depan
-        $predictedNextMonth = null;
-        $predictedSecondMonth = null;
-        $nextMonthLabel = null;
-        $secondMonthLabel = null;
-        $nextMonthLabelDisplay = null;
-        $secondMonthLabelDisplay = null;
-        $predictionAccuracy = null;
+        // ========== PREDICTION - IMPROVED VERSION ==========
+        $predictionResult = $this->predictShipments($monthlyShipments, $bulanIndonesia);
 
-        if ($monthlyShipments->count() >= 2) {
-            // Ambil hanya 2 bulan terakhir untuk prediksi
-            $last2Months = $monthlyShipments->slice(-2);
-
-            $y = $last2Months->pluck('total')->values()->toArray();
-            $n = count($y);
-            $x = range(1, $n);
-
-            $sumX = array_sum($x);
-            $sumY = array_sum($y);
-            $sumXY = 0;
-            $sumX2 = 0;
-
-            for ($i = 0; $i < $n; $i++) {
-                $sumXY += $x[$i] * $y[$i];
-                $sumX2 += $x[$i] ** 2;
-            }
-
-            $denominator = ($n * $sumX2) - ($sumX ** 2);
-
-            if ($denominator != 0) {
-                $slope = (($n * $sumXY) - ($sumX * $sumY)) / $denominator;
-                $intercept = ($sumY - ($slope * $sumX)) / $n;
-
-                // Prediksi bulan ke-3 (bulan depan)
-                $predictedNextMonth = round(($slope * ($n + 1)) + $intercept);
-                $predictedNextMonth = max(0, $predictedNextMonth);
-
-                // Prediksi bulan ke-4 (2 bulan ke depan)
-                $predictedSecondMonth = round(($slope * ($n + 2)) + $intercept);
-                $predictedSecondMonth = max(0, $predictedSecondMonth);
-
-                // Hitung label bulan berikutnya
-                $lastMonth = $monthlyShipments->last();
-
-                // Bulan pertama prediksi
-                $nextMonth = Carbon::create($lastMonth->tahun, $lastMonth->bulan, 1)->addMonth();
-                $nextMonthLabel = $nextMonth->format('Y-m');
-                $nextMonthLabelDisplay = $bulanIndonesia[$nextMonth->month] . ' ' . $nextMonth->year;
-
-                // Bulan kedua prediksi
-                $secondMonth = Carbon::create($lastMonth->tahun, $lastMonth->bulan, 1)->addMonths(2);
-                $secondMonthLabel = $secondMonth->format('Y-m');
-                $secondMonthLabelDisplay = $bulanIndonesia[$secondMonth->month] . ' ' . $secondMonth->year;
-
-                // Hitung akurasi menggunakan MAPE (Mean Absolute Percentage Error)
-                // Lebih cocok untuk data kecil
-                $totalPercentageError = 0;
-                $validCount = 0;
-
-                for ($i = 0; $i < $n; $i++) {
-                    $yPredicted = ($slope * $x[$i]) + $intercept;
-                    if ($y[$i] != 0) { // Hindari division by zero
-                        $percentageError = abs(($y[$i] - $yPredicted) / $y[$i]) * 100;
-                        $totalPercentageError += $percentageError;
-                        $validCount++;
-                    }
-                }
-
-                if ($validCount > 0) {
-                    $mape = $totalPercentageError / $validCount;
-                    // Akurasi = 100 - MAPE
-                    // Tapi batasi antara 0-100
-                    $predictionAccuracy = max(0, min(100, 100 - $mape));
-                    $predictionAccuracy = round($predictionAccuracy, 1);
-                } else {
-                    // Fallback: hitung menggunakan R² dengan penyesuaian
-                    $yMean = array_sum($y) / $n;
-                    $ssTotal = 0;
-                    $ssResidual = 0;
-
-                    for ($i = 0; $i < $n; $i++) {
-                        $yPredicted = ($slope * $x[$i]) + $intercept;
-                        $ssTotal += ($y[$i] - $yMean) ** 2;
-                        $ssResidual += ($y[$i] - $yPredicted) ** 2;
-                    }
-
-                    if ($ssTotal > 0) {
-                        $rSquared = 1 - ($ssResidual / $ssTotal);
-                        // Konversi R² ke persentase dan pastikan tidak negatif
-                        $predictionAccuracy = max(0, min(100, $rSquared * 100));
-                        $predictionAccuracy = round($predictionAccuracy, 1);
-                    } else {
-                        // Jika variance = 0 (semua data sama), berarti prediksi sempurna
-                        $predictionAccuracy = 100;
-                    }
-                }
-            }
-        }
+        $predictedNextMonth = $predictionResult['predictedNextMonth'];
+        $predictedSecondMonth = $predictionResult['predictedSecondMonth'];
+        $nextMonthLabel = $predictionResult['nextMonthLabel'];
+        $secondMonthLabel = $predictionResult['secondMonthLabel'];
+        $nextMonthLabelDisplay = $predictionResult['nextMonthLabelDisplay'];
+        $secondMonthLabelDisplay = $predictionResult['secondMonthLabelDisplay'];
+        $predictionAccuracy = $predictionResult['predictionAccuracy'];
+        $predictionWarning = $predictionResult['predictionWarning'];
+        $predictionMethod = $predictionResult['predictionMethod'];
+        $dataPointsUsed = $predictionResult['dataPointsUsed'];
 
         // 4. Top Destinations
         $topDestinations = (clone $baseQuery)
@@ -352,13 +265,182 @@ class AnalyticsDashboardController extends Controller
             'upcomingETD',
             'revenueByCustomer',
             'predictedNextMonth',
-            'predictedSecondMonth',  // TAMBAHKAN
+            'predictedSecondMonth',
             'nextMonthLabel',
-            'secondMonthLabel',      // TAMBAHKAN
+            'secondMonthLabel',
             'nextMonthLabelDisplay',
-            'secondMonthLabelDisplay', // TAMBAHKAN
-            'predictionAccuracy'
+            'secondMonthLabelDisplay',
+            'predictionAccuracy',
+            'predictionWarning',
+            'predictionMethod',
+            'dataPointsUsed'
         ));
+    }
+
+    /**
+     * Predict shipments using linear regression with improved accuracy
+     * 
+     * @param \Illuminate\Support\Collection $monthlyShipments
+     * @param array $bulanIndonesia
+     * @return array
+     */
+    private function predictShipments($monthlyShipments, $bulanIndonesia)
+    {
+        $result = [
+            'predictedNextMonth' => null,
+            'predictedSecondMonth' => null,
+            'nextMonthLabel' => null,
+            'secondMonthLabel' => null,
+            'nextMonthLabelDisplay' => null,
+            'secondMonthLabelDisplay' => null,
+            'predictionAccuracy' => null,
+            'predictionWarning' => null,
+            'predictionMethod' => null,
+            'dataPointsUsed' => 0
+        ];
+
+        // Minimal data requirement check
+        if ($monthlyShipments->count() < 2) {
+            $result['predictionWarning'] = 'Data historis tidak cukup untuk prediksi (minimal 2 bulan diperlukan)';
+            $result['predictionMethod'] = 'none';
+            return $result;
+        }
+
+        // Determine optimal data points to use (max 6 months, min 2)
+        $optimalDataPoints = min(6, $monthlyShipments->count());
+        $dataToUse = $monthlyShipments->slice(-$optimalDataPoints);
+
+        $result['dataPointsUsed'] = $dataToUse->count();
+
+        // Extract data for regression
+        $y = $dataToUse->pluck('total')->values()->toArray();
+        $n = count($y);
+        $x = range(1, $n);
+
+        // Calculate regression coefficients
+        $sumX = array_sum($x);
+        $sumY = array_sum($y);
+        $sumXY = 0;
+        $sumX2 = 0;
+
+        for ($i = 0; $i < $n; $i++) {
+            $sumXY += $x[$i] * $y[$i];
+            $sumX2 += $x[$i] ** 2;
+        }
+
+        $denominator = ($n * $sumX2) - ($sumX ** 2);
+
+        // Check if regression is possible
+        if ($denominator == 0) {
+            // All X values are the same (shouldn't happen with our data)
+            $result['predictionWarning'] = 'Tidak dapat menghitung prediksi (data tidak valid)';
+            $result['predictionMethod'] = 'failed';
+            return $result;
+        }
+
+        // Calculate slope (m) and intercept (b) for y = mx + b
+        $slope = (($n * $sumXY) - ($sumX * $sumY)) / $denominator;
+        $intercept = ($sumY - ($slope * $sumX)) / $n;
+
+        // Predict next month (n+1) and second month (n+2)
+        $result['predictedNextMonth'] = max(0, round(($slope * ($n + 1)) + $intercept));
+        $result['predictedSecondMonth'] = max(0, round(($slope * ($n + 2)) + $intercept));
+
+        // Calculate month labels
+        $lastMonth = $monthlyShipments->last();
+
+        // Next month
+        $nextMonth = Carbon::create($lastMonth->tahun, $lastMonth->bulan, 1)->addMonth();
+        $result['nextMonthLabel'] = $nextMonth->format('Y-m');
+        $result['nextMonthLabelDisplay'] = $bulanIndonesia[$nextMonth->month] . ' ' . $nextMonth->year;
+
+        // Second month
+        $secondMonth = Carbon::create($lastMonth->tahun, $lastMonth->bulan, 1)->addMonths(2);
+        $result['secondMonthLabel'] = $secondMonth->format('Y-m');
+        $result['secondMonthLabelDisplay'] = $bulanIndonesia[$secondMonth->month] . ' ' . $secondMonth->year;
+
+        // Calculate prediction accuracy
+        $accuracyResult = $this->calculatePredictionAccuracy($x, $y, $slope, $intercept, $n);
+        $result['predictionAccuracy'] = $accuracyResult['accuracy'];
+        $result['predictionMethod'] = $accuracyResult['method'];
+
+        // Set warning based on data points
+        if ($n < 3) {
+            $result['predictionWarning'] = 'Prediksi berdasarkan ' . $n . ' bulan data (akurasi terbatas)';
+        } elseif ($n < 4) {
+            $result['predictionWarning'] = 'Prediksi berdasarkan ' . $n . ' bulan data (akurasi moderat)';
+        } else {
+            $result['predictionWarning'] = 'Prediksi berdasarkan ' . $n . ' bulan data historis';
+        }
+
+        return $result;
+    }
+
+    /**
+     * Calculate prediction accuracy using appropriate metrics
+     * 
+     * @param array $x
+     * @param array $y
+     * @param float $slope
+     * @param float $intercept
+     * @param int $n
+     * @return array
+     */
+    private function calculatePredictionAccuracy($x, $y, $slope, $intercept, $n)
+    {
+        $result = [
+            'accuracy' => 0,
+            'method' => 'unknown'
+        ];
+
+        // Method 1: MAPE (Mean Absolute Percentage Error)
+        // Better for understanding percentage deviation
+        $totalPercentageError = 0;
+        $validCount = 0;
+
+        for ($i = 0; $i < $n; $i++) {
+            $yPredicted = ($slope * $x[$i]) + $intercept;
+            if ($y[$i] != 0) {
+                $percentageError = abs(($y[$i] - $yPredicted) / $y[$i]) * 100;
+                $totalPercentageError += $percentageError;
+                $validCount++;
+            }
+        }
+
+        if ($validCount > 0) {
+            $mape = $totalPercentageError / $validCount;
+            // Accuracy = 100 - MAPE, capped at 0-100
+            $accuracy = max(0, min(100, 100 - $mape));
+            $result['accuracy'] = round($accuracy, 1);
+            $result['method'] = 'MAPE';
+            return $result;
+        }
+
+        // Method 2: R-squared (Coefficient of Determination)
+        // Fallback if MAPE can't be calculated
+        $yMean = array_sum($y) / $n;
+        $ssTotal = 0;
+        $ssResidual = 0;
+
+        for ($i = 0; $i < $n; $i++) {
+            $yPredicted = ($slope * $x[$i]) + $intercept;
+            $ssTotal += ($y[$i] - $yMean) ** 2;
+            $ssResidual += ($y[$i] - $yPredicted) ** 2;
+        }
+
+        if ($ssTotal > 0) {
+            $rSquared = 1 - ($ssResidual / $ssTotal);
+            // Convert R² to percentage
+            $accuracy = max(0, min(100, $rSquared * 100));
+            $result['accuracy'] = round($accuracy, 1);
+            $result['method'] = 'R²';
+        } else {
+            // All Y values are the same (perfect prediction in a sense)
+            $result['accuracy'] = 100;
+            $result['method'] = 'Perfect (no variance)';
+        }
+
+        return $result;
     }
 
     /**
@@ -385,16 +467,66 @@ class AnalyticsDashboardController extends Controller
             });
         }
 
+        $baseQuery = clone $query;
+
         $data = [
-            'total_shipments' => $query->count(),
-            'total_revenue' => $query->get()->sum(function ($entry) {
+            'total_shipments' => (clone $baseQuery)->count(),
+            'total_revenue' => (clone $baseQuery)->get()->sum(function ($entry) {
                 return floatval(str_replace([',', '.'], '', $entry->harga ?? 0));
             }),
-            'pending' => (clone $query)->whereNull('ba')->count(),
-            'completed' => (clone $query)->whereNotNull('ba')->count(),
+            'pending' => (clone $baseQuery)->whereNull('ba')->count(),
+            'completed' => (clone $baseQuery)->whereNotNull('ba')->count(),
+            'in_transit' => (clone $baseQuery)->whereNull('ba')->whereNotNull('etd')->count(),
         ];
 
         return response()->json($data);
+    }
+
+    /**
+     * Get prediction data for AJAX requests
+     */
+    public function getPrediction(Request $request)
+    {
+        $bulanIndonesia = [
+            1 => 'Jan',
+            2 => 'Feb',
+            3 => 'Mar',
+            4 => 'Apr',
+            5 => 'Mei',
+            6 => 'Jun',
+            7 => 'Jul',
+            8 => 'Agu',
+            9 => 'Sep',
+            10 => 'Okt',
+            11 => 'Nov',
+            12 => 'Des'
+        ];
+
+        $monthlyShipments = EntryMain::select(
+            'entry_periods.tahun',
+            'entry_periods.bulan',
+            DB::raw('count(entry_mains.id) as total')
+        )
+            ->join('entry_periods', 'entry_mains.entry_period_id', '=', 'entry_periods.id')
+            ->groupBy('entry_periods.id', 'entry_periods.tahun', 'entry_periods.bulan')
+            ->orderBy('entry_periods.tahun')
+            ->orderBy('entry_periods.bulan')
+            ->get()
+            ->map(function ($item) use ($bulanIndonesia) {
+                $date = Carbon::create($item->tahun, $item->bulan, 1);
+
+                return (object) [
+                    'month' => $date->format('Y-m'),
+                    'month_label' => $bulanIndonesia[$item->bulan] . ' ' . $item->tahun,
+                    'total' => $item->total,
+                    'tahun' => $item->tahun,
+                    'bulan' => $item->bulan
+                ];
+            });
+
+        $prediction = $this->predictShipments($monthlyShipments, $bulanIndonesia);
+
+        return response()->json($prediction);
     }
 
     /**

@@ -111,6 +111,7 @@
             </div>
         </div>
 
+        <!-- Stats Cards -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div class="group relative bg-white overflow-hidden shadow-lg rounded-2xl border border-gray-200 hover:shadow-2xl hover:border-blue-300 transition-all duration-300 transform hover:-translate-y-1 animate-slideInRight"
                 style="animation-delay: 0.1s">
@@ -223,6 +224,7 @@
             </div>
         </div>
 
+        <!-- PREDICTION CARD - IMPROVED -->
         @if ($predictedNextMonth !== null)
             <div
                 class="bg-gradient-to-br from-indigo-50 to-purple-50 shadow-lg rounded-2xl overflow-hidden border-2 border-indigo-200">
@@ -240,11 +242,12 @@
                                 </div>
                                 <div>
                                     <h3 class="text-lg font-bold text-gray-900">Prediksi Logistik</h3>
-                                    <p class="text-xs text-gray-500">Berdasarkan 2 bulan terakhir</p>
+                                    <p class="text-xs text-gray-500">Menggunakan {{ $dataPointsUsed ?? 2 }} bulan data
+                                        ({{ $predictionMethod ?? 'Linear Regression' }})</p>
                                 </div>
                             </div>
 
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                                 <!-- Prediksi Bulan 1 -->
                                 <div class="bg-white rounded-xl p-4 shadow-md border-l-4 border-indigo-500">
                                     <p class="text-xs font-medium text-gray-600 mb-1">{{ $nextMonthLabelDisplay }}</p>
@@ -269,16 +272,64 @@
                                 @endif
                             </div>
 
-                            <div
-                                class="mt-4 flex items-center space-x-2 text-xs text-gray-600 bg-white rounded-lg p-3">
-                                <svg class="h-4 w-4 text-indigo-500" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                                <span>Angka di atas adalah hasil prediksi sistem berdasarkan data historis dan dapat berubah sewaktu-waktu sesuai dengan fluktuasi data terbaru.</span>
-                            </div>
+                            <!-- Accuracy Badge -->
+                            {{-- @if ($predictionAccuracy !== null)
+                                <div
+                                    class="mb-3 inline-flex items-center px-3 py-1 rounded-full text-sm font-medium 
+                                    {{ $predictionAccuracy >= 80 ? 'bg-green-100 text-green-800' : ($predictionAccuracy >= 60 ? 'bg-yellow-100 text-yellow-800' : 'bg-red-100 text-red-800') }}">
+                                    <svg class="w-4 h-4 mr-1.5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                    Tingkat Akurasi: {{ $predictionAccuracy }}%
+                                </div>
+                            @endif --}}
+
+                            <!-- Warning/Info -->
+                            @if ($predictionWarning)
+                                <div
+                                    class="flex items-start space-x-2 text-xs bg-white rounded-lg p-3 border-l-4 
+                                    {{ $dataPointsUsed < 3 ? 'border-yellow-400 bg-yellow-50' : 'border-blue-400 bg-blue-50' }}">
+                                    <svg class="h-4 w-4 {{ $dataPointsUsed < 3 ? 'text-yellow-500' : 'text-blue-500' }} flex-shrink-0 mt-0.5"
+                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                    <div>
+                                        <p
+                                            class="{{ $dataPointsUsed < 3 ? 'text-yellow-700' : 'text-blue-700' }} font-medium">
+                                            {{ $predictionWarning }}</p>
+                                        <p
+                                            class="{{ $dataPointsUsed < 3 ? 'text-yellow-600' : 'text-blue-600' }} mt-1">
+                                            Prediksi ini menggunakan metode regresi linear. Akurasi akan meningkat
+                                            seiring bertambahnya data historis.
+                                        </p>
+                                    </div>
+                                </div>
+                            @endif
                         </div>
+                    </div>
+                </div>
+            </div>
+        @else
+            <!-- No Prediction Available -->
+            <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-lg">
+                <div class="flex">
+                    <div class="flex-shrink-0">
+                        <svg class="h-5 w-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd"
+                                d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <div class="ml-3">
+                        <p class="text-sm text-yellow-700 font-medium">
+                            {{ $predictionWarning ?? 'Data historis tidak cukup untuk membuat prediksi' }}
+                        </p>
+                        <p class="text-xs text-yellow-600 mt-1">
+                            Minimal 2 bulan data diperlukan untuk prediksi logistik.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -458,7 +509,7 @@
     @stack('scripts')
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        // Monthly Shipments Chart with 2 Predictions
+        // Monthly Shipments Chart with 2 Predictions - FIXED
         const monthlyCtx = document.getElementById('monthlyChart');
 
         if (monthlyCtx) {
@@ -478,7 +529,7 @@
                     '{{ $nextMonthLabelDisplay }}',
                 @endif
                 @if (isset($predictedSecondMonth) && $predictedSecondMonth !== null)
-                    {{ $predictedSecondMonth }}
+                    '{{ $secondMonthLabelDisplay }}'
                 @endif
             ];
 
@@ -507,17 +558,14 @@
                         fill: true,
                         segment: {
                             borderDash: ctx => {
-                                // Garis putus-putus untuk prediksi
                                 return ctx.p0DataIndex >= predictionStartIndex ? [5, 5] : [];
                             },
                             borderColor: ctx => {
-                                // Warna ungu untuk prediksi
                                 return ctx.p0DataIndex >= predictionStartIndex ? 'rgb(147, 51, 234)' :
                                     'rgb(59, 130, 246)';
                             }
                         },
                         pointBackgroundColor: (context) => {
-                            // Warna berbeda untuk titik prediksi
                             return context.dataIndex >= historicalData.length ? 'rgb(147, 51, 234)' :
                                 'rgb(59, 130, 246)';
                         },
@@ -552,7 +600,10 @@
                         y: {
                             beginAtZero: true,
                             ticks: {
-                                stepSize: 1
+                                stepSize: 1,
+                                callback: function(value) {
+                                    return Math.floor(value);
+                                }
                             }
                         }
                     }
@@ -627,7 +678,10 @@
                     },
                     scales: {
                         y: {
-                            beginAtZero: true
+                            beginAtZero: true,
+                            ticks: {
+                                stepSize: 1
+                            }
                         }
                     }
                 }
@@ -665,7 +719,10 @@
                     },
                     scales: {
                         y: {
-                            beginAtZero: true
+                            beginAtZero: true,
+                            ticks: {
+                                stepSize: 1
+                            }
                         }
                     }
                 }
@@ -710,4 +767,4 @@
             });
         }
     </script>
-</x-admin.layout>
+</x-admin-layout>
