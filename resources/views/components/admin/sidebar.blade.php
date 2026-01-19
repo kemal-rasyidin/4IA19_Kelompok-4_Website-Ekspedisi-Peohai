@@ -4,7 +4,7 @@
     <div class="flex items-center justify-center h-16 px-4 bg-black bg-opacity-20">
         <div class="flex items-center">
             <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
-                <img src="img/logo.png" alt="Logo">
+                <img src="{{ asset('img/logo.png') }}" alt="Logo">
             </div>
             <span class="ml-3 text-white font-bold text-lg">{{ config('app.name', 'Peohai') }}</span>
         </div>

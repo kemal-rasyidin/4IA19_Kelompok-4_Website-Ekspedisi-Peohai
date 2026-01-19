@@ -4,7 +4,7 @@
             <div class="flex items-center space-x-3 text-gray-600">
                 <div
                     class="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
-                    <img src="img/logo.png" alt="Logo">
+                    <img src="{{ asset('img/logo.png') }}" alt="Logo">
                 </div>
                 <div>
                     <div class="font-semibold text-gray-900">
