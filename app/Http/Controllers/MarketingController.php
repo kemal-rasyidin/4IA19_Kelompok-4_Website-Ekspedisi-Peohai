@@ -14,10 +14,37 @@ class MarketingController extends Controller
      * Display a listing of the resource.
      */
     public function index(EntryPeriod $entry_period)
-    {
-        $entries = EntryMain::where('entry_period_id', $entry_period->id)->paginate(10);
-        return view('admin.entry.marketing.index', compact('entries', 'entry_period'));
-    }
+{
+    $entries = EntryMain::where('entry_period_id', $entry_period->id)->paginate(10);
+    
+    // Hitung total pengeluaran dan pendapatan
+    $totals = EntryMain::where('entry_period_id', $entry_period->id)
+        ->selectRaw('
+            SUM(COALESCE(door_daerah, 0) + 
+                COALESCE(stufing_dalam, 0) + 
+                COALESCE(harga_trucking, 0) + 
+                COALESCE(freight, 0) + 
+                COALESCE(thc, 0) + 
+                COALESCE(asuransi, 0) + 
+                COALESCE(bl, 0) + 
+                COALESCE(ops, 0)) as total_pengeluaran,
+            SUM(COALESCE(asuransi_inv, 0) + 
+                COALESCE(adm, 0) + 
+                COALESCE(harga_jual, 0) - 
+                COALESCE(pph23, 0)) as total_pendapatan
+        ')
+        ->first();
+    
+    // Hitung keuntungan bersih
+    $keuntungan_bersih = ($totals->total_pendapatan ?? 0) - ($totals->total_pengeluaran ?? 0);
+    
+    return view('admin.entry.marketing.index', compact(
+        'entries', 
+        'entry_period', 
+        'totals', 
+        'keuntungan_bersih'
+    ));
+}
 
     /**
      * Show the form for creating a new resource.

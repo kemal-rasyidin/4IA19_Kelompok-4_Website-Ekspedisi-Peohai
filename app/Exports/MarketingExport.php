@@ -25,7 +25,9 @@ class MarketingExport implements FromCollection, WithHeadings, WithMapping, With
 
     public function collection()
     {
-        return EntryMain::where('entry_period_id', $this->entry_period_id)->get();
+        return EntryMain::where('entry_period_id', $this->entryPeriodId)
+            ->orderBy('created_at', 'desc')
+            ->get();
     }
 
     public function headings(): array
@@ -231,146 +233,184 @@ class MarketingExport implements FromCollection, WithHeadings, WithMapping, With
     }
 
     public function registerEvents(): array
-    {
-        return [
-            AfterSheet::class => function (AfterSheet $event) {
-                $sheet = $event->sheet->getDelegate();
+{
+    return [
+        AfterSheet::class => function (AfterSheet $event) {
 
-                $sheet->getRowDimension(1)->setRowHeight(25);
-                $sheet->getRowDimension(2)->setRowHeight(25);
+            $sheet = $event->sheet->getDelegate();
 
-                // Merge kolom No (A)
-                $sheet->mergeCells('A1:A2');
+            /*
+            |--------------------------------------------------------------------------
+            | HEADER & STYLING (KODE LAMA)
+            |--------------------------------------------------------------------------
+            */
 
-                // Merge main headers (B-Q) - kolom tunggal
-                $singleMerge = range('B', 'Q');
-                foreach ($singleMerge as $col) {
-                    $sheet->mergeCells("{$col}1:{$col}2");
-                }
+            $sheet->getRowDimension(1)->setRowHeight(25);
+            $sheet->getRowDimension(2)->setRowHeight(25);
 
-                // HARGA PELAYARAN (R-S)
-                $sheet->mergeCells('R1:S1');
+            $sheet->mergeCells('A1:A2');
 
-                // Merge kolom tunggal (T-X)
-                $singleMerge2 = ['T', 'U', 'V', 'W', 'X'];
-                foreach ($singleMerge2 as $col) {
-                    $sheet->mergeCells("{$col}1:{$col}2");
-                }
+            foreach (range('B', 'Q') as $col) {
+                $sheet->mergeCells("{$col}1:{$col}2");
+            }
 
-                // NILAI INVOICE (Y-AD)
-                $sheet->mergeCells('Y1:AD1');
+            $sheet->mergeCells('R1:S1');
 
-                // Refund (AE)
-                $sheet->mergeCells('AE1:AE2');
+            foreach (['T','U','V','W','X'] as $col) {
+                $sheet->mergeCells("{$col}1:{$col}2");
+            }
 
-                // Yang Diterima (AF)
-                $sheet->mergeCells('AF1:AF2');
+            $sheet->mergeCells('Y1:AD1');
+            $sheet->mergeCells('AE1:AE2');
+            $sheet->mergeCells('AF1:AF2');
+            $sheet->mergeCells('AG1:AH1');
+            $sheet->mergeCells('AI1:AI2');
+            $sheet->mergeCells('AK1:AK2');
 
-                // PROFIT (AG-AH)
-                $sheet->mergeCells('AG1:AH1');
+            $sheet->getStyle('A1:AK2')->applyFromArray([
+                'font' => ['bold' => true, 'size' => 10],
+                'alignment' => [
+                    'horizontal' => Alignment::HORIZONTAL_CENTER,
+                    'vertical' => Alignment::VERTICAL_CENTER,
+                ],
+                'borders' => [
+                    'allBorders' => ['borderStyle' => Border::BORDER_THIN],
+                ],
+            ]);
 
-                // Presentase (AI)
-                $sheet->mergeCells('AI1:AI2');
+            $sheet->getStyle('R1:S1')->applyFromArray([
+                'fill' => [
+                    'fillType' => Fill::FILL_SOLID,
+                    'startColor' => ['rgb' => 'FFC000'],
+                ]
+            ]);
 
-                // Keterangan (AK)
-                $sheet->mergeCells('AK1:AK2');
+            $sheet->getStyle('R2:S2')->applyFromArray([
+                'fill' => [
+                    'fillType' => Fill::FILL_SOLID,
+                    'startColor' => ['rgb' => 'FFE699'],
+                ]
+            ]);
 
-                // Styling header
-                $sheet->getStyle('A1:AK2')->applyFromArray([
-                    'font' => ['bold' => true, 'size' => 10],
-                    'alignment' => [
-                        'horizontal' => Alignment::HORIZONTAL_CENTER,
-                        'vertical' => Alignment::VERTICAL_CENTER,
-                    ],
-                    'borders' => [
-                        'allBorders' => ['borderStyle' => Border::BORDER_THIN],
-                    ],
-                ]);
+            $sheet->getStyle('Y1:AD1')->applyFromArray([
+                'fill' => [
+                    'fillType' => Fill::FILL_SOLID,
+                    'startColor' => ['rgb' => 'C6EFCE'],
+                ]
+            ]);
 
-                // Background color HARGA PELAYARAN (Oranye)
-                $sheet->getStyle('R1:S1')->applyFromArray([
-                    'fill' => [
-                        'fillType' => Fill::FILL_SOLID,
-                        'startColor' => ['rgb' => 'FFC000'],
-                    ]
-                ]);
+            $sheet->getStyle('Y2:AD2')->applyFromArray([
+                'fill' => [
+                    'fillType' => Fill::FILL_SOLID,
+                    'startColor' => ['rgb' => 'E2F0D9'],
+                ]
+            ]);
 
-                $sheet->getStyle('R2:S2')->applyFromArray([
-                    'fill' => [
-                        'fillType' => Fill::FILL_SOLID,
-                        'startColor' => ['rgb' => 'FFE699'],
-                    ]
-                ]);
+            $sheet->getStyle('AG1:AH1')->applyFromArray([
+                'fill' => [
+                    'fillType' => Fill::FILL_SOLID,
+                    'startColor' => ['rgb' => 'FFEB9C'],
+                ]
+            ]);
 
-                // Background color NILAI INVOICE (Hijau muda)
-                $sheet->getStyle('Y1:AD1')->applyFromArray([
-                    'fill' => [
-                        'fillType' => Fill::FILL_SOLID,
-                        'startColor' => ['rgb' => 'C6EFCE'],
-                    ]
-                ]);
+            $sheet->getStyle('AG2:AH2')->applyFromArray([
+                'fill' => [
+                    'fillType' => Fill::FILL_SOLID,
+                    'startColor' => ['rgb' => 'FFF2CC'],
+                ]
+            ]);
 
-                $sheet->getStyle('Y2:AD2')->applyFromArray([
-                    'fill' => [
-                        'fillType' => Fill::FILL_SOLID,
-                        'startColor' => ['rgb' => 'E2F0D9'],
-                    ]
-                ]);
+            $sheet->getStyle('AJ1')->applyFromArray([
+                'fill' => [
+                    'fillType' => Fill::FILL_SOLID,
+                    'startColor' => ['rgb' => 'BDD7EE'],
+                ]
+            ]);
 
-                // Background color PROFIT (Kuning)
-                $sheet->getStyle('AG1:AH1')->applyFromArray([
-                    'fill' => [
-                        'fillType' => Fill::FILL_SOLID,
-                        'startColor' => ['rgb' => 'FFEB9C'],
-                    ]
-                ]);
+            $sheet->getStyle('AJ2')->applyFromArray([
+                'fill' => [
+                    'fillType' => Fill::FILL_SOLID,
+                    'startColor' => ['rgb' => 'DAEEF3'],
+                ]
+            ]);
 
-                $sheet->getStyle('AG2:AH2')->applyFromArray([
-                    'fill' => [
-                        'fillType' => Fill::FILL_SOLID,
-                        'startColor' => ['rgb' => 'FFF2CC'],
-                    ]
-                ]);
+            $lastRow = $sheet->getHighestRow();
 
-                // Background color AGEN DAERAH (Biru) - Pisahkan AJ1 dan AJ2
-                $sheet->getStyle('AJ1')->applyFromArray([
-                    'fill' => [
-                        'fillType' => Fill::FILL_SOLID,
-                        'startColor' => ['rgb' => 'BDD7EE'],
-                    ]
-                ]);
+            $sheet->getStyle("A1:AK{$lastRow}")->applyFromArray([
+                'borders' => [
+                    'allBorders' => ['borderStyle' => Border::BORDER_THIN],
+                ],
+            ]);
 
-                $sheet->getStyle('AJ2')->applyFromArray([
-                    'fill' => [
-                        'fillType' => Fill::FILL_SOLID,
-                        'startColor' => ['rgb' => 'DAEEF3'],
-                    ]
-                ]);
+            $sheet->getStyle("A3:AK{$lastRow}")->applyFromArray([
+                'alignment' => [
+                    'horizontal' => Alignment::HORIZONTAL_CENTER,
+                    'vertical' => Alignment::VERTICAL_CENTER,
+                ],
+            ]);
 
-                // Border untuk semua data
-                $lastRow = $sheet->getHighestRow();
-                $sheet->getStyle("A1:AK{$lastRow}")->applyFromArray([
-                    'borders' => [
-                        'allBorders' => ['borderStyle' => Border::BORDER_THIN],
-                    ],
-                ]);
+            $sheet->freezePane('A3');
 
-                // Center alignment untuk data
-                $sheet->getStyle("A3:AK{$lastRow}")->applyFromArray([
-                    'alignment' => [
-                        'horizontal' => Alignment::HORIZONTAL_CENTER,
-                        'vertical' => Alignment::VERTICAL_CENTER,
-                    ],
-                ]);
+            $sheet->getColumnDimension('E')->setWidth(20);
+            $sheet->getColumnDimension('F')->setWidth(15);
+            $sheet->getColumnDimension('AK')->setWidth(25);
 
-                // Freeze pane
-                $sheet->freezePane('A3');
+            /*
+            |--------------------------------------------------------------------------
+            | BARIS TOTAL (KODE BARU)
+            |--------------------------------------------------------------------------
+            */
 
-                // Set width untuk kolom tertentu
-                $sheet->getColumnDimension('E')->setWidth(20); // Customer
-                $sheet->getColumnDimension('F')->setWidth(15); // Jenis Barang
-                $sheet->getColumnDimension('AK')->setWidth(25); // Keterangan
-            },
-        ];
-    }
+            $totalRow = $lastRow + 2;
+
+            $entries = EntryMain::where('entry_period_id', $this->entryPeriodId)->get();
+
+            $totalPengeluaran = $entries->sum(fn ($e) =>
+                ($e->door_daerah ?? 0) +
+                ($e->stufing_dalam ?? 0) +
+                ($e->harga_trucking ?? 0) +
+                ($e->freight ?? 0) +
+                ($e->thc ?? 0) +
+                ($e->asuransi ?? 0) +
+                ($e->bl ?? 0) +
+                ($e->ops ?? 0)
+            );
+
+            $totalPendapatan = $entries->sum(fn ($e) =>
+                ($e->asuransi_inv ?? 0) +
+                ($e->adm ?? 0) +
+                ($e->harga_jual ?? 0) -
+                ($e->pph23 ?? 0)
+            );
+
+            $keuntunganBersih = $totalPendapatan - $totalPengeluaran;
+
+            $sheet->mergeCells("A{$totalRow}:B{$totalRow}");
+            $sheet->setCellValue("A{$totalRow}", 'TOTAL');
+            $sheet->setCellValue("C{$totalRow}", $totalPengeluaran);
+            $sheet->setCellValue("D{$totalRow}", $totalPendapatan);
+            $sheet->setCellValue("E{$totalRow}", $keuntunganBersih);
+
+            $sheet->getStyle("C{$totalRow}:E{$totalRow}")
+                ->getNumberFormat()
+                ->setFormatCode('"Rp" #,##0');
+
+            $sheet->getStyle("A{$totalRow}:E{$totalRow}")->applyFromArray([
+                'font' => ['bold' => true],
+                'fill' => [
+                    'fillType' => Fill::FILL_SOLID,
+                    'startColor' => ['rgb' => 'FFD700']
+                ],
+                'alignment' => [
+                    'horizontal' => Alignment::HORIZONTAL_CENTER,
+                    'vertical' => Alignment::VERTICAL_CENTER,
+                ],
+                'borders' => [
+                    'allBorders' => ['borderStyle' => Border::BORDER_THICK]
+                ]
+            ]);
+        },
+    ];
+}
+
 }
