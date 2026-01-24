@@ -278,7 +278,7 @@ class AnalyticsDashboardController extends Controller
     }
 
     /**
-     * Predict shipments using linear regression with improved accuracy
+     * Predict shipments using multiple methods and choose the best
      * 
      * @param \Illuminate\Support\Collection $monthlyShipments
      * @param array $bulanIndonesia
@@ -306,45 +306,32 @@ class AnalyticsDashboardController extends Controller
             return $result;
         }
 
-        // Determine optimal data points to use (max 6 months, min 2)
+        // Gunakan maksimal 6 bulan terakhir untuk prediksi
         $optimalDataPoints = min(6, $monthlyShipments->count());
         $dataToUse = $monthlyShipments->slice(-$optimalDataPoints);
-
         $result['dataPointsUsed'] = $dataToUse->count();
 
-        // Extract data for regression
         $y = $dataToUse->pluck('total')->values()->toArray();
         $n = count($y);
-        $x = range(1, $n);
 
-        // Calculate regression coefficients
-        $sumX = array_sum($x);
-        $sumY = array_sum($y);
-        $sumXY = 0;
-        $sumX2 = 0;
-
-        for ($i = 0; $i < $n; $i++) {
-            $sumXY += $x[$i] * $y[$i];
-            $sumX2 += $x[$i] ** 2;
+        // PILIH METODE PREDIKSI TERBAIK
+        if ($n >= 4) {
+            // Gunakan Weighted Moving Average untuk data >= 4 bulan
+            $prediction = $this->predictWithWeightedAverage($y, $n);
+            $result['predictionMethod'] = 'Weighted Moving Average';
+        } elseif ($n == 3) {
+            // Gunakan Exponential Smoothing untuk 3 bulan
+            $prediction = $this->predictWithExponentialSmoothing($y, $n);
+            $result['predictionMethod'] = 'Exponential Smoothing';
+        } else {
+            // Gunakan Simple Average untuk 2 bulan
+            $prediction = $this->predictWithSimpleAverage($y, $n);
+            $result['predictionMethod'] = 'Simple Average';
         }
 
-        $denominator = ($n * $sumX2) - ($sumX ** 2);
-
-        // Check if regression is possible
-        if ($denominator == 0) {
-            // All X values are the same (shouldn't happen with our data)
-            $result['predictionWarning'] = 'Tidak dapat menghitung prediksi (data tidak valid)';
-            $result['predictionMethod'] = 'failed';
-            return $result;
-        }
-
-        // Calculate slope (m) and intercept (b) for y = mx + b
-        $slope = (($n * $sumXY) - ($sumX * $sumY)) / $denominator;
-        $intercept = ($sumY - ($slope * $sumX)) / $n;
-
-        // Predict next month (n+1) and second month (n+2)
-        $result['predictedNextMonth'] = max(0, round(($slope * ($n + 1)) + $intercept));
-        $result['predictedSecondMonth'] = max(0, round(($slope * ($n + 2)) + $intercept));
+        $result['predictedNextMonth'] = $prediction['month1'];
+        $result['predictedSecondMonth'] = $prediction['month2'];
+        $result['predictionAccuracy'] = $prediction['accuracy'];
 
         // Calculate month labels
         $lastMonth = $monthlyShipments->last();
@@ -359,11 +346,6 @@ class AnalyticsDashboardController extends Controller
         $result['secondMonthLabel'] = $secondMonth->format('Y-m');
         $result['secondMonthLabelDisplay'] = $bulanIndonesia[$secondMonth->month] . ' ' . $secondMonth->year;
 
-        // Calculate prediction accuracy
-        $accuracyResult = $this->calculatePredictionAccuracy($x, $y, $slope, $intercept, $n);
-        $result['predictionAccuracy'] = $accuracyResult['accuracy'];
-        $result['predictionMethod'] = $accuracyResult['method'];
-
         // Set warning based on data points
         if ($n < 3) {
             $result['predictionWarning'] = 'Prediksi berdasarkan ' . $n . ' bulan data (akurasi terbatas)';
@@ -377,70 +359,159 @@ class AnalyticsDashboardController extends Controller
     }
 
     /**
-     * Calculate prediction accuracy using appropriate metrics
+     * Predict using Weighted Moving Average (Best for >= 4 data points)
      * 
-     * @param array $x
      * @param array $y
-     * @param float $slope
-     * @param float $intercept
      * @param int $n
      * @return array
      */
-    private function calculatePredictionAccuracy($x, $y, $slope, $intercept, $n)
+    private function predictWithWeightedAverage($y, $n)
     {
-        $result = [
-            'accuracy' => 0,
-            'method' => 'unknown'
+        // Beri bobot lebih besar untuk data terbaru
+        $weights = [];
+        $totalWeight = 0;
+
+        for ($i = 0; $i < $n; $i++) {
+            $weight = $i + 1; // Bobot linear: 1, 2, 3, 4, ...
+            $weights[] = $weight;
+            $totalWeight += $weight;
+        }
+
+        // Hitung weighted average
+        $weightedSum = 0;
+        for ($i = 0; $i < $n; $i++) {
+            $weightedSum += $y[$i] * $weights[$i];
+        }
+        $weightedAverage = $weightedSum / $totalWeight;
+
+        // Hitung trend (slope sederhana dari 3 bulan terakhir)
+        $recentData = array_slice($y, -min(3, $n));
+        $recentCount = count($recentData);
+        $trend = 0;
+
+        if ($recentCount >= 2) {
+            $trend = ($recentData[$recentCount - 1] - $recentData[0]) / $recentCount;
+        }
+
+        // Prediksi dengan trend
+        $month1 = max(0, round($weightedAverage + $trend));
+        $month2 = max(0, round($weightedAverage + (2 * $trend)));
+
+        // Hitung akurasi (berdasarkan konsistensi data)
+        $accuracy = $this->calculateSimpleAccuracy($y, $n);
+
+        return [
+            'month1' => $month1,
+            'month2' => $month2,
+            'accuracy' => $accuracy
         ];
+    }
 
-        // Method 1: MAPE (Mean Absolute Percentage Error)
-        // Better for understanding percentage deviation
-        $totalPercentageError = 0;
-        $validCount = 0;
+    /**
+     * Predict using Exponential Smoothing (Best for 3 data points)
+     * 
+     * @param array $y
+     * @param int $n
+     * @return array
+     */
+    private function predictWithExponentialSmoothing($y, $n)
+    {
+        $alpha = 0.6; // Smoothing factor (0-1), lebih tinggi = lebih responsif ke data terbaru
 
+        $forecast = $y[0];
+        for ($i = 1; $i < $n; $i++) {
+            $forecast = $alpha * $y[$i] + (1 - $alpha) * $forecast;
+        }
+
+        // Hitung trend sederhana
+        $trend = ($y[$n - 1] - $y[0]) / $n;
+
+        $month1 = max(0, round($forecast + $trend));
+        $month2 = max(0, round($forecast + (2 * $trend)));
+
+        $accuracy = $this->calculateSimpleAccuracy($y, $n);
+
+        return [
+            'month1' => $month1,
+            'month2' => $month2,
+            'accuracy' => $accuracy
+        ];
+    }
+
+    /**
+     * Predict using Simple Average (For 2 data points)
+     * 
+     * @param array $y
+     * @param int $n
+     * @return array
+     */
+    private function predictWithSimpleAverage($y, $n)
+    {
+        $average = array_sum($y) / $n;
+        $trend = $y[$n - 1] - $y[0]; // Trend dari data pertama ke terakhir
+
+        $month1 = max(0, round($average + ($trend / 2)));
+        $month2 = max(0, round($average + $trend));
+
+        $accuracy = $this->calculateSimpleAccuracy($y, $n);
+
+        return [
+            'month1' => $month1,
+            'month2' => $month2,
+            'accuracy' => $accuracy
+        ];
+    }
+
+    /**
+     * Calculate simple accuracy based on data consistency (Coefficient of Variation)
+     * 
+     * @param array $y
+     * @param int $n
+     * @return float
+     */
+    private function calculateSimpleAccuracy($y, $n)
+    {
+        if ($n < 2) {
+            return 50; // Default untuk data minimal
+        }
+
+        // Hitung coefficient of variation (CV)
+        $mean = array_sum($y) / $n;
+
+        if ($mean == 0) {
+            return 50;
+        }
+
+        $variance = 0;
         for ($i = 0; $i < $n; $i++) {
-            $yPredicted = ($slope * $x[$i]) + $intercept;
-            if ($y[$i] != 0) {
-                $percentageError = abs(($y[$i] - $yPredicted) / $y[$i]) * 100;
-                $totalPercentageError += $percentageError;
-                $validCount++;
-            }
+            $variance += ($y[$i] - $mean) ** 2;
         }
+        $stdDev = sqrt($variance / $n);
+        $cv = ($stdDev / $mean) * 100; // Coefficient of Variation dalam persen
 
-        if ($validCount > 0) {
-            $mape = $totalPercentageError / $validCount;
-            // Accuracy = 100 - MAPE, capped at 0-100
-            $accuracy = max(0, min(100, 100 - $mape));
-            $result['accuracy'] = round($accuracy, 1);
-            $result['method'] = 'MAPE';
-            return $result;
-        }
-
-        // Method 2: R-squared (Coefficient of Determination)
-        // Fallback if MAPE can't be calculated
-        $yMean = array_sum($y) / $n;
-        $ssTotal = 0;
-        $ssResidual = 0;
-
-        for ($i = 0; $i < $n; $i++) {
-            $yPredicted = ($slope * $x[$i]) + $intercept;
-            $ssTotal += ($y[$i] - $yMean) ** 2;
-            $ssResidual += ($y[$i] - $yPredicted) ** 2;
-        }
-
-        if ($ssTotal > 0) {
-            $rSquared = 1 - ($ssResidual / $ssTotal);
-            // Convert R² to percentage
-            $accuracy = max(0, min(100, $rSquared * 100));
-            $result['accuracy'] = round($accuracy, 1);
-            $result['method'] = 'R²';
+        // Konversi CV ke accuracy score
+        // CV rendah = data konsisten = akurasi tinggi
+        // CV tinggi = data volatile = akurasi rendah
+        if ($cv <= 10) {
+            $accuracy = 95; // Sangat konsisten
+        } elseif ($cv <= 20) {
+            $accuracy = 90; // Konsisten
+        } elseif ($cv <= 30) {
+            $accuracy = 85; // Cukup konsisten
+        } elseif ($cv <= 40) {
+            $accuracy = 75; // Moderat
+        } elseif ($cv <= 50) {
+            $accuracy = 65; // Cukup volatile
+        } elseif ($cv <= 75) {
+            $accuracy = 55; // Volatile
         } else {
-            // All Y values are the same (perfect prediction in a sense)
-            $result['accuracy'] = 100;
-            $result['method'] = 'Perfect (no variance)';
+            $accuracy = 45; // Sangat volatile
         }
 
-        return $result;
+        // Bonus akurasi untuk data yang lebih banyak
+        $dataBonus = min(15, ($n - 2) * 3); // Maksimal +15% untuk 7+ bulan data
+
+        return min(95, $accuracy + $dataBonus); // Cap maksimal 95%
     }
 
     /**

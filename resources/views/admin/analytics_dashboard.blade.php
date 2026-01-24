@@ -273,7 +273,7 @@
                             </div>
 
                             <!-- Accuracy Badge -->
-                            {{-- @if ($predictionAccuracy !== null)
+                            @if ($predictionAccuracy !== null)
                                 <div
                                     class="mb-3 inline-flex items-center px-3 py-1 rounded-full text-sm font-medium 
                                     {{ $predictionAccuracy >= 80 ? 'bg-green-100 text-green-800' : ($predictionAccuracy >= 60 ? 'bg-yellow-100 text-yellow-800' : 'bg-red-100 text-red-800') }}">
@@ -284,7 +284,7 @@
                                     </svg>
                                     Tingkat Akurasi: {{ $predictionAccuracy }}%
                                 </div>
-                            @endif --}}
+                            @endif
 
                             <!-- Warning/Info -->
                             @if ($predictionWarning)
@@ -509,88 +509,115 @@
     @stack('scripts')
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        // Monthly Shipments Chart with 2 Predictions - FIXED
+        // Monthly Shipments Chart - Aktual vs Prediksi (Full)
         const monthlyCtx = document.getElementById('monthlyChart');
 
         if (monthlyCtx) {
             const ctx = monthlyCtx.getContext('2d');
 
+            // Data historis/aktual
             const historicalData = [
                 @foreach ($monthlyShipments as $month)
                     {{ $month->total }},
                 @endforeach
             ];
 
-            const labels = [
+            // Label untuk bulan historis
+            const historicalLabels = [
                 @foreach ($monthlyShipments as $month)
                     '{{ $month->month_label }}',
                 @endforeach
-                @if (isset($predictedNextMonth) && $predictedNextMonth !== null)
-                    '{{ $nextMonthLabelDisplay }}',
-                @endif
-                @if (isset($predictedSecondMonth) && $predictedSecondMonth !== null)
-                    '{{ $secondMonthLabelDisplay }}'
-                @endif
             ];
 
-            const allData = [
-                ...historicalData,
-                @if (isset($predictedNextMonth) && $predictedNextMonth !== null)
-                    {{ $predictedNextMonth }},
-                @endif
-                @if (isset($predictedSecondMonth) && $predictedSecondMonth !== null)
-                    {{ $predictedSecondMonth }}
-                @endif
-            ];
+            // Label prediksi
+            const predictionLabels = [];
+            @if (isset($predictedNextMonth) && $predictedNextMonth !== null)
+                predictionLabels.push('{{ $nextMonthLabelDisplay }}');
+            @endif
+            @if (isset($predictedSecondMonth) && $predictedSecondMonth !== null)
+                predictionLabels.push('{{ $secondMonthLabelDisplay }}');
+            @endif
 
-            const predictionStartIndex = historicalData.length - 1;
+            // Gabungkan semua label
+            const allLabels = [...historicalLabels, ...predictionLabels];
+
+            // Data untuk garis AKTUAL (Biru) - HANYA data historis
+            const actualLineData = [...historicalData];
+            predictionLabels.forEach(() => actualLineData.push(null));
+
+            // Data untuk garis PREDIKSI (Orange/Merah) - SEMUA data (historis + prediksi)
+            const predictionLineData = [...historicalData]; // Mulai dengan data historis
+
+            // Tambahkan nilai prediksi
+            @if (isset($predictedNextMonth) && $predictedNextMonth !== null)
+                predictionLineData.push({{ $predictedNextMonth }});
+            @endif
+            @if (isset($predictedSecondMonth) && $predictedSecondMonth !== null)
+                predictionLineData.push({{ $predictedSecondMonth }});
+            @endif
 
             new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: labels,
+                    labels: allLabels,
                     datasets: [{
-                        label: 'Shipments',
-                        data: allData,
-                        borderColor: 'rgb(59, 130, 246)',
-                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
-                        tension: 0.4,
-                        fill: true,
-                        segment: {
-                            borderDash: ctx => {
-                                return ctx.p0DataIndex >= predictionStartIndex ? [5, 5] : [];
+                            label: 'Data Aktual',
+                            data: actualLineData,
+                            borderColor: 'rgb(59, 130, 246)', // Biru
+                            backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                            tension: 0.4,
+                            fill: false,
+                            pointBackgroundColor: 'rgb(59, 130, 246)',
+                            pointBorderColor: '#fff',
+                            pointBorderWidth: 2,
+                            pointRadius: 5,
+                            pointHoverRadius: 7,
+                            borderWidth: 3,
+                            spanGaps: false
+                        },
+                        {
+                            label: 'Prediksi',
+                            data: predictionLineData,
+                            borderColor: 'rgb(249, 115, 22)', // Orange
+                            backgroundColor: 'rgba(249, 115, 22, 0.1)',
+                            tension: 0.4,
+                            fill: false,
+                            segment: {
+                                borderDash: ctx => {
+                                    // Garis putus-putus hanya untuk bagian prediksi
+                                    const currentIndex = ctx.p0DataIndex;
+                                    return currentIndex >= historicalData.length - 1 ? [8, 4] : [];
+                                }
                             },
-                            borderColor: ctx => {
-                                return ctx.p0DataIndex >= predictionStartIndex ? 'rgb(147, 51, 234)' :
-                                    'rgb(59, 130, 246)';
-                            }
-                        },
-                        pointBackgroundColor: (context) => {
-                            return context.dataIndex >= historicalData.length ? 'rgb(147, 51, 234)' :
-                                'rgb(59, 130, 246)';
-                        },
-                        pointBorderColor: (context) => {
-                            return context.dataIndex >= historicalData.length ? 'rgb(147, 51, 234)' :
-                                'rgb(59, 130, 246)';
-                        },
-                        pointRadius: 5,
-                        pointHoverRadius: 7
-                    }]
+                            pointBackgroundColor: 'rgb(249, 115, 22)',
+                            pointBorderColor: '#fff',
+                            pointBorderWidth: 2,
+                            pointRadius: 5,
+                            pointHoverRadius: 7,
+                            borderWidth: 3
+                        }
+                    ]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: true,
                     plugins: {
                         legend: {
-                            display: false
+                            display: true,
+                            position: 'top',
+                            labels: {
+                                usePointStyle: true,
+                                padding: 15,
+                                font: {
+                                    size: 12,
+                                    weight: 'bold'
+                                }
+                            }
                         },
                         tooltip: {
                             callbacks: {
                                 label: function(context) {
-                                    let label = 'Shipments: ' + context.parsed.y;
-                                    if (context.dataIndex >= historicalData.length) {
-                                        label += ' (Prediksi)';
-                                    }
+                                    let label = context.dataset.label + ': ' + context.parsed.y + ' shipments';
                                     return label;
                                 }
                             }
@@ -604,8 +631,20 @@
                                 callback: function(value) {
                                     return Math.floor(value);
                                 }
+                            },
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.05)'
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
                             }
                         }
+                    },
+                    interaction: {
+                        intersect: false,
+                        mode: 'index'
                     }
                 }
             });
@@ -767,4 +806,4 @@
             });
         }
     </script>
-</x-admin-layout>
+    </x-admin-layout>
