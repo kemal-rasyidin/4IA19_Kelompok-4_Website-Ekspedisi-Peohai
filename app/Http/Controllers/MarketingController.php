@@ -13,13 +13,57 @@ class MarketingController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(EntryPeriod $entry_period)
-{
-    $entries = EntryMain::where('entry_period_id', $entry_period->id)->paginate(10);
-    
-    // Hitung total pengeluaran dan pendapatan
-    $totals = EntryMain::where('entry_period_id', $entry_period->id)
-        ->selectRaw('
+    public function index(Request $request, EntryPeriod $entry_period)
+    {
+        $search = $request->input('search');
+
+        $entries = EntryMain::where('entry_period_id', $entry_period->id)
+            ->when($search, function ($query) use ($search) {
+                $query->where(function ($q) use ($search) {
+                    $q->where('tgl_marketing', 'like', "%{$search}%")
+                        ->orWhere('tgl_jatuh_tempo', 'like', "%{$search}%")
+                        ->orWhere('muat_barang', 'like', "%{$search}%")
+                        ->orWhere('jenis_barang', 'like', "%{$search}%")
+                        ->orWhere('customer', 'like', "%{$search}%")
+                        ->orWhere('jenis_barang', 'like', "%{$search}%")
+                        ->orWhere('tujuan', 'like', "%{$search}%")
+                        ->orWhere('no_cont', 'like', "%{$search}%")
+                        ->orWhere('seal', 'like', "%{$search}%")
+                        ->orWhere('nama_kapal', 'like', "%{$search}%")
+                        ->orWhere('voy', 'like', "%{$search}%")
+                        ->orWhere('pelayaran', 'like', "%{$search}%")
+                        ->orWhere('etd', 'like', "%{$search}%")
+                        ->orWhere('door_daerah', 'like', "%{$search}%")
+                        ->orWhere('stufing_dalam', 'like', "%{$search}%")
+                        ->orWhere('harga_trucking', 'like', "%{$search}%")
+                        ->orWhere('freight', 'like', "%{$search}%")
+                        ->orWhere('tgl_freight', 'like', "%{$search}%")
+                        ->orWhere('thc', 'like', "%{$search}%")
+                        ->orWhere('asuransi', 'like', "%{$search}%")
+                        ->orWhere('bl', 'like', "%{$search}%")
+                        ->orWhere('ops', 'like', "%{$search}%")
+                        ->orWhere('total_marketing', 'like', "%{$search}%")
+                        ->orWhere('no_inv', 'like', "%{$search}%")
+                        ->orWhere('asuransi_inv', 'like', "%{$search}%")
+                        ->orWhere('adm', 'like', "%{$search}%")
+                        ->orWhere('harga_jual', 'like', "%{$search}%")
+                        ->orWhere('pph23', 'like', "%{$search}%")
+                        ->orWhere('total_inv', 'like', "%{$search}%")
+                        ->orWhere('refund', 'like', "%{$search}%")
+                        ->orWhere('diterima', 'like', "%{$search}%")
+                        ->orWhere('bu_lia', 'like', "%{$search}%")
+                        ->orWhere('nol', 'like', "%{$search}%")
+                        ->orWhere('persentase_marketing', 'like', "%{$search}%")
+                        ->orWhere('agen_daerah', 'like', "%{$search}%")
+                        ->orWhere('keterangan_marketing', 'like', "%{$search}%");
+                });
+            })
+            ->paginate(10)
+            ->withQueryString();
+
+        // Hitung total pengeluaran dan pendapatan
+        $totals = EntryMain::where('entry_period_id', $entry_period->id)
+            ->selectRaw('
             SUM(COALESCE(door_daerah, 0) + 
                 COALESCE(stufing_dalam, 0) + 
                 COALESCE(harga_trucking, 0) + 
@@ -33,18 +77,18 @@ class MarketingController extends Controller
                 COALESCE(harga_jual, 0) - 
                 COALESCE(pph23, 0)) as total_pendapatan
         ')
-        ->first();
-    
-    // Hitung keuntungan bersih
-    $keuntungan_bersih = ($totals->total_pendapatan ?? 0) - ($totals->total_pengeluaran ?? 0);
-    
-    return view('admin.entry.marketing.index', compact(
-        'entries', 
-        'entry_period', 
-        'totals', 
-        'keuntungan_bersih'
-    ));
-}
+            ->first();
+
+        // Hitung keuntungan bersih
+        $keuntungan_bersih = ($totals->total_pendapatan ?? 0) - ($totals->total_pengeluaran ?? 0);
+
+        return view('admin.entry.marketing.index', compact(
+            'entries',
+            'entry_period',
+            'totals',
+            'keuntungan_bersih'
+        ));
+    }
 
     /**
      * Show the form for creating a new resource.

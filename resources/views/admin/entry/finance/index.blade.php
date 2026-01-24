@@ -8,7 +8,7 @@
         </div>
 
         <div class="bg-white p-4 rounded-lg shadow-md mb-4">
-            <form method="GET" action="{{ route('admin.entries.index', $entry_period->id) }}">
+            <form method="GET" action="{{ route('finance.entries.index', $entry_period->id) }}">
                 <div class="flex gap-2">
                     <input type="text" name="search" placeholder="Cari?" value="{{ request('search') }}"
                         class="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
@@ -20,7 +20,7 @@
                         </svg>
                     </button>
                     @if (request('search'))
-                        <a href="{{ route('admin.entries.index', $entry_period->id) }}"
+                        <a href="{{ route('finance.entries.index', $entry_period->id) }}"
                             class="px-6 py-2 bg-gray-500 hover:bg-gray-600 text-white rounded-md font-semibold shadow-md">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                 <path fill="currentColor"

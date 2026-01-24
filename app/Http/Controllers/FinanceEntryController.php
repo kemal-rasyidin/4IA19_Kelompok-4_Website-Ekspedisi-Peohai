@@ -13,9 +13,33 @@ class FinanceEntryController extends Controller
     /**
      * Menampilkan daftar data untuk Finance
      */
-    public function index(EntryPeriod $entry_period)
+    public function index(Request $request, EntryPeriod $entry_period)
     {
-        $entries = EntryMain::where('entry_period_id', $entry_period->id)->paginate(10);
+        $search = $request->input('search');
+
+        $entries = EntryMain::where('entry_period_id', $entry_period->id)
+            ->when($search, function ($query) use ($search) {
+                $query->where(function ($q) use ($search) {
+                    $q->where('qty', 'like', "%{$search}%")
+                        ->orWhere('tgl_stuffing', 'like', "%{$search}%")
+                        ->orWhere('pengirim', 'like', "%{$search}%")
+                        ->orWhere('nama_kapal', 'like', "%{$search}%")
+                        ->orWhere('nama_kapal', 'like', "%{$search}%")
+                        ->orWhere('voy', 'like', "%{$search}%")
+                        ->orWhere('tujuan', 'like', "%{$search}%")
+                        ->orWhere('no_inv', 'like', "%{$search}%")
+                        ->orWhere('no_cont', 'like', "%{$search}%")
+                        ->orWhere('seal', 'like', "%{$search}%")
+                        ->orWhere('etd', 'like', "%{$search}%")
+                        ->orWhere('agen', 'like', "%{$search}%")
+                        ->orWhere('dooring', 'like', "%{$search}%")
+                        ->orWhere('no_inv', 'like', "%{$search}%")
+                        ->orWhere('pph_status', 'like', "%{$search}%");
+                });
+            })
+            ->paginate(10)
+            ->withQueryString();
+
         return view('admin.entry.finance.index', compact('entries', 'entry_period'));
     }
 

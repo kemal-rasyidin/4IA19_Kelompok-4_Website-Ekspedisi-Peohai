@@ -17,9 +17,10 @@
                         <label for="periode" class="block text-sm font-medium text-gray-900 mb-2">
                             Pilih Periode (Bulan & Tahun) <span class="text-red-500">*</span>
                         </label>
-                        <input type="month" name="periode" id="periode" value="{{ old('periode', date('Y-m')), $entryPeriod->periode }}"
+                        <input type="month" name="periode" id="periode"
+                            value="{{ old('periode', sprintf('%04d-%02d', $entryPeriod->tahun, $entryPeriod->bulan)) }}"
                             required
-                            class="block w-full rounded-md border-gray-300 shadow-sm focus:border-yellow-500 focus:ring-yellow-500 sm:text-sm @error('periode') border-red-500 @enderror @error('tahun') border-red-500 @enderror @error('bulan') border-red-500 @enderror">
+                            class="block w-full rounded-md border-gray-300 shadow-sm focus:border-yellow-500 focus:ring-yellow-500 sm:text-sm @error('periode') border-red-500 @enderror">
                         @error('periode')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror

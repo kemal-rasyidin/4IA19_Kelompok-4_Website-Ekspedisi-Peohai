@@ -11,9 +11,50 @@ class StatusEntryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(EntryPeriod $entry_period)
+    public function index(Request $request, EntryPeriod $entry_period)
     {
-        $entries = EntryMain::where('entry_period_id', $entry_period->id)->paginate(10);
+        $search = $request->input('search');
+        $status = $request->input('status');
+
+        $query = EntryMain::where('entry_period_id', $entry_period->id)
+            ->when($search, function ($query) use ($search) {
+                $query->where(function ($q) use ($search) {
+                    $q->where('qty', 'like', "%{$search}%")
+                        ->orWhere('tgl_stuffing', 'like', "%{$search}%")
+                        ->orWhere('pengirim', 'like', "%{$search}%")
+                        ->orWhere('nama_kapal', 'like', "%{$search}%")
+                        ->orWhere('voy', 'like', "%{$search}%")
+                        ->orWhere('tujuan', 'like', "%{$search}%")
+                        ->orWhere('no_cont', 'like', "%{$search}%")
+                        ->orWhere('seal', 'like', "%{$search}%")
+                        ->orWhere('etd', 'like', "%{$search}%")
+                        ->orWhere('agen', 'like', "%{$search}%")
+                        ->orWhere('dooring', 'like', "%{$search}%")
+                        ->orWhere('no_inv', 'like', "%{$search}%");
+                });
+            });
+
+        // Filter berdasarkan status paket (computed attribute)
+        if ($status) {
+            $query->where(function ($q) use ($status) {
+                switch ($status) {
+                    case 'Sampai Di Tujuan':
+                        $q->whereNotNull('dooring');
+                        break;
+                    case 'Dalam Perjalanan':
+                        $q->whereNotNull('etd')
+                            ->whereNull('dooring');
+                        break;
+                    case 'Dikemas':
+                        $q->whereNull('etd')
+                            ->whereNull('dooring');
+                        break;
+                }
+            });
+        }
+
+        $entries = $query->paginate(10)->withQueryString();
+
         return view('admin.entry.status.index', compact('entries', 'entry_period'));
     }
 

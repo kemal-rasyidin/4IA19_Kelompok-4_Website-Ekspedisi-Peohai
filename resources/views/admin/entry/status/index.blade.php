@@ -8,26 +8,52 @@
         </div>
 
         <div class="bg-white p-4 rounded-lg shadow-md mb-4">
-            <form method="GET" action="{{ route('admin.entries.index', $entry_period->id) }}">
-                <div class="flex gap-2">
+            <form method="GET" action="{{ route('status.entries.index', $entry_period->id) }}">
+                <div class="flex flex-col md:flex-row gap-2">
+                    <!-- Search Input -->
                     <input type="text" name="search" placeholder="Cari?" value="{{ request('search') }}"
                         class="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                    <button type="submit"
-                        class="px-6 py-2 border border-blue-500 bg-blue-50 text-blue-600 hover:text-white hover:bg-blue-500 rounded-md font-semibold shadow-sm">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                            <path fill="currentColor"
-                                d="M9.5 16q-2.725 0-4.612-1.888T3 9.5t1.888-4.612T9.5 3t4.613 1.888T16 9.5q0 1.1-.35 2.075T14.7 13.3l5.6 5.6q.275.275.275.7t-.275.7t-.7.275t-.7-.275l-5.6-5.6q-.75.6-1.725.95T9.5 16m0-2q1.875 0 3.188-1.312T14 9.5t-1.312-3.187T9.5 5T6.313 6.313T5 9.5t1.313 3.188T9.5 14" />
-                        </svg>
-                    </button>
-                    @if (request('search'))
-                        <a href="{{ route('admin.entries.index', $entry_period->id) }}"
-                            class="px-6 py-2 bg-gray-500 hover:bg-gray-600 text-white rounded-md font-semibold shadow-md">
+
+                    <!-- Dropdown Filter Status -->
+                    <select name="status"
+                        class="px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 md:w-48 text-sm">
+                        <option value="">Semua Status</option>
+                        <option value="Dikemas" {{ request('status') == 'Dikemas' ? 'selected' : '' }}>
+                            Dikemas
+                        </option>
+                        <option value="Dalam Perjalanan"
+                            {{ request('status') == 'Dalam Perjalanan' ? 'selected' : '' }}>
+                            Dalam Perjalanan
+                        </option>
+                        <option value="Sampai Di Tujuan"
+                            {{ request('status') == 'Sampai Di Tujuan' ? 'selected' : '' }}>
+                            Sampai Di Tujuan
+                        </option>
+                    </select>
+
+                    <!-- Button Group -->
+                    <div class="flex gap-2">
+                        <!-- Search Button -->
+                        <button type="submit"
+                            class="px-6 py-2 border border-blue-500 bg-blue-50 text-blue-600 hover:text-white hover:bg-blue-500 rounded-md font-semibold shadow-sm transition-colors">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                 <path fill="currentColor"
-                                    d="M12 20q-3.35 0-5.675-2.325T4 12t2.325-5.675T12 4q1.725 0 3.3.712T18 6.75V4h2v7h-7V9h4.2q-.8-1.4-2.187-2.2T12 6Q9.5 6 7.75 7.75T6 12t1.75 4.25T12 18q1.925 0 3.475-1.1T17.65 14h2.1q-.7 2.65-2.85 4.325T12 20" />
+                                    d="M9.5 16q-2.725 0-4.612-1.888T3 9.5t1.888-4.612T9.5 3t4.613 1.888T16 9.5q0 1.1-.35 2.075T14.7 13.3l5.6 5.6q.275.275.275.7t-.275.7t-.7.275t-.7-.275l-5.6-5.6q-.75.6-1.725.95T9.5 16m0-2q1.875 0 3.188-1.312T14 9.5t-1.312-3.187T9.5 5T6.313 6.313T5 9.5t1.313 3.188T9.5 14" />
                             </svg>
-                        </a>
-                    @endif
+                        </button>
+
+                        <!-- Reset Button -->
+                        @if (request('search') || request('status'))
+                            <a href="{{ route('status.entries.index', $entry_period->id) }}"
+                                class="px-6 py-2 bg-gray-500 hover:bg-gray-600 text-white rounded-md font-semibold shadow-md transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24">
+                                    <path fill="currentColor"
+                                        d="M12 20q-3.35 0-5.675-2.325T4 12t2.325-5.675T12 4q1.725 0 3.3.712T18 6.75V4h2v7h-7V9h4.2q-.8-1.4-2.187-2.2T12 6Q9.5 6 7.75 7.75T6 12t1.75 4.25T12 18q1.925 0 3.475-1.1T17.65 14h2.1q-.7 2.65-2.85 4.325T12 20" />
+                                </svg>
+                            </a>
+                        @endif
+                    </div>
                 </div>
             </form>
         </div>
