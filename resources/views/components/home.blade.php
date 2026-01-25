@@ -9,7 +9,6 @@
 
     <!-- Fonts & Icons -->
     <link rel="icon" href="{{ asset('img/logo2.png') }}" type="image/png">
-    <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
 
     <!-- Styles / Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -32,9 +31,9 @@
                 <!-- Hamburger Start -->
                 <div class="flex items-center">
                     <button id="hamburger" name="hamburger" type="button" class="absolute right-4 block lg:hidden">
-                        <span class="hamburger-line transation origin-top-left duration-300 ease-in-out"></span>
-                        <span class="hamburger-line transation duration-300 ease-in-out"></span>
-                        <span class="hamburger-line transation origin-bottom-left duration-300 ease-in-out"></span>
+                        <span class="hamburger-line transition origin-top-left duration-300 ease-in-out"></span>
+                        <span class="hamburger-line transition duration-300 ease-in-out"></span>
+                        <span class="hamburger-line transition origin-bottom-left duration-300 ease-in-out"></span>
                     </button>
 
                     <nav id="nav-menu"
@@ -42,7 +41,7 @@
                         <ul class="block py-2 lg:flex lg:py-0">
                             <li class="group">
                                 <a href="/"
-                                    class="group mx-4 flex items-center rounded-md p-3 text-sm text-white hover:bg-gray-200 hover:text-orange-400 lg:mx-8 lg:text-base lg:hover:bg-transparent">
+                                    class="group mx-4 flex items-center rounded-md p-3 text-sm {{ request()->is('/') ? 'bg-orange-500 text-white lg:bg-transparent lg:text-orange-500 font-semibold' : 'text-gray-900 md:text-white' }} hover:bg-gray-200 hover:text-orange-400 lg:mx-8 lg:text-base lg:hover:bg-transparent transition-colors">
                                     <svg class="flex lg:hidden" xmlns="http://www.w3.org/2000/svg" width="24"
                                         height="24" viewBox="0 0 24 24">
                                         <path fill="currentColor"
@@ -53,24 +52,22 @@
                             </li>
                             <li class="group">
                                 <a href="/simulasi-tarif"
-                                    class="group mx-4 flex items-center rounded-md p-3 text-sm text-white hover:bg-gray-200 hover:text-orange-400 lg:mx-8 lg:text-base lg:hover:bg-transparent">
+                                    class="group mx-4 flex items-center rounded-md p-3 text-sm {{ request()->is('simulasi-tarif') ? 'bg-orange-500 text-white lg:bg-transparent lg:text-orange-500 font-semibold' : 'text-gray-900 md:text-white' }} hover:bg-gray-200 hover:text-orange-400 lg:mx-8 lg:text-base lg:hover:bg-transparent transition-colors">
                                     <svg class="flex lg:hidden" xmlns="http://www.w3.org/2000/svg" width="24"
-                                        height="24" viewBox="0 0 48 48">
-                                        <path fill="none" stroke="currentColor" stroke-linecap="round"
-                                            stroke-linejoin="round" stroke-miterlimit="2" stroke-width="4"
-                                            d="M44 6H28v8h16zm0 8v22c0 1.11-.89 2-2 2H8c-2.21 0-4-1.79-4-4v-6c0-4.42 3.58-8 8-8h16v-6zM14 26v-6m7 6v-6m-6 22v-4m-7 4v-4m14 4v-4m12 4v-4m7 4v-4M23 20H12" />
+                                        height="24" viewBox="0 0 24 24">
+                                        <path fill="currentColor"
+                                            d="M7 20q-1.25 0-2.125-.875T4 17H2.725q-.425 0-.713-.288T1.725 16t.288-.712t.712-.288h2.05q.425-.475 1-.737T7 14t1.225.263t1 .737H13.4l2.1-9H5.75q-.425 0-.712-.288T4.75 5t.288-.712T5.75 4h11q.5 0 .8.375t.175.85L17.075 8H19q.475 0 .9.213t.7.587l1.875 2.475q.275.35.35.763t0 .837L22.15 16.2q-.075.35-.35.575t-.625.225H20q0 1.25-.875 2.125T17 20t-2.125-.875T14 17h-4q0 1.25-.875 2.125T7 20m8.925-7h4.825l.1-.525L19 10h-2.375zm-2.475 1.825l.163-.725q.162-.725.412-1.775q.075-.325.15-.6t.125-.55l.163-.725q.162-.725.412-1.775t.413-1.775l.162-.725L15.5 6l-2.1 9zm-11.7-1.5q-.425 0-.712-.287t-.288-.713t.288-.712t.712-.288h3.5q.425 0 .713.288t.287.712t-.288.713t-.712.287zm2-3.65q-.425 0-.712-.288t-.288-.712t.288-.712t.712-.288h4.5q.425 0 .713.288t.287.712t-.288.713t-.712.287zM7 18q.425 0 .713-.288T8 17t-.288-.712T7 16t-.712.288T6 17t.288.713T7 18m10 0q.425 0 .713-.288T18 17t-.288-.712T17 16t-.712.288T16 17t.288.713T17 18" />
                                     </svg>
                                     <p class="ml-3 lg:ml-0">Simulasi Tarif</p>
                                 </a>
                             </li>
                             <li class="group">
                                 <a href="/lacak"
-                                    class="group mx-4 flex items-center rounded-md p-3 text-sm text-white hover:bg-gray-200 hover:text-orange-400 lg:mx-8 lg:text-base lg:hover:bg-transparent">
+                                    class="group mx-4 flex items-center rounded-md p-3 text-sm {{ request()->is('lacak') ? 'bg-orange-500 text-white lg:bg-transparent lg:text-orange-500 font-semibold' : 'text-gray-900 md:text-white' }} hover:bg-gray-200 hover:text-orange-400 lg:mx-8 lg:text-base lg:hover:bg-transparent transition-colors">
                                     <svg class="flex lg:hidden" xmlns="http://www.w3.org/2000/svg" width="24"
-                                        height="24" viewBox="0 0 48 48">
-                                        <path fill="none" stroke="currentColor" stroke-linecap="round"
-                                            stroke-linejoin="round" stroke-miterlimit="2" stroke-width="4"
-                                            d="M44 6H28v8h16zm0 8v22c0 1.11-.89 2-2 2H8c-2.21 0-4-1.79-4-4v-6c0-4.42 3.58-8 8-8h16v-6zM14 26v-6m7 6v-6m-6 22v-4m-7 4v-4m14 4v-4m12 4v-4m7 4v-4M23 20H12" />
+                                        height="24" viewBox="0 0 24 24">
+                                        <path fill="currentColor"
+                                            d="M9.5 16q-2.725 0-4.612-1.888T3 9.5t1.888-4.612T9.5 3t4.613 1.888T16 9.5q0 1.1-.35 2.075T14.7 13.3l5.6 5.6q.275.275.275.7t-.275.7t-.7.275t-.7-.275l-5.6-5.6q-.75.6-1.725.95T9.5 16m0-2q1.875 0 3.188-1.312T14 9.5t-1.312-3.187T9.5 5T6.313 6.313T5 9.5t1.313 3.188T9.5 14" />
                                     </svg>
                                     <p class="ml-3 lg:ml-0">Lacak Pengiriman</p>
                                 </a>
@@ -98,7 +95,7 @@
 
     <footer class="border-l-orange-100 bg-ink">
         <div class="container">
-            <div class="py-12">
+            <div class="pt-12 pb-24">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
                     <!-- Kolom Kiri: Informasi Kontak -->
                     <div>
@@ -188,7 +185,6 @@
                     <!-- Kolom Kanan: Business Hours -->
                     <div>
                         <h3 class="text-2xl font-bold mb-6 text-gray-300">Jam Operasional</h3>
-
                         <div class="space-y-4">
                             <div class="flex justify-between items-center border-b border-white/10 pb-3">
                                 <span class="text-gray-300">Senin - Jumat</span>
@@ -203,7 +199,6 @@
                                 <span class="font-semibold text-orange-400">Tutup</span>
                             </div>
                         </div>
-
                         <div class="mt-8 p-4 bg-white/5 rounded-lg border border-white/10">
                             <p class="text-sm text-gray-300">
                                 <span class="font-semibold text-white flex items-center gap-2">
@@ -223,25 +218,55 @@
                     </div>
                 </div>
 
-                <!-- Copyright -->
                 <div class="border-t border-white/10 mt-8 pt-6">
                     <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-                        <p class="text-sm text-gray-300">
-                            © 2025 <span class="font-semibold text-white">PT. Peohai Mitra Sejati</span>. All rights
-                            reserved.
+                        <p class="text-sm text-gray-300 text-center md:text-left">
+                            © {{ date('Y') }}
+                            <span class="font-semibold text-white">
+                                PT. Peohai Mitra Sejati
+                            </span>.
+                            All rights reserved.
                         </p>
-                        <div class="flex gap-6 text-sm">
-                            <a href="#" class="text-gray-300 hover:text-orange-400 transition-colors">Privacy
-                                Policy</a>
-                            <a href="#" class="text-gray-300 hover:text-orange-400 transition-colors">Terms of
-                                Service</a>
+                        <div class="flex flex-col md:flex-row items-center gap-6">
+                            <div class="flex gap-6 text-sm">
+                                <a href="#" class="text-gray-300 hover:text-orange-400 transition-colors">
+                                    Privacy Policy
+                                </a>
+                                <a href="#" class="text-gray-300 hover:text-orange-400 transition-colors">
+                                    Terms of Service
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
+
             </div>
-        </div>
     </footer>
     <!-- Footer Section End -->
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/6285281761717?text=Halo%20Ekspedisi%20Peohai,%20saya%20ingin%20bertanya%20tentang%20layanan%20pengiriman"
+        target="_blank" class="fixed bottom-6 left-6 z-50 group">
+        <!-- Pulse Animation Ring -->
+        <div class="absolute bg-green-500 rounded-full opacity-75"></div>
+
+        <!-- Button Container -->
+        <div
+            class="relative flex items-center gap-3 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-2xl transition-all duration-300 hover:scale-110 px-4 py-3">
+            <!-- Icon WhatsApp -->
+            <div class="flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"
+                    fill="currentColor">
+                    <path
+                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+                </svg>
+            </div>
+            <!-- Text -->
+            <span class="font-semibold text-sm whitespace-nowrap">
+                Chat WhatsApp
+            </span>
+        </div>
+    </a>
 
 </body>
 
@@ -299,27 +324,3 @@
 </script>
 
 </html>
-
-<!-- WhatsApp Floating Button -->
-<a href="https://wa.me/6285281761717?text=Halo%20Ekspedisi%20Peohai,%20saya%20ingin%20bertanya%20tentang%20layanan%20pengiriman"
-    target="_blank" class="fixed bottom-6 left-6 z-50 group">
-    <!-- Pulse Animation Ring -->
-    <div class="absolute bg-green-500 rounded-full opacity-75"></div>
-
-    <!-- Button Container -->
-    <div
-        class="relative flex items-center gap-3 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-2xl transition-all duration-300 hover:scale-110 px-4 py-3">
-        <!-- Icon WhatsApp -->
-        <div class="flex-shrink-0">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"
-                fill="currentColor">
-                <path
-                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
-            </svg>
-        </div>
-        <!-- Text -->
-        <span class="font-semibold text-sm whitespace-nowrap">
-            Chat WhatsApp
-        </span>
-    </div>
-</a>

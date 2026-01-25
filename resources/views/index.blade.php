@@ -1,96 +1,98 @@
 <x-home>
     <!-- Hero Section Start -->
-    <section id="beranda" class="py-8 lg:py-16 relative overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <img src="/img/background2.png" alt="Background Ekspedisi" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-br from-black/60 via-black/50 to-blue-900/60"></div>
-        </div>
-
-        <!-- Content -->
-        <div class="container relative z-10">
-            <div class="mb-10 flex flex-wrap text-center">
-                <div class="w-full">
-                    <hr class="bg-orange-500 mb-4 h-1 w-32 border-0 md:h-2 mx-auto" />
-                    <p class="mb-4 text-5xl lg:text-6xl font-bold leading-tight tracking-wide text-white drop-shadow-lg"
-                        style="text-shadow: 2px 2px 8px rgba(0,0,0,0.8)">
+    <section class="border-l-orange-100 bg-gray-700 bg-cover bg-center bg-no-repeat py-32 bg-blend-multiply"
+        style="background-image: url(img/background2.png)">
+        <div class="container">
+            <div class="mb-20 flex flex-wrap lg:mb-10">
+                <div class="w-full px-4">
+                    <hr class="bg-sea mb-4 h-1 w-32 border-0 md:h-2" />
+                    <p class="mb-4 text-6xl font-bold leading-none tracking-wide text-white">
                         Kirim barangmu dengan cara mudah!
                     </p>
                 </div>
-                <div class="w-full">
-                    <p class="mb-10 mt-7 font-medium leading-relaxed text-white text-lg drop-shadow-md">
+                <div class="w-full px-4">
+                    <p class="mb-10 mt-7 font-medium text-2xl leading-relaxed text-slate-300">
                         Percayakan pengiriman Anda kepada kami. Layanan ekspedisi cepat, aman, dan terpercaya ke seluruh
                         Indonesia!
                     </p>
-                </div>
-                <!-- CTA Buttons -->
-                <div class="w-full flex flex-col sm:flex-row gap-4 justify-center items-center">
-                    <a href="/simulasi-tarif"
-                        class="inline-block px-8 py-4 text-lg font-semibold text-white bg-blue-500 rounded-full duration-300 ease-in-out hover:bg-blue-600 hover:shadow-2xl transform hover:scale-105 min-w-[200px] text-center">
-                        Cek Tarif Pengiriman
-                    </a>
-                    <a href="/lacak"
-                        class="inline-block px-8 py-4 text-lg font-semibold text-white bg-transparent border-2 border-white rounded-full duration-300 ease-in-out hover:bg-white hover:text-blue-900 hover:shadow-2xl transform hover:scale-105 min-w-[200px] text-center">
-                        Lacak Pengiriman
-                    </a>
-                </div>
-            </div>
-            <div class="w-full">
-                <div class="grid grid-cols-1 gap-6 lg:grid-cols-6 items-stretch">
-                    <!-- Kolom kiri -->
-                    <div class="hidden lg:block lg:col-span-2">
-                        <img src="https://images.unsplash.com/photo-1494412685616-a5d310fbb07d?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170"
-                            alt="Container shipping" class="w-full h-full rounded-lg object-cover shadow-xl" />
+                    <div class="w-full flex flex-col sm:flex-row gap-4 justify-center items-center">
+                        <a href="/simulasi-tarif"
+                            class="inline-block px-8 py-4 text-lg font-medium text-white bg-blue-500 rounded-full duration-300 ease-in-out hover:bg-blue-600 hover:shadow-2xl transform hover:scale-105 min-w-[200px] text-center">
+                            Cek Tarif Pengiriman
+                        </a>
+                        <a href="/lacak"
+                            class="inline-block px-8 py-4 text-lg font-medium text-white bg-transparent border-2 border-orange-500 rounded-full duration-300 ease-in-out hover:bg-white hover:text-orange-500 hover:shadow-2xl transform hover:scale-105 min-w-[200px] text-center">
+                            Lacak Pengiriman
+                        </a>
                     </div>
-
-                    <!-- Kolom tengah -->
-                    <div class="col-span-1 lg:col-span-1 h-full">
-                        <div class="grid grid-cols-2 lg:grid-cols-1 gap-6 h-full">
-                            <div
-                                class="rounded-lg bg-orange-500 p-8 flex flex-col justify-center text-center h-full shadow-xl hover:shadow-2xl transition-shadow">
-                                <h5 class="mb-2 text-3xl font-bold tracking-tight text-white">100+</h5>
-                                <p class="font-medium text-gray-50">Pelanggan</p>
-                            </div>
-                            <div
-                                class="rounded-lg bg-blue-500 p-8 flex flex-col justify-center text-center h-full shadow-xl hover:shadow-2xl transition-shadow">
-                                <h5 class="mb-2 text-3xl font-bold tracking-tight text-white">50+</h5>
-                                <p class="font-medium text-gray-50">Rute</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Kolom kanan (versi lebih elegan & profesional) -->
-                    <div class="col-span-1 lg:col-span-3 h-full">
-                        <div role="region" aria-labelledby="help-heading"
-                            class="rounded-2xl bg-white/90 backdrop-blur-sm p-8 flex flex-col justify-center h-full space-y-4 text-center shadow-lg border border-slate-100">
-
-                            <h3 id="help-heading" class="text-xl font-semibold text-slate-800">
-                                Butuh Bantuan? Kami Siap Membantu
-                            </h3>
-
-                            <p class="text-slate-600 leading-relaxed text-base max-w-xl mx-auto">
-                                Butuh informasi lebih lanjut atau estimasi cepat? Hubungi admin kami atau gunakan fitur
-                                simulasi tarif untuk mendapatkan perkiraan biaya secara instan.
-                            </p>
-
-                            <div class="flex flex-col sm:flex-row gap-3 justify-center">
-                                <a href="#contact"
-                                    class="inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-white bg-green-500 rounded-full shadow-md hover:bg-green-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-300 transition">
-                                    Hubungi Kami
-                                </a>
-                            </div>
-
-                            <p class="text-xs text-slate-400">
-                                Layanan pelanggan aktif: Senin–Jumat, 09:00–17:00. Sabtu 09:00-13:00.
-                            </p>
-                        </div>
-                    </div>
-
                 </div>
             </div>
+            <div class="flex flex-wrap">
+                <div class="w-full self-center px-4 lg:w-5/12">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <p class="mb-3 text-5xl font-bold leading-none tracking-wide text-white">
+                                100+
+                            </p>
+                            <p class="text-lg font-medium text-slate-300">Pelanggan</p>
+                        </div>
+                        <div>
+                            <p class="mb-3 text-5xl font-bold leading-none tracking-wide text-white">
+                                50+
+                            </p>
+                            <p class="text-lg font-medium text-slate-300">Rute</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full py-2 lg:flex lg:w-7/12">
+                    <div role="region" aria-labelledby="help-heading"
+                        class="rounded-2xl bg-white/90 backdrop-blur-sm p-8 flex flex-col justify-center w-full space-y-4 text-center shadow-lg border border-slate-100">
 
+                        <h3 id="help-heading" class="text-xl font-semibold text-slate-800">
+                            Butuh Bantuan? Kami Siap Membantu
+                        </h3>
+
+                        <p class="text-slate-600 leading-relaxed text-base max-w-xl mx-auto">
+                            Butuh informasi lebih lanjut atau estimasi cepat? Hubungi admin kami atau gunakan fitur
+                            simulasi tarif untuk mendapatkan perkiraan biaya secara instan.
+                        </p>
+
+                        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                            <a href="#contact"
+                                class="inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-white bg-green-500 rounded-full shadow-md hover:bg-green-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-300 transition">
+                                Hubungi Kami
+                            </a>
+                        </div>
+
+                        <p class="text-xs text-slate-400">
+                            Layanan pelanggan aktif: Senin–Jumat, 09:00–17:00. Sabtu 09:00-13:00.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
     <!-- Hero Section End -->
+
+    <!-- Media Section Start -->
+    <section id="media" class="bg-gray-50">
+        <div class="container">
+            <div class="w-full px-4">
+                <div class="flex flex-wrap items-center justify-center text-center">
+                    <div
+                        class="mx-4 my-4 max-w-[130px] py-4 opacity-100 grayscale-0 transition duration-500 hover:opacity-80 hover:grayscale-[50%] lg:mx-6 xl:mx-8">
+                        <img src="{{ asset('img/logo-aptikom.png') }}" alt="Logo Aptikom">
+                    </div>
+
+                    <div
+                        class="mx-4 my-4 max-w-[130px] py-4 opacity-100 grayscale-0 transition duration-500 hover:opacity-80 hover:grayscale-[50%] lg:mx-6 xl:mx-8">
+                        <img src="{{ asset('img/logo-gunadarma.webp') }}" alt="Logo Gunadarma">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Media Section End -->
 
     <!-- Pilar Section Start -->
     <section id="pilar" class="py-8 lg:py-16">
@@ -106,7 +108,7 @@
             </div>
 
             <!-- Cards -->
-            <div class="grid gap-6 sm:grid-cols-3">
+            <div class="grid gap-6 md:grid-cols-3">
                 <!-- Card 1 -->
                 <div
                     class="group rounded-2xl bg-white p-7 shadow-md hover:shadow-xl transform transition hover:-translate-y-2 focus-within:shadow-xl focus-within:-translate-y-2">

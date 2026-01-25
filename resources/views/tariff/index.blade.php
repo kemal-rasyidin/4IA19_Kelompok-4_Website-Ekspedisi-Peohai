@@ -1,23 +1,20 @@
 <x-home>
-    <section id="form" class="py-8 lg:py-16 relative overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <img src="/img/background2.png" alt="Background Ekspedisi" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-br from-black/60 via-black/50 to-blue-900/60"></div>
-        </div>
-    
-    <!-- Content -->
-        <div class="container relative z-10">
+    <section id="form"
+        class="border-l-orange-100 bg-gray-700 bg-cover bg-center bg-no-repeat py-32 bg-blend-multiply"
+        style="background-image: url(img/background2.png)">
+        <div class="container">
             <div class="mb-10 flex flex-wrap text-center">
-                <div class="w-full">
+                <div class="w-full px-4">
                     <hr class="bg-sea mb-4 h-1 w-32 border-0 md:h-2" />
-                    <p class="mb-4 text-5xl lg:text-6xl font-bold leading-tight tracking-wide text-white drop-shadow-lg" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.8)">
+                    <p class="mb-4 text-6xl font-bold leading-none tracking-wide text-white">
                         Simulasi Biaya Pengiriman Kontainer
                     </p>
                 </div>
                 <div class="w-full">
                     <p
                         class="mb-10 mt-7 font-medium leading-relaxed inline-block px-4 py-2 rounded-full bg-yellow-50 text-yellow-800">
-                        <strong>Catatan:</strong> Harga tidak mengikat dan dapat berubah sewaktu-waktu sesuai dengan kebijakan perusahaan
+                        <strong>Catatan:</strong> Harga tidak mengikat dan dapat berubah sewaktu-waktu sesuai dengan
+                        kebijakan perusahaan
                     </p>
                 </div>
             </div>

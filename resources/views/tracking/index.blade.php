@@ -1,23 +1,13 @@
 <x-home>
-<section id="beranda" class="py-8 lg:py-16 relative overflow-hidden">
-    <div class="absolute inset-0 z-0">
-        <img src="/img/background2.png" alt="Background Ekspedisi" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-gradient-to-br from-black/60 via-black/50 to-blue-900/60"></div>
-    </div>
-    
-    <!-- Content -->
-    <div class="container relative z-10">
+    <section id="form"
+        class="border-l-orange-100 bg-gray-700 bg-cover bg-center bg-no-repeat py-32 bg-blend-multiply"
+        style="background-image: url(img/background2.png)">
+        <div class="container">
             <div class="mb-10 flex flex-wrap text-center">
-                <div class="w-full">
+                <div class="w-full px-4">
                     <hr class="bg-sea mb-4 h-1 w-32 border-0 md:h-2" />
-                    <p class="mb-4 text-5xl lg:text-6xl font-bold leading-tight tracking-wide text-white drop-shadow-lg" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.8)">
-                        Lacak pengiriman Anda!
-                    </p>
-                </div>
-                <div class="w-full">
-                    <p class="mb-10 mt-7 font-medium leading-relaxed text-white text-lg drop-shadow-md">
-                        Percayakan pengiriman Anda kepada kami. Layanan ekspedisi cepat, aman, dan terpercaya ke seluruh
-                        Indonesia!
+                    <p class="mb-4 text-6xl font-bold leading-none tracking-wide text-white">
+                        Lacak Pengiriman
                     </p>
                 </div>
             </div>
@@ -87,7 +77,7 @@
                                             <path fill="currentColor"
                                                 d="M9.5 16q-2.725 0-4.612-1.888T3 9.5t1.888-4.612T9.5 3t4.613 1.888T16 9.5q0 1.1-.35 2.075T14.7 13.3l5.6 5.6q.275.275.275.7t-.275.7t-.7.275t-.7-.275l-5.6-5.6q-.75.6-1.725.95T9.5 16m0-2q1.875 0 3.188-1.312T14 9.5t-1.312-3.187T9.5 5T6.313 6.313T5 9.5t1.313 3.188T9.5 14" />
                                         </svg>
-                                        Lacak Paket
+                                        Lacak Pengiriman
                                     </button>
                                 </div>
 
