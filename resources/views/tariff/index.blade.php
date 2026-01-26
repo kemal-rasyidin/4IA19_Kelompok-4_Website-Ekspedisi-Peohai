@@ -6,13 +6,13 @@
             <div class="mb-10 flex flex-wrap text-center">
                 <div class="w-full px-4">
                     <hr class="bg-sea mb-4 h-1 w-32 border-0 md:h-2" />
-                    <p class="mb-4 text-6xl font-bold leading-none tracking-wide text-white">
+                    <p class="mb-6 text-4xl md:text-6xl font-bold leading-tight tracking-wide text-white">
                         Simulasi Biaya Pengiriman Kontainer
                     </p>
                 </div>
                 <div class="w-full">
                     <p
-                        class="mb-10 mt-7 font-medium leading-relaxed inline-block px-4 py-2 rounded-full bg-yellow-50 text-yellow-800">
+                        class="mb-10 mt-7 font-medium leading-relaxed inline-block px-4 py-2 rounded-md md:rounded-full bg-yellow-50 text-yellow-800">
                         <strong>Catatan:</strong> Harga tidak mengikat dan dapat berubah sewaktu-waktu sesuai dengan
                         kebijakan perusahaan
                     </p>

@@ -6,7 +6,7 @@
             <div class="mb-10 flex flex-wrap text-center">
                 <div class="w-full px-4">
                     <hr class="bg-sea mb-4 h-1 w-32 border-0 md:h-2" />
-                    <p class="mb-4 text-6xl font-bold leading-none tracking-wide text-white">
+                    <p class="mb-6 text-4xl md:text-6xl font-bold leading-tight tracking-wide text-white">
                         Lacak Pengiriman
                     </p>
                 </div>
